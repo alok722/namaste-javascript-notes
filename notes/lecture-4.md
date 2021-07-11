@@ -7,7 +7,7 @@ b(); // we are calling the functions before defining them. This will work proper
 console.log(x); // 3
 
 function a() {
-  var x = 10;
+  var x = 10; // localscope because of separate execution context
   console.log(x); // 1
 }
 
