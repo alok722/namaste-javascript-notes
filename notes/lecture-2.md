@@ -43,4 +43,4 @@ So the **final diagram** before deletion would look something like:
 Watch Live On Youtube below:
 
 <a href="https://www.youtube.com/watch?v=iLWTnMzWtj4&t=1s&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/iLWTnMzWtj4/0.jpg" width="750"
-alt="Execution Context Youtube Link"/></a>
+alt="How JS is executed & Call Stack Youtube Link"/></a>
