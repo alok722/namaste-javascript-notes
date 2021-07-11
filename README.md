@@ -19,6 +19,10 @@
 
 ### [Episode 3 : Hoisting in JavaScript (variables & functions)](URL)
 
+### [Episode 4 : Functions and Variable Environments](URL)
+
+### [Episode 5 : Shortest JS Program, window & this keyword](URL)
+
 <br>
 
 ## 👤 author
