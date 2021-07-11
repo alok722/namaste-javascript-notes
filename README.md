@@ -23,6 +23,8 @@
 
 ### [Episode 5 : Shortest JS Program, window & this keyword](URL)
 
+### [Episode 6 : undefined vs not defined in JS](URL)
+
 <br>
 
 ## 👤 author
