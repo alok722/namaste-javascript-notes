@@ -17,6 +17,8 @@
 
 ### [Episode 2 : How JS is executed & Call Stack](URL)
 
+### [Episode 3 : Hoisting in JavaScript (variables & functions)](URL)
+
 <br>
 
 ## 👤 author
