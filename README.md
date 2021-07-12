@@ -25,6 +25,8 @@
 
 ### [Episode 6 : undefined vs not defined in JS](URL)
 
+### [Episode 7 : The Scope Chain, Scope & Lexical Environment](URL)
+
 <br>
 
 ## 👤 author
