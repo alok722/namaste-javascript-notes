@@ -25,4 +25,4 @@ console.log(a); // Uncaught ReferenceError: a is not defined
 Watch Live On Youtube below:
 
 <a href="https://www.youtube.com/watch?v=B7iF6G3EyIk&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/B7iF6G3EyIk/0.jpg" width="750"
-alt="Functions and Variable Environments Youtube Link"/></a>
+alt="undefined vs not defined in JS Youtube Link"/></a>

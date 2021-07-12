@@ -2,7 +2,7 @@
 
 ## ❓ what it is
 
-> This repo maintains my version of javascript notes which I learn from famous [Namaste Javascript Youtube Series](https://www.youtube.com/watch?v=pN6jk0uUrD8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=1&ab_channel=AkshaySaini).
+> This repo maintains my version of javascript notes which I learn from famous [Namaste Javascript Youtube Series](https://www.youtube.com/watch?v=pN6jk0uUrD8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=1&ab_channel=AkshaySaini) by Akshay Saini.
 
 <br>
 
@@ -26,10 +26,11 @@
 ### [Episode 6 : undefined vs not defined in JS](URL)
 
 ### [Episode 7 : The Scope Chain, Scope & Lexical Environment](URL)
+### [Episode 8 : let & const in JS, Temporal Dead Zone](URL)
 
 <br>
 
-## 👤 author
+## 👤 Author
 
  **alok raj (alokr417@gmail.com)**
 
@@ -37,6 +38,10 @@
 * linkedin: [@alok722](https://linkedin.com/in/alok722)
 
 <br>
+
+## 🙏 Special Thanks
+* https://github.com/HariAcidReign/JavaScript-A-Z-Notes
+* https://sakshambhatt.hashnode.dev/notes-or-namaste-javascript-by-akshay-saini
 
 ## ✨ Show your support
 
