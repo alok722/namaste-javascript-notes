@@ -86,6 +86,17 @@ console.log(b); // Error, Not Defined
   } // a is lexically inside global execution
   ```
 
+* Lexical or Static scope refers to the accessibility of variables, functions and object based on phylical location in source code.
+    ```js
+    Global {
+        Outer {
+            Inner
+        }
+    }
+    // Inner is surrounded by lexical scope of Outer
+    ```
+
+
 * **TLDR**; An inner function can access variables which are in outer functions even if inner function is nested deep. In any other case, a function can't access variables not in its scope.
 
 

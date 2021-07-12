@@ -31,6 +31,8 @@
 
 ### [Episode 9 : Block Scope & Shadowing in JS](URL)
 
+### [Episode 10 : Closure in JS](URL)
+
 <br>
 
 ## 👤 Author
