@@ -26,7 +26,10 @@
 ### [Episode 6 : undefined vs not defined in JS](URL)
 
 ### [Episode 7 : The Scope Chain, Scope & Lexical Environment](URL)
+
 ### [Episode 8 : let & const in JS, Temporal Dead Zone](URL)
+
+### [Episode 9 : Block Scope & Shadowing in JS](URL)
 
 <br>
 
