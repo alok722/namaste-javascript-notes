@@ -41,6 +41,8 @@
 
 ### [Episode 14 : Callback Functions in JS ft. Event Listeners](URL)
 
+### [Episode 15 : Asynchronous JavaScript & EVENT LOOP from scratch](URL)
+
 <br>
 
 ## 👤 Author
