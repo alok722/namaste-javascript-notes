@@ -37,6 +37,8 @@
 
 ### [Episode 12 : Famous Interview Questions ft. Closures](URL)
 
+### [Episode 13 : First Class Functions ft. Anonymous Functions](URL)
+
 <br>
 
 ## 👤 Author
