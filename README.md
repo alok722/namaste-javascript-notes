@@ -47,6 +47,8 @@
 
 ### [Episode 17 : Trust issues with setTimeout()](URL)
 
+### [Episode 18 : Higher-Order Functions ft. Functional Programming](URL)
+
 <br>
 
 ## 👤 Author
