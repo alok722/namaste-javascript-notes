@@ -43,6 +43,8 @@
 
 ### [Episode 15 : Asynchronous JavaScript & EVENT LOOP from scratch](URL)
 
+### [Episode 16 : JS Engine Exposed, Google's V8 Architecture](URL)
+
 <br>
 
 ## 👤 Author
