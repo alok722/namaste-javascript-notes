@@ -1,4 +1,4 @@
-# Episode 12 : First Class Functions ft. Anonymous Functions
+# Episode 13 : First Class Functions ft. Anonymous Functions
 
 > Functions are heart ♥ of Javascript.
 

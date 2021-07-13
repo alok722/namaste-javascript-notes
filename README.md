@@ -39,6 +39,8 @@
 
 ### [Episode 13 : First Class Functions ft. Anonymous Functions](URL)
 
+### [Episode 14 : Callback Functions in JS ft. Event Listeners](URL)
+
 <br>
 
 ## 👤 Author
