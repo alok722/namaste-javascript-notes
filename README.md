@@ -45,6 +45,8 @@
 
 ### [Episode 16 : JS Engine Exposed, Google's V8 Architecture](URL)
 
+### [Episode 17 : Trust issues with setTimeout()](URL)
+
 <br>
 
 ## 👤 Author
