@@ -35,6 +35,8 @@
 
 ### [Episode 11 : setTimeout + Closures Interview Question](URL)
 
+### [Episode 12 : Famous Interview Questions ft. Closures](URL)
+
 <br>
 
 ## 👤 Author

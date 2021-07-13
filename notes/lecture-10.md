@@ -24,6 +24,18 @@
 
 * ![Closure Explaination](../assets/closure.jpg "Lexical Scope")
 
+* Advantages of Closure:
+  * Module Design Pattern
+  * Currying
+  * Memoize
+  * Data hiding and encapsulation
+  * setTimeouts etc.
+
+* Disadvantages of Closure:
+  * Over consumption of memory
+  * Memory Leak
+  * Freeze browser
+
 
 <hr>
 
