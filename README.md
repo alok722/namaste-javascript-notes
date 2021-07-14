@@ -10,8 +10,7 @@
 
 <br>
 
-## 📝 Content
-<br>
+## 📝 Content List
 
 ### [**Combined Lectures Notes**](https://github.com/alok722/namaste-javascript-notes/blob/master/notes/lectures.md)
 
