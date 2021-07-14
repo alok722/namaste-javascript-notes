@@ -18,7 +18,7 @@
     3. **Execution** - Needs 2 components ie. Memory heap(place where all memory is stored) and Call Stack(same call stack from prev episodes). There is also a garbage collector. It uses an algo called **Mark and Sweep**.
     ![JS Engine Demo](../assets/jsengine.jpg)
     GiF Demo
-    ![JS Engine Demo](../assets/jsengine.gif)
+    ![JS Engine Demo](../assets/jsenginegif.gif)
 
 * Companies use different JS engines and each try to make theirs the best.
     * v8 of Google has Interpreter called Ignition, a compiler called Turbo Fan and garbage collector called Orinoco
