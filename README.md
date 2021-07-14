@@ -13,6 +13,8 @@
 ## 📝 Content
 <br>
 
+### [**Combined Lectures Notes**](URL)
+
 ### [Episode 1 : Execution Context](URL)
 
 ### [Episode 2 : How JS is executed & Call Stack](URL)
