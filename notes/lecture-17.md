@@ -27,7 +27,7 @@
 * The First rule of JavaScript: Do not **block the main thread** (as JS is a single threaded(only 1 callstack) language).
 
 * In below example, we are blocking the main thread. Observe Questiona and Output.
-![setTimeout Demo](../assets/settimeout.jpg)
+![setTimeout Demo](../assets/settimeout1.jpg)
 
 * setTimeout guarantees that it will take at least the given timer to execute the code.
 
