@@ -12,7 +12,7 @@
 
 ## 📝 Content List
 
-### [**Combined Lectures Notes**](https://github.com/alok722/namaste-javascript-notes/blob/master/notes/lectures.md)
+### [**Combined Lectures Notes**](./notes/lectures.md)
 
 ### [Episode 1 : Execution Context](https://github.com/alok722/namaste-javascript-notes/blob/master/notes/lecture-1.md)
 
@@ -60,6 +60,15 @@
 * linkedin: [@alok722](https://linkedin.com/in/alok722)
 
 <br>
+
+## 🤝 Contribution Guidelines
+
+* Fork the repository to your own Github account
+* Clone the project to your machine, checkout to new branch & install dependencies using *yarn*
+* Commit changes to your branch only using **npm run commit** script
+* Don't use *git commit -m "commit message"* to commit your changes
+* Push changes to your fork
+* Open a PR in my repository by providing all info and context of your PR.
 
 ## 🙏 Special Thanks
 * https://github.com/HariAcidReign/JavaScript-A-Z-Notes
