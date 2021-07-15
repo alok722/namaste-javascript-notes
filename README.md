@@ -6,7 +6,7 @@
 
 <br>
 
-## 🏠 [Homepage](https://github.com/alok722/namaste-javascript-notes/blob/master/notes/lectures.md)
+## 🏠 [Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
 
 <br>
 
