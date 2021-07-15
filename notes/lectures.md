@@ -1,3 +1,6 @@
+title: Namaste JavaScript
+---
+
 # Episode 1 : Execution Context
 
 * Everything in JS happens inside the execution context. Imagine a sealed-off container inside which JS runs. Imagine a sealed-off container inside which JS runs.
