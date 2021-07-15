@@ -6,9 +6,9 @@
 
 <br>
 
-## 🏠 [Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
+## 🏠 [Namaste Javascript Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
 
-<br>
+## 🚀 [PDF Version of Complete Notes](https://github.com/alok722/namaste-javascript-notes/blob/master/dist/namaste-javascript-notes.pdf)
 
 ## 📝 Content List
 
