@@ -52,6 +52,11 @@
 
 <br>
 
+## ✨ Testimonial
+
+From the creator of Namaste Javascript himself, 🙌
+![Testimonial](./assets/testimonial.png)
+
 ## 👤 Author
 
  **alok raj (alokr417@gmail.com)**
