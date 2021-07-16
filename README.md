@@ -6,6 +6,8 @@
 
 <br>
 
+## 🔗 bit.ly/namaste-js
+
 ## 🏠 [Namaste Javascript Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
 
 ## 🚀 [PDF Version of Complete Notes](./dist/namaste-javascript-notes.pdf)
