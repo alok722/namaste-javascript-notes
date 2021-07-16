@@ -6,7 +6,7 @@
 
 <br>
 
-## 🔗 bit.ly/namaste-js
+## 🔗 [bit.ly/namaste-js](bit.ly/namaste-js)
 
 ## 🏠 [Namaste Javascript Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
 
