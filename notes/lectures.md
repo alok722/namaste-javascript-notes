@@ -25,6 +25,9 @@ Watch Live On Youtube below:
 alt="Execution Context Youtube Link"/></a>
 
 <br>
+
+---
+
 <br>
 
 # Episode 2 : How JS is executed & Call Stack
@@ -78,6 +81,9 @@ alt="How JS is executed & Call Stack Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 # Episode 3 : Hoisting in JavaScript (variables & functions)
@@ -125,6 +131,9 @@ Watch Live On Youtube below:
 alt="Hoisting Youtube Link"/></a>
 
 <br>
+
+---
+
 <br>
 
 # Episode 4 : Functions and Variable Environments
@@ -189,6 +198,9 @@ alt="Functions and Variable Environments Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 # Episode 5 : Shortest JS Program, window & this keyword
@@ -218,6 +230,9 @@ alt="Shortest JS Program, window & this keyword Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -252,6 +267,9 @@ alt="undefined vs not defined in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 # Episode 7 : The Scope Chain, Scope & Lexical Environment
@@ -365,6 +383,9 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -447,6 +468,9 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -553,6 +577,9 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -604,6 +631,9 @@ alt="Closure in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -682,6 +712,9 @@ alt="setTimeout + Closures Interview Question in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -874,6 +907,9 @@ alt="Closures Interview Question in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -977,6 +1013,9 @@ alt="First Class Functions ft. Anonymous Functions in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -1071,6 +1110,9 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -1210,8 +1252,10 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 
 
 <br>
-<br>
 
+---
+
+<br>
 
 # Episode 16 : JS Engine Exposed, Google's V8 Architecture
 
@@ -1252,6 +1296,9 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -1311,6 +1358,9 @@ alt="Trust issues with setTimeout() in JS Youtube Link"/></a>
 
 
 <br>
+
+---
+
 <br>
 
 
@@ -1410,5 +1460,12 @@ Watch Live On Youtube below:
 <a href="https://www.youtube.com/watch?v=HkWxvB1RJq0&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/HkWxvB1RJq0/0.jpg" width="750"
 alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 
+<br>
 
 **To be continued** ...
+
+<br>
+
+---
+
+<br>
