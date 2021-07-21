@@ -52,6 +52,8 @@
 
 ### [Episode 18 : Higher-Order Functions ft. Functional Programming](./notes/lecture-18.md)
 
+### [Episode 19 : map, filter & reduce](./notes/lecture-19.md)
+
 <br>
 
 ## ✨ Testimonial

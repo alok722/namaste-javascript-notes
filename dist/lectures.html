@@ -1361,10 +1361,161 @@ Lets convert above calculate <span class="hljs-function"><span class="hljs-keywo
 alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a></p>
 <br>
 
-<p><strong>To be continued</strong> ...</p>
+<hr>
+
+<br>
+
+<h1 id="episode-19--map-filter--reduce"><a class="header-link" href="#episode-19--map-filter--reduce"></a>Episode 19 : map, filter &amp; reduce</h1>
+<blockquote>
+<p>map, filter &amp; reducer are Higher Order Functions.</p>
+</blockquote>
+<h2 id="map-function"><a class="header-link" href="#map-function"></a>Map function</h2>
+<p>It is basically used to transform a array. The map() method creates a new array with the results of calling a function for every array element.</p>
+<p>const output = arr.map(<em>function</em>) // this <em>function</em> tells map that what transformation I want on each element of array</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-comment">// Task 1: Double the array element: [10, 2, 6, 4, 12]</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">double</span>(<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-keyword">return</span> x * <span class="hljs-number">2</span>;
+}
+<span class="hljs-keyword">const</span> doubleArr = arr.map(double); <span class="hljs-comment">// Internally map will run double function for each element of array and create a new array and returns it.</span>
+<span class="hljs-built_in">console</span>.log(doubleArr); <span class="hljs-comment">// [10, 2, 6, 4, 12]</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// Task 2: Triple the array element</span>
+<span class="hljs-keyword">const</span> arr = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-comment">// Transformation logic</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">triple</span>(<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-keyword">return</span> x * <span class="hljs-number">3</span>;
+}
+<span class="hljs-keyword">const</span> tripleArr = arr.map(triple);
+<span class="hljs-built_in">console</span>.log(tripleArr); <span class="hljs-comment">// [15, 3, 9, 6, 18]</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// Task 3: Convert array elements to binary</span>
+<span class="hljs-keyword">const</span> arr = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-comment">// Transformation logic:</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binary</span>(<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-keyword">return</span> x.toString(<span class="hljs-number">2</span>);
+}
+<span class="hljs-keyword">const</span> binaryArr = arr.map(binary);
+
+<span class="hljs-comment">// The above code can be rewritten as :</span>
+<span class="hljs-keyword">const</span> binaryArr = arr.map(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">binary</span>(<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-keyword">return</span> x.toString(<span class="hljs-number">2</span>);
+}
+
+<span class="hljs-comment">// OR -&gt; Arrow function</span>
+<span class="hljs-keyword">const</span> binaryArr = arr.map(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x.toString(<span class="hljs-number">2</span>));</code></pre><p>So basically map function is mapping each and every value and transforming it based on given condition.</p>
+<h2 id="filter-function"><a class="header-link" href="#filter-function"></a>Filter function</h2>
+<p>Filter function is basically used to filter the value inside an array. The arr.filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument method.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-comment">// filter odd values</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOdd</span> (<span class="hljs-params">x</span>) </span>{
+    <span class="hljs-keyword">return</span> x % <span class="hljs-number">2</span>;
+}
+<span class="hljs-keyword">const</span> oddArr = array.filter(isOdd); <span class="hljs-comment">// [5,1,3]</span>
+
+<span class="hljs-comment">// Other way of writing the above:</span>
+<span class="hljs-keyword">const</span> oddArr = arr.filter(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x % <span class="hljs-number">2</span>);</code></pre><p>Filter function creates an array and store only those values which evaluates to true.</p>
+<h2 id="reduce-function"><a class="header-link" href="#reduce-function"></a>Reduce function</h2>
+<p>It is a function which take all the values of array and gives a single output of it. It reduces the array to give a single output.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-comment">// Calculate sum of elements of array - Non functional programming way</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findSum</span>(<span class="hljs-params">arr</span>) </span>{
+    <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+        sum = sum + arr[i];
+    }
+    <span class="hljs-keyword">return</span> sum;
+}
+<span class="hljs-built_in">console</span>.log(findSum(array)); <span class="hljs-comment">// 17</span>
+
+<span class="hljs-comment">// reduce function way</span>
+<span class="hljs-keyword">const</span> sumOfElem = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accumulator, current</span>) </span>{
+    <span class="hljs-comment">// current represent the value of array</span>
+    <span class="hljs-comment">// accumulator is used the result from element of array.</span>
+    <span class="hljs-comment">// In comparison to previous code snippet, *sum* variable is *accumulator* and *arr[i]* is *current*</span>
+    accumulator = accumulator + current;
+    <span class="hljs-keyword">return</span> accumulator;
+}, <span class="hljs-number">0</span>); <span class="hljs-comment">//In above example sum was initialized with 0, so over here accumulator also needs to be initialized, so the second argument to reduce function represent the initialization value.</span>
+<span class="hljs-built_in">console</span>.log(sumOfElem); <span class="hljs-comment">// 17</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// find max inside array: Non functional programming way:</span>
+<span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findMax</span>(<span class="hljs-params">arr</span>) </span>{
+    <span class="hljs-keyword">let</span> max = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++ {
+        <span class="hljs-keyword">if</span> (arr[i] &gt; max) {
+            max = arr[i]
+        }
+    }
+    <span class="hljs-keyword">return</span> max;
+}
+<span class="hljs-built_in">console</span>.log(findMax(array)); <span class="hljs-comment">// 6</span>
+
+<span class="hljs-comment">// using reduce</span>
+<span class="hljs-keyword">const</span> output = arr.reduce(<span class="hljs-function">(<span class="hljs-params">acc, current</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (current &gt; acc ) {
+        acc = current;    
+    }
+    <span class="hljs-keyword">return</span> acc;
+}, <span class="hljs-number">0</span>);
+<span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// 6</span>
+
+<span class="hljs-comment">// acc is just a label which represent the accumulated value till now,</span>
+<span class="hljs-comment">// so we can also label it as max in this case</span>
+<span class="hljs-keyword">const</span> output = arr.reduce(<span class="hljs-function">(<span class="hljs-params">max, current</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (current &gt; max) {
+        max= current;    
+    }
+    <span class="hljs-keyword">return</span> max;
+}, <span class="hljs-number">0</span>);
+<span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// 6</span></code></pre><h2 id="tricky-map"><a class="header-link" href="#tricky-map"></a>Tricky MAP</h2>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> users = [
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Alok&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Raj&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">23</span> },
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ashish&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Kumar&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ankit&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Roy&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Pranav&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Mukherjee&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">50</span> },
+];
+<span class="hljs-comment">// Get array of full name : [&quot;Alok Raj&quot;, &quot;Ashish Kumar&quot;, ...]</span>
+<span class="hljs-keyword">const</span> fullNameArr = users.map(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> user.firstName + <span class="hljs-string">&quot; &quot;</span> + user.lastName);
+<span class="hljs-built_in">console</span>.log(fullNameArr); <span class="hljs-comment">// [&quot;Alok Raj&quot;, &quot;Ashish Kumar&quot;, ...]</span>
+
+----------------------------------------------------------
+
+<span class="hljs-comment">// Get the count/report of how many unique people with unique age are there</span>
+<span class="hljs-comment">// like: {29 : 2, 75 : 1, 50 : 1}</span>
+<span class="hljs-comment">// We should use reduce, why? we want to deduce some information from the array. Basically we want to get a single object as output</span>
+<span class="hljs-keyword">const</span> report = users.reduce(<span class="hljs-function">(<span class="hljs-params">acc, curr</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span>(acc[curr.age]) {
+        acc[curr.age] = ++ acc[curr.age] ;
+    } <span class="hljs-keyword">else</span> {
+        acc[curr.age] = <span class="hljs-number">1</span>;
+    }
+}, {})
+<span class="hljs-built_in">console</span>.log(report) <span class="hljs-comment">// {29 : 2, 75 : 1, 50 : 1}</span></code></pre><h2 id="function-chaining"><a class="header-link" href="#function-chaining"></a>Function Chaining</h2>
+<pre class="hljs"><code><span class="hljs-comment">// First name of all people whose age is less than 30</span>
+<span class="hljs-keyword">const</span> users = [
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Alok&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Raj&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">23</span> },
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ashish&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Kumar&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ankit&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Roy&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
+    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Pranav&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Mukherjee&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">50</span> },
+];
+
+<span class="hljs-comment">// function chaining</span>
+<span class="hljs-keyword">const</span> output = users.filter(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> user.age &lt; <span class="hljs-number">30</span>).map(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.firstName);
+<span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// [&quot;Alok&quot;, &quot;Ashish&quot;, &quot;Ankit&quot;]</span>
+
+<span class="hljs-comment">// Homework challenge: Implement the same logic using reduce</span>
+<span class="hljs-keyword">const</span> output = users.reduce(<span class="hljs-function">(<span class="hljs-params">acc, curr</span>) =&gt;</span> {
+    <span class="hljs-keyword">if</span> (curr.age &lt; <span class="hljs-number">30</span>) {
+        acc.push(curr.firstName)
+    }
+    <span class="hljs-keyword">return</span> acc;
+}, []);
+<span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// [&quot;Alok&quot;, &quot;Ashish&quot;, &quot;Ankit&quot;]</span></code></pre><hr>
+
+<p>Watch Live On Youtube below:</p>
+<p><a href="https://www.youtube.com/watch?v=zdp0zrpKzIE&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP" target="_blank"><img src="https://img.youtube.com/vi/zdp0zrpKzIE/0.jpg" width="750"
+alt="map, filter & reduce Youtube Link"/></a></p>
 <br>
 
 <hr>
 
+<br>
+
+<p><strong>To Be Continued</strong> ...</p>
 <br></body>
 </html>
