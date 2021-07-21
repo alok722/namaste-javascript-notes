@@ -1,5 +1,6 @@
 title: Namaste JavaScript
----
+
+<br>
 
 # Episode 1 : Execution Context
 
@@ -26,7 +27,7 @@ alt="Execution Context Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -82,7 +83,7 @@ alt="How JS is executed & Call Stack Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -132,7 +133,7 @@ alt="Hoisting Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -199,7 +200,7 @@ alt="Functions and Variable Environments Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -231,7 +232,7 @@ alt="Shortest JS Program, window & this keyword Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -268,7 +269,7 @@ alt="undefined vs not defined in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -384,7 +385,7 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -469,7 +470,7 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -578,7 +579,7 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -632,7 +633,7 @@ alt="Closure in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -713,7 +714,7 @@ alt="setTimeout + Closures Interview Question in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -908,7 +909,7 @@ alt="Closures Interview Question in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -1014,7 +1015,7 @@ alt="First Class Functions ft. Anonymous Functions in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -1111,7 +1112,7 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -1253,7 +1254,7 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -1297,7 +1298,7 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -1359,7 +1360,7 @@ alt="Trust issues with setTimeout() in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
 
@@ -1466,6 +1467,6 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 
 <br>
 
----
+<hr>
 
 <br>
