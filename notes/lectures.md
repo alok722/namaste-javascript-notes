@@ -124,13 +124,6 @@ var getName = function () {
 // The code won't execute as the first line itself throws an TypeError.
 ```
 
-```js
-console.log(getName); // it is undefined because in arrow function behaves as variable and not function.
-var getName = function () {
-    console.log("Namaste JavaScript");
-}
-```
-
 <hr>
 
 Watch Live On Youtube below:
