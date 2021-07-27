@@ -116,12 +116,19 @@ function getName(){
 
 * Now let's observe a different example and try to understand the output.
 ```js
-getName(); // undefined
-console.log(getName); // Uncaught TypeError: getName is not a function
+getName(); // Uncaught TypeError: getName is not a function
+console.log(getName);
 var getName = function () {
     console.log("Namaste JavaScript");
 }
-// it is undefined because in arrow function behaves as variable and not function.
+// The code won't execute as the first line itself throws an TypeError.
+```
+
+```js
+console.log(getName); // it is undefined because in arrow function behaves as variable and not function.
+var getName = function () {
+    console.log("Namaste JavaScript");
+}
 ```
 
 <hr>

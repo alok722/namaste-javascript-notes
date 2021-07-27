@@ -113,16 +113,19 @@ console.log(&quot;Namaste Javascript&quot;);
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>)</span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
 }</code></pre><ul class="list">
-<li>Now let&#39;s observe a different example and try to understand the output.<pre class="prettyprint">getName(); // undefined
-console.log(getName); // Uncaught TypeError: getName is not a function
+<li>Now let&#39;s observe a different example and try to understand the output.<pre class="prettyprint">getName(); // Uncaught TypeError: getName is not a function
+console.log(getName);
 var getName = function () {
   console.log(&quot;Namaste JavaScript&quot;);
 }
-// it is undefined because in arrow function behaves as variable and not function.
+// The code won&#39;t execute as the first line itself throws an TypeError.
 </pre>
 </li>
 </ul>
-<hr>
+<pre class="hljs"><code><span class="hljs-built_in">console</span>.log(getName); <span class="hljs-comment">// it is undefined because in arrow function behaves as variable and not function.</span>
+<span class="hljs-keyword">var</span> getName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
+}</code></pre><hr>
 
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=Fnlnw8uY6jo&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/Fnlnw8uY6jo/0.jpg" width="750"
