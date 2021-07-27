@@ -50,17 +50,15 @@ alt="Execution Context Youtube Link"/></a></p>
 </ul>
 </li>
 <li><p>Let&#39;s consider the below example and its code execution steps:</p>
-<pre class="prettyprint">var n = 2;
-function square(num) {
-var ans = num * num;
-return ans;
-}
-var square2 = square(n);
-var square4 = square(4);
-</pre>
-<p>The very <strong>first</strong> thing which JS does is <strong>memory creation phase</strong>, so it goes to line one of above code snippet, and <strong>allocates a memory space</strong> for variable <strong>&#39;n&#39;</strong> and then goes to line two, and <strong>allocates a memory space</strong> for <strong>function &#39;square&#39;</strong>. When allocating memory <strong>for n it stores &#39;undefined&#39;</strong>, a special value for &#39;n&#39;. <strong>For &#39;square&#39;, it stores the whole code of the function inside its memory space.</strong> Then, as square2 and square4 are variables as well, it allocates memory and stores &#39;undefined&#39; for them, and this is the end of first phase i.e. memory creation phase.</p>
 </li>
 </ul>
+<pre class="hljs"><code><span class="hljs-keyword">var</span> n = <span class="hljs-number">2</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">square</span>(<span class="hljs-params">num</span>) </span>{
+ <span class="hljs-keyword">var</span> ans = num * num;
+ <span class="hljs-keyword">return</span> ans;
+}
+<span class="hljs-keyword">var</span> square2 = square(n);
+<span class="hljs-keyword">var</span> square4 = square(<span class="hljs-number">4</span>);</code></pre><p>The very <strong>first</strong> thing which JS does is <strong>memory creation phase</strong>, so it goes to line one of above code snippet, and <strong>allocates a memory space</strong> for variable <strong>&#39;n&#39;</strong> and then goes to line two, and <strong>allocates a memory space</strong> for <strong>function &#39;square&#39;</strong>. When allocating memory <strong>for n it stores &#39;undefined&#39;</strong>, a special value for &#39;n&#39;. <strong>For &#39;square&#39;, it stores the whole code of the function inside its memory space.</strong> Then, as square2 and square4 are variables as well, it allocates memory and stores &#39;undefined&#39; for them, and this is the end of first phase i.e. memory creation phase.</p>
 <p>So O/P will look something like</p>
 <p class="img-container"><img src="../assets/phase1.jpg" alt="Execution Context Phase 1" title="Execution Context"></p>
 <p>Now, in <strong>2nd phase</strong> i.e. code execution phase, it starts going through the whole code line by line. As it encounters var n = 2, it assigns 2 to &#39;n&#39;. Until now, the value of &#39;n&#39; was undefined. For function, there is nothing to execute. As these lines were already dealt with in memory creation phase.</p>
@@ -91,15 +89,14 @@ alt="How JS is executed & Call Stack Youtube Link"/></a></p>
 
 <h1 id="episode-3--hoisting-in-javascript-variables--functions"><a class="header-link" href="#episode-3--hoisting-in-javascript-variables--functions"></a>Episode 3 : Hoisting in JavaScript (variables &amp; functions)</h1>
 <ul class="list">
-<li><p>Let&#39;s observe the below code and it&#39;s explaination:</p>
-<pre class="prettyprint">getName(); // Namaste Javascript
-console.log(x); // undefined
-var x = 7;
-function getName() {
-console.log(&quot;Namaste Javascript&quot;);
-}
-</pre>
-</li>
+<li>Let&#39;s observe the below code and it&#39;s explaination:</li>
+</ul>
+<pre class="hljs"><code>getName(); <span class="hljs-comment">// Namaste Javascript</span>
+<span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// undefined</span>
+<span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>) </span>{
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste Javascript&quot;</span>);
+}</code></pre><ul class="list">
 <li><p>It should have been an outright error in many other languages, as it is not possible to even access something which is not even created (defined) yet But in JS, We know that in memory creation phase it assigns undefined and puts the content of function to function&#39;s memory. And in execution, it then executes whatever is asked. Here, as execution goes line by line and not after compiling, it could only print undefined and nothing else. This phenomenon, is not an error. However, if we remove var x = 7; then it gives error. Uncaught ReferenceError: x is not defined</p>
 </li>
 <li><p><strong>Hoisting</strong> is a concept which enables us to extract values of variables and functions even before initialising/assigning value without getting error and this is happening due to the 1st phase (memory creation phase) of the Execution Context.</p>
@@ -113,16 +110,14 @@ console.log(&quot;Namaste Javascript&quot;);
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>)</span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
 }</code></pre><ul class="list">
-<li>Now let&#39;s observe a different example and try to understand the output.<pre class="prettyprint">getName(); // Uncaught TypeError: getName is not a function
-console.log(getName);
-var getName = function () {
-  console.log(&quot;Namaste JavaScript&quot;);
-}
-// The code won&#39;t execute as the first line itself throws an TypeError.
-</pre>
-</li>
+<li>Now let&#39;s observe a different example and try to understand the output.</li>
 </ul>
-<hr>
+<pre class="hljs"><code>getName(); <span class="hljs-comment">// Uncaught TypeError: getName is not a function</span>
+<span class="hljs-built_in">console</span>.log(getName);
+<span class="hljs-keyword">var</span> getName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
+}
+<span class="hljs-comment">// The code won&#x27;t execute as the first line itself throws an TypeError.</span></code></pre><hr>
 
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=Fnlnw8uY6jo&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/Fnlnw8uY6jo/0.jpg" width="750"
@@ -137,16 +132,16 @@ alt="Hoisting Youtube Link"/></a></p>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
 a();
 b(); <span class="hljs-comment">// we are calling the functions before defining them. This will work properly, as seen in Hoisting.</span>
-<span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 3</span>
+<span class="hljs-built_in">console</span>.log(x);
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>; <span class="hljs-comment">// localscope because of separate execution context</span>
-  <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 1</span>
+  <span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>; <span class="hljs-comment">// local scope because of separate execution context</span>
+  <span class="hljs-built_in">console</span>.log(x);
 }
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> x = <span class="hljs-number">100</span>;
-  <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 2</span>
+  <span class="hljs-built_in">console</span>.log(x);
 }</code></pre><p>Outputs:</p>
 <blockquote>
 <p>10</p>
@@ -267,17 +262,15 @@ alt="undefined vs not defined in JS Youtube Link"/></a></p>
 <li><p><strong>Scope</strong> in Javascript is directly related to <strong>Lexical Environment</strong>.</p>
 </li>
 <li><p>Let&#39;s observe the below examples:</p>
-<pre class="prettyprint">// CASE 1
-function a() {
-  console.log(b); // 10
-  // Instead of printing undefined it prints 10, So somehow this a function could access the variable b outside the function scope. 
-}
-var b = 10;
-a();
-</pre>
 </li>
 </ul>
-<pre class="hljs"><code><span class="hljs-comment">// CASE 2</span>
+<pre class="hljs"><code><span class="hljs-comment">// CASE 1</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 10</span>
+    <span class="hljs-comment">// Instead of printing undefined it prints 10, So somehow this a function could access the variable b outside the function scope. </span>
+}
+<span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
+a();</code></pre><pre class="hljs"><code><span class="hljs-comment">// CASE 2</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
     c();
     <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
@@ -366,18 +359,17 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a></p>
 
 <h1 id="episode-8--let--const-in-js-temporal-dead-zone"><a class="header-link" href="#episode-8--let--const-in-js-temporal-dead-zone"></a>Episode 8 : let &amp; const in JS, Temporal Dead Zone</h1>
 <ul class="list">
-<li>let and const declarations are hoisted. But its different from <strong>var</strong><pre class="prettyprint">console.log(a); // ReferenceError: Cannot access &#39;a&#39; before initialization
-console.log(b); // prints undefined as expected
-let a = 10;
-console.log(a); // 10
-var b = 15;
-console.log(window.a); // undefined
-console.log(window.b); // 15
-</pre>
-It looks like let isn&#39;t hoisted, <strong>but it is</strong>, let&#39;s understand<ul class="list">
-<li>Both a and b are actually initialized as <em>undefined</em> in hoisting stage. But var <strong>b</strong> is inside the storage space of GLOBAL, and <strong>a</strong> is in a separate memory object called script, where it can be accessed only after assigning some value to it first ie. one can access &#39;a&#39; only if it is assigned. Thus, it throws error.</li>
+<li>let and const declarations are hoisted. But its different from <strong>var</strong></li>
 </ul>
-</li>
+<pre class="hljs"><code><span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// ReferenceError: Cannot access &#x27;a&#x27; before initialization</span>
+<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// prints undefined as expected</span>
+<span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10</span>
+<span class="hljs-keyword">var</span> b = <span class="hljs-number">15</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a); <span class="hljs-comment">// undefined</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.b); <span class="hljs-comment">// 15</span></code></pre><p>  It looks like let isn&#39;t hoisted, <strong>but it is</strong>, let&#39;s understand</p>
+<ul class="list">
+<li>Both a and b are actually initialized as <em>undefined</em> in hoisting stage. But var <strong>b</strong> is inside the storage space of GLOBAL, and <strong>a</strong> is in a separate memory object called script, where it can be accessed only after assigning some value to it first ie. one can access &#39;a&#39; only if it is assigned. Thus, it throws error.</li>
 </ul>
 <br>
 
@@ -391,29 +383,25 @@ It looks like let isn&#39;t hoisted, <strong>but it is</strong>, let&#39;s under
 <li><p><strong>Reference Error</strong> are thrown when variables are in temporal dead zone.</p>
 </li>
 <li><p><strong>Syntax Error</strong> doesn&#39;t even let us run single line of code.</p>
-<ul class="list">
-<li><pre class="prettyprint">  let a = 10;
-  let a = 100;  //this code is rejected upfront as SyntaxError. (duplicate declaration)
-  ------------------
-  let a = 10;
-  var a = 100; // this code also rejected upfront as SyntaxError. (can&#39;t use same name in same scope)
-</pre>
 </li>
 </ul>
-</li>
-<li><p><strong>Let</strong> is a stricter version of <strong>var</strong>. Now, <strong>const</strong> is even more stricter than <strong>let</strong>.</p>
-<pre class="prettyprint">let a;
-a = 10;
-console.log(a) // 10. Note declaration and assigning of a is in different lines.
+<pre class="hljs"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;  <span class="hljs-comment">//this code is rejected upfront as SyntaxError. (duplicate declaration)</span>
 ------------------
-const b;
-b = 10;
-console.log(b); // SyntaxError: Missing initializer in const declaration. (This type of declaration won&#39;t work with const. const b = 10 only will work)
+<span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>; <span class="hljs-comment">// this code also rejected upfront as SyntaxError. (can&#x27;t use same name in same scope)</span></code></pre><ul class="list">
+<li><strong>Let</strong> is a stricter version of <strong>var</strong>. Now, <strong>const</strong> is even more stricter than <strong>let</strong>.</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> a;
+a = <span class="hljs-number">10</span>;
+<span class="hljs-built_in">console</span>.log(a) <span class="hljs-comment">// 10. Note declaration and assigning of a is in different lines.</span>
 ------------------
-const b = 100;
-b = 1000; //this gives us TypeError: Assignment to constant variable. 
-</pre>
-</li>
+<span class="hljs-keyword">const</span> b;
+b = <span class="hljs-number">10</span>;
+<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// SyntaxError: Missing initializer in const declaration. (This type of declaration won&#x27;t work with const. const b = 10 only will work)</span>
+------------------
+<span class="hljs-keyword">const</span> b = <span class="hljs-number">100</span>;
+b = <span class="hljs-number">1000</span>; <span class="hljs-comment">//this gives us TypeError: Assignment to constant variable. </span></code></pre><ul class="list">
 <li><p>Types of <strong>Error</strong>: Syntax, Reference, and Type.</p>
 <ul class="list">
 <li><p>Uncaught ReferenceError: x is not defined at ...</p>
@@ -465,100 +453,74 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a></p>
 <h1 id="episode-9--block-scope--shadowing-in-js"><a class="header-link" href="#episode-9--block-scope--shadowing-in-js"></a>Episode 9 : Block Scope &amp; Shadowing in JS</h1>
 <p>What is a <strong>Block</strong>?</p>
 <ul class="list">
-<li><p>Block aka <em>compound statement</em> is used to group JS statements together into 1 group. We group them within {...}</p>
-<pre class="prettyprint">{
-    var a = 10;
-    let b = 20;
-    const c = 30;
-    // Here let and const are hoisted in Block scope,
-    // While, var is hoisted in Global scope.
+<li>Block aka <em>compound statement</em> is used to group JS statements together into 1 group. We group them within {...}</li>
+</ul>
+<pre class="hljs"><code>{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
+    <span class="hljs-comment">// Here let and const are hoisted in Block scope,</span>
+    <span class="hljs-comment">// While, var is hoisted in Global scope.</span>
+}</code></pre><ul class="list">
+<li>Block Scope and its accessibility example</li>
+</ul>
+<pre class="hljs"><code>{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
 }
-</pre>
-</li>
-<li><p>Block Scope and its accessibility example</p>
-<pre class="prettyprint">{
-    var a = 10;
-    let b = 20;
-    const c = 30;
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10</span>
+<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// Uncaught ReferenceError: b is not defined</span></code></pre><pre class="hljs"><code><span class="hljs-comment">* Reason?
+    * In the BLOCK SCOPE;</span> we get b <span class="hljs-meta">and</span> c inside it initialized <span class="hljs-meta">as</span> <span class="hljs-comment">*undefined* as a part of hoisting (in a seperate memory space called **block**)
+    * While, a is stored inside a GLOBAL scope. 
+
+    * Thus we say, *let* and *const* are BLOCK SCOPED. They are stored in a separate mem space which is reserved for this block. Also, they can&#x27;t be accessed outside this block. But var a can be accessed anywhere as it is in global scope. Thus, we can&#x27;t access them outside the Block.</span></code></pre><p>What is <strong>Shadowing</strong>?</p>
+<pre class="hljs"><code><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;
+{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>; <span class="hljs-comment">// same name as global var</span>
+    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
+    <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10</span>
+    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 20</span>
+    <span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 30 </span>
 }
-console.log(a); // 10
-console.log(b); // Uncaught ReferenceError: b is not defined
-</pre>
-<ul class="list">
-<li><p>Reason?</p>
-<ul class="list">
-<li><p>In the BLOCK SCOPE; we get b and c inside it initialized as <em>undefined</em> as a part of hoisting (in a seperate memory space called <strong>block</strong>)</p>
-</li>
-<li><p>While, a is stored inside a GLOBAL scope. </p>
-</li>
-<li><p>Thus we say, <em>let</em> and <em>const</em> are BLOCK SCOPED. They are stored in a separate mem space which is reserved for this block. Also, they can&#39;t be accessed outside this block. But var a can be accessed anywhere as it is in global scope. Thus, we can&#39;t access them outside the Block.</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>What is <strong>Shadowing</strong>?</p>
-<ul class="list">
-<li><pre class="prettyprint">  var a = 100;
-  {
-      var a = 10; // same name as global var
-      let b = 20;
-      const c = 30;
-      console.log(a); // 10
-      console.log(b); // 20
-      console.log(c); // 30 
-  }
-  console.log(a); // 10, instead of the 100 we were expecting. So block &quot;a&quot; modified val of global &quot;a&quot; as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself. 
-</pre>
-</li>
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10, instead of the 100 we were expecting. So block &quot;a&quot; modified val of global &quot;a&quot; as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself. </span></code></pre><ul class="list">
 <li><p>So, If one has same named variable outside the block, the variable inside the block <em>shadows</em> the outside variable. <strong>This happens only for var</strong></p>
 </li>
 <li><p>Let&#39;s observe the behaviour in case of let and const and understand it&#39;s reason.</p>
-<pre class="prettyprint">let b = 100;
-{
-    var a = 10;
-    let b = 20;
-    const c = 30;
-    console.log(b); // 20
-}
-console.log(b); // 100, Both b&#39;s are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.
-</pre>
-<p>  <img src="../assets/scope.jpg" alt="Block Scope Explaination" title="Lexical Scope"></p>
 </li>
 </ul>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> b = <span class="hljs-number">100</span>;
+{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
+    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 20</span>
+}
+<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 100, Both b&#x27;s are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.</span></code></pre><p class="img-container"><img src="../assets/scope.jpg" alt="Block Scope Explaination" title="Lexical Scope"></p>
 <ul class="list">
-<li>Same logic is true even for <strong>functions</strong><pre class="prettyprint">const c = 100;
-function x() {
-    const c = 10;
-    console.log(c); // 10
+<li>Same logic is true even for <strong>functions</strong></li>
+</ul>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> c = <span class="hljs-number">100</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> c = <span class="hljs-number">10</span>;
+    <span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 10</span>
 }
 x();
-console.log(c); // 100
-</pre>
-</li>
-</ul>
-<p>What is <strong>Illegal Shadowing</strong>?</p>
-<ul class="list">
-<li><pre class="prettyprint">  let a = 20;
-  {
-      var a = 20;
-  }
-  // Uncaught SyntaxError: Identifier &#39;a&#39; has already been declared
-</pre>
-<ul class="list">
+<span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 100</span></code></pre><p>What is <strong>Illegal Shadowing</strong>?</p>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">20</span>;
+{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;
+}
+<span class="hljs-comment">// Uncaught SyntaxError: Identifier &#x27;a&#x27; has already been declared</span></code></pre><ul class="list">
 <li>We cannot shadow let with var. But it is <strong>valid</strong> to shadow a let using a let. However, we can shadow var with let.</li>
 <li>All scope rules that work in function are same in arrow functions too.</li>
-<li>Since var is function scoped, it is not a problem with the code below.<pre class="prettyprint">let a = 20;
-function x() {
-    var a = 20;
-}
-</pre>
-</li>
+<li>Since var is function scoped, it is not a problem with the code below.</li>
 </ul>
-</li>
-</ul>
-<hr>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">20</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;
+}</code></pre><hr>
 
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=lW_erSjyMeM&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/lW_erSjyMeM/0.jpg" width="750"
@@ -633,25 +595,24 @@ alt="Closure in JS Youtube Link"/></a></p>
 <blockquote>
 <p><strong>Time, tide and Javascript wait for none.</strong></p>
 </blockquote>
-<ul class="list">
-<li><pre class="prettyprint">  function x() {
-      var i = 1;
-      setTimeout(function() {
-          console.log(i);
-      }, 3000);
-      console.log(&quot;Namaste Javascript&quot;);
-  }
-  x();
-  // Output:
-  // Namaste Javascript
-  // 1 // after waiting 3 seconds
-</pre>
-<ul class="list">
-<li>We expect JS to wait 3 sec, print 1 and then go down and print the string. But JS prints string immediately, waits 3 sec and then prints 1.</li>
-<li>The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it. </li>
-<li>setTimeout takes this callback function &amp; attaches timer of 3000ms and stores it. Goes to next line without waiting and prints string. </li>
-<li>After 3000ms runs out, JS takes function, puts it into call stack and runs it. </li>
-</ul>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(i);
+    }, <span class="hljs-number">3000</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste Javascript&quot;</span>);
+}
+x();
+<span class="hljs-comment">// Output:</span>
+<span class="hljs-comment">// Namaste Javascript</span>
+<span class="hljs-comment">// 1 // after waiting 3 seconds</span></code></pre><ul class="list">
+<li><p>We expect JS to wait 3 sec, print 1 and then go down and print the string. But JS prints string immediately, waits 3 sec and then prints 1.</p>
+</li>
+<li><p>The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it. </p>
+</li>
+<li><p>setTimeout takes this callback function &amp; attaches timer of 3000ms and stores it. Goes to next line without waiting and prints string. </p>
+</li>
+<li><p>After 3000ms runs out, JS takes function, puts it into call stack and runs it. </p>
 </li>
 <li><p>Q: Print 1 after 1 sec, 2 after 2 sec till 5 : Tricky interview question</p>
 <p>  We assume this has a simple approach as below</p>
@@ -948,63 +909,55 @@ alt="First Class Functions ft. Anonymous Functions in JS Youtube Link"/></a></p>
 <h1 id="episode-14--callback-functions-in-js-ft-event-listeners"><a class="header-link" href="#episode-14--callback-functions-in-js-ft-event-listeners"></a>Episode 14 : Callback Functions in JS ft. Event Listeners</h1>
 <h3 id="callback-functions"><a class="header-link" href="#callback-functions"></a>Callback Functions</h3>
 <ul class="list">
-<li><p>Functions are first class citizens ie. take a function A and pass it to another function B. Here, A is a callback function. So basically I am giving access to function B to call function A. This callback function gives us the access to whole <strong>Asynchronous</strong> world in <strong>Synchronous</strong> world.</p>
-<pre class="prettyprint">setTimeout(function () {
-  console.log(&quot;Timer&quot;);
-}, 1000) // first argument is callback function and second is timer.
-</pre>
-</li>
-<li><p>JS is a synchronous and single threaded language. But due to callbacks, we can do async things in JS.</p>
-</li>
-<li><pre class="prettyprint">setTimeout(function () {
-  console.log(&quot;timer&quot;);
-}, 5000);
-function x(y) {
-  console.log(&quot;x&quot;);
-  y();
+<li>Functions are first class citizens ie. take a function A and pass it to another function B. Here, A is a callback function. So basically I am giving access to function B to call function A. This callback function gives us the access to whole <strong>Asynchronous</strong> world in <strong>Synchronous</strong> world.</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Timer&quot;</span>);
+}, <span class="hljs-number">1000</span>) <span class="hljs-comment">// first argument is callback function and second is timer.</span></code></pre><ul class="list">
+<li>JS is a synchronous and single threaded language. But due to callbacks, we can do async things in JS.</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;timer&quot;</span>);
+}, <span class="hljs-number">5000</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params">y</span>) </span>{
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;x&quot;</span>);
+y();
 }
-x(function y() {
-  console.log(&quot;y&quot;);
+x(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">y</span>(<span class="hljs-params"></span>) </span>{
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;y&quot;</span>);
 });
-// x y timer
-</pre>
-<ul class="list">
+<span class="hljs-comment">// x y timer</span></code></pre><ul class="list">
 <li>In the call stack, first x and y are present. After code execution, they go away and stack is empty. Then after 5 seconds (from beginning) anonymous suddenly appear up in stack ie. setTimeout</li>
 <li>All 3 functions are executed through call stack. If any operation blocks the call stack, its called blocking the main thread.</li>
 <li>Say if x() takes 30 sec to run, then JS has to wait for it to finish as it has only 1 call stack/1 main thread. Never block main thread.</li>
 <li>Always use <strong>async</strong> for functions that take time eg. setTimeout</li>
 </ul>
-</li>
-<li><pre class="prettyprint">// Another Example of callback
-function printStr(str, cb) {
-    setTimeout(() =&gt; {
-        console.log(str);
+<pre class="hljs"><code><span class="hljs-comment">// Another Example of callback</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printStr</span>(<span class="hljs-params">str, cb</span>) </span>{
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(str);
         cb();
-    }, Math.floor(Math.random() * 100) + 1)
+    }, <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>)
 }
-function printAll() {
-    printStr(&quot;A&quot;, () =&gt; {
-        printStr(&quot;B&quot;, () =&gt; {
-            printStr(&quot;C&quot;, () =&gt; {})
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printAll</span>(<span class="hljs-params"></span>) </span>{
+    printStr(<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+        printStr(<span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+            printStr(<span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-function">() =&gt;</span> {})
         })
     })
 }
-printAll() // A B C // in order
-</pre>
-<h3 id="event-listener"><a class="header-link" href="#event-listener"></a>Event Listener</h3>
-</li>
-<li><p>We will create a button in html and attach event to it.</p>
-<pre class="prettyprint">// index.html
-  &lt;button id=&quot;clickMe&quot;&gt;Click Me!&lt;/button&gt;
-
-// in index.js
-document.getElementById(&quot;clickMe&quot;).addEventListener(&quot;click&quot;, function xyz(){ //when event click occurs, this callback function (xyz) is called into callstack
-      console.log(&quot;Button clicked&quot;);
-});
-</pre>
-</li>
-<li><p>Lets implement a increment counter button. </p>
+printAll() <span class="hljs-comment">// A B C // in order</span></code></pre><h3 id="event-listener"><a class="header-link" href="#event-listener"></a>Event Listener</h3>
 <ul class="list">
+<li>We will create a button in html and attach event to it.</li>
+</ul>
+<pre class="hljs"><code><span class="hljs-comment">// index.html</span>
+&lt;button id=<span class="hljs-string">&quot;clickMe&quot;</span>&gt;Click Me!&lt;/button&gt;
+
+<span class="hljs-comment">// in index.js</span>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;clickMe&quot;</span>).addEventListener(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xyz</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-comment">//when event click occurs, this callback function (xyz) is called into callstack</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Button clicked&quot;</span>);
+});</code></pre><ul class="list">
+<li>Lets implement a increment counter button. <ul class="list">
 <li>Using global variable (not good as anyone can change it)<pre class="prettyprint">let count = 0;
 document.getElementById(&quot;clickMe&quot;).addEventListener(&quot;click&quot;, function xyz(){ 
     console.log(&quot;Button clicked&quot;, ++count);
