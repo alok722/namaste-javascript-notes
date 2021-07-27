@@ -40,6 +40,7 @@ alt="Execution Context Youtube Link"/></a>
   * Code execution phase
 
 * Let's consider the below example and its code execution steps:
+
 ```js
 var n = 2;
 function square(num) {
@@ -49,6 +50,7 @@ function square(num) {
 var square2 = square(n);
 var square4 = square(4);
 ```
+
 The very **first** thing which JS does is **memory creation phase**, so it goes to line one of above code snippet, and **allocates a memory space** for variable **'n'** and then goes to line two, and **allocates a memory space** for **function 'square'**. When allocating memory **for n it stores 'undefined'**, a special value for 'n'. **For 'square', it stores the whole code of the function inside its memory space.** Then, as square2 and square4 are variables as well, it allocates memory and stores 'undefined' for them, and this is the end of first phase i.e. memory creation phase.
 
 So O/P will look something like
@@ -90,6 +92,7 @@ alt="How JS is executed & Call Stack Youtube Link"/></a>
 # Episode 3 : Hoisting in JavaScript (variables & functions)
 
 * Let's observe the below code and it's explaination:
+
 ```js
 getName(); // Namaste Javascript
 console.log(x); // undefined
@@ -115,6 +118,7 @@ function getName(){
 ```
 
 * Now let's observe a different example and try to understand the output.
+
 ```js
 getName(); // Uncaught TypeError: getName is not a function
 console.log(getName);
@@ -143,16 +147,16 @@ alt="Hoisting Youtube Link"/></a>
 var x = 1;
 a();
 b(); // we are calling the functions before defining them. This will work properly, as seen in Hoisting.
-console.log(x); // 3
+console.log(x);
 
 function a() {
-  var x = 10; // localscope because of separate execution context
-  console.log(x); // 1
+  var x = 10; // local scope because of separate execution context
+  console.log(x);
 }
 
 function b() {
   var x = 100;
-  console.log(x); // 2
+  console.log(x);
 }
 ```
 
@@ -215,6 +219,7 @@ alt="Functions and Variable Environments Youtube Link"/></a>
 * If we create any variable in the global scope, then the variables get attached to the global object.
 
 eg:
+
 ```js
 var x = 10;
 console.log(x); // 10
@@ -278,6 +283,7 @@ alt="undefined vs not defined in JS Youtube Link"/></a>
 * **Scope** in Javascript is directly related to **Lexical Environment**.
 
 * Let's observe the below examples:
+
 ```js
 // CASE 1
 function a() {
@@ -393,15 +399,17 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a>
 # Episode 8 : let & const in JS, Temporal Dead Zone
 
 * let and const declarations are hoisted. But its different from **var**
-    ```js
-    console.log(a); // ReferenceError: Cannot access 'a' before initialization
-    console.log(b); // prints undefined as expected
-    let a = 10;
-    console.log(a); // 10
-    var b = 15;
-    console.log(window.a); // undefined
-    console.log(window.b); // 15
-    ```
+
+```js
+console.log(a); // ReferenceError: Cannot access 'a' before initialization
+console.log(b); // prints undefined as expected
+let a = 10;
+console.log(a); // 10
+var b = 15;
+console.log(window.a); // undefined
+console.log(window.b); // 15
+```
+
   It looks like let isn't hoisted, **but it is**, let's understand
   * Both a and b are actually initialized as *undefined* in hoisting stage. But var **b** is inside the storage space of GLOBAL, and **a** is in a separate memory object called script, where it can be accessed only after assigning some value to it first ie. one can access 'a' only if it is assigned. Thus, it throws error.
 
@@ -415,27 +423,28 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a>
 
 * **Syntax Error** doesn't even let us run single line of code.
 
-    * ```js
-        let a = 10;
-        let a = 100;  //this code is rejected upfront as SyntaxError. (duplicate declaration)
-        ------------------
-        let a = 10;
-        var a = 100; // this code also rejected upfront as SyntaxError. (can't use same name in same scope)
-        ```
+```js
+let a = 10;
+let a = 100;  //this code is rejected upfront as SyntaxError. (duplicate declaration)
+------------------
+let a = 10;
+var a = 100; // this code also rejected upfront as SyntaxError. (can't use same name in same scope)
+```
 
 * **Let** is a stricter version of **var**. Now, **const** is even more stricter than **let**.
-    ```js
-    let a;
-    a = 10;
-    console.log(a) // 10. Note declaration and assigning of a is in different lines.
-    ------------------
-    const b;
-    b = 10;
-    console.log(b); // SyntaxError: Missing initializer in const declaration. (This type of declaration won't work with const. const b = 10 only will work)
-    ------------------
-    const b = 100;
-    b = 1000; //this gives us TypeError: Assignment to constant variable. 
-    ```
+
+```js
+let a;
+a = 10;
+console.log(a) // 10. Note declaration and assigning of a is in different lines.
+------------------
+const b;
+b = 10;
+console.log(b); // SyntaxError: Missing initializer in const declaration. (This type of declaration won't work with const. const b = 10 only will work)
+------------------
+const b = 100;
+b = 1000; //this gives us TypeError: Assignment to constant variable. 
+```
 
 * Types of **Error**: Syntax, Reference, and Type.
 
@@ -479,26 +488,29 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a>
 
 What is a **Block**?
 * Block aka *compound statement* is used to group JS statements together into 1 group. We group them within {...}
-    ```js
-    {
-        var a = 10;
-        let b = 20;
-        const c = 30;
-        // Here let and const are hoisted in Block scope,
-        // While, var is hoisted in Global scope.
-    }
-    ```
+
+```js
+{
+    var a = 10;
+    let b = 20;
+    const c = 30;
+    // Here let and const are hoisted in Block scope,
+    // While, var is hoisted in Global scope.
+}
+```
 
 * Block Scope and its accessibility example
-    ```js
-    {
-        var a = 10;
-        let b = 20;
-        const c = 30;
-    }
-    console.log(a); // 10
-    console.log(b); // Uncaught ReferenceError: b is not defined
-    ```
+
+```js
+{
+    var a = 10;
+    let b = 20;
+    const c = 30;
+}
+console.log(a); // 10
+console.log(b); // Uncaught ReferenceError: b is not defined
+```
+
     * Reason?
         * In the BLOCK SCOPE; we get b and c inside it initialized as *undefined* as a part of hoisting (in a seperate memory space called **block**)
         * While, a is stored inside a GLOBAL scope. 
@@ -507,64 +519,69 @@ What is a **Block**?
 
 What is **Shadowing**?
 
-* ```js
-    var a = 100;
-    {
-        var a = 10; // same name as global var
-        let b = 20;
-        const c = 30;
-        console.log(a); // 10
-        console.log(b); // 20
-        console.log(c); // 30 
-    }
-    console.log(a); // 10, instead of the 100 we were expecting. So block "a" modified val of global "a" as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself. 
-    ```
+```js
+var a = 100;
+{
+    var a = 10; // same name as global var
+    let b = 20;
+    const c = 30;
+    console.log(a); // 10
+    console.log(b); // 20
+    console.log(c); // 30 
+}
+console.log(a); // 10, instead of the 100 we were expecting. So block "a" modified val of global "a" as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself. 
+```
 
 * So, If one has same named variable outside the block, the variable inside the block *shadows* the outside variable. **This happens only for var**
 
 * Let's observe the behaviour in case of let and const and understand it's reason.
-    ```js
-    let b = 100;
-    {
-        var a = 10;
-        let b = 20;
-        const c = 30;
-        console.log(b); // 20
-    }
-    console.log(b); // 100, Both b's are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.
-    ```
-    ![Block Scope Explaination](../assets/scope.jpg "Lexical Scope")
+
+```js
+let b = 100;
+{
+    var a = 10;
+    let b = 20;
+    const c = 30;
+    console.log(b); // 20
+}
+console.log(b); // 100, Both b's are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.
+```
+
+![Block Scope Explaination](../assets/scope.jpg "Lexical Scope")
 
 
 * Same logic is true even for **functions**
-    ```js
-    const c = 100;
-    function x() {
-        const c = 10;
-        console.log(c); // 10
-    }
-    x();
-    console.log(c); // 100
-    ```
+
+```js
+const c = 100;
+function x() {
+    const c = 10;
+    console.log(c); // 10
+}
+x();
+console.log(c); // 100
+```
 
 What is **Illegal Shadowing**?
 
-* ```js
-    let a = 20;
-    {
-        var a = 20;
-    }
-    // Uncaught SyntaxError: Identifier 'a' has already been declared
-    ```
-    * We cannot shadow let with var. But it is **valid** to shadow a let using a let. However, we can shadow var with let.
-    * All scope rules that work in function are same in arrow functions too.
-    * Since var is function scoped, it is not a problem with the code below.
-        ```js
-        let a = 20;
-        function x() {
-            var a = 20;
-        }
-        ```
+```js
+let a = 20;
+{
+    var a = 20;
+}
+// Uncaught SyntaxError: Identifier 'a' has already been declared
+```
+
+* We cannot shadow let with var. But it is **valid** to shadow a let using a let. However, we can shadow var with let.
+* All scope rules that work in function are same in arrow functions too.
+* Since var is function scoped, it is not a problem with the code below.
+
+```js
+let a = 20;
+function x() {
+    var a = 20;
+}
+```
 
 
 
@@ -589,6 +606,7 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
 * Function bundled along with it's lexical scope is **closure**.
 
 * JavaScript has a lexcial scope environment. If a function needs to access a variable, it first goes to its local memory. When it does not find it there, it goes to the memory of its lexical parent. See Below code, Over here function **y** along with its lexical scope i.e. (function x) would be called a closure.
+
     ```js
     function x() {
         var a = 7;
@@ -600,6 +618,7 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
     var z = x();
     console.log(z);  // value of z is entire code of function y.
     ```
+
     * In above code, When y is returned, not only is the function returned but the entire closure (fun y + its lexical scope) is returned and put inside z. So when z is used somewhere else in program, it still remembers var a inside x()
 
 * Thus In simple words, we can say:
@@ -642,27 +661,29 @@ alt="Closure in JS Youtube Link"/></a>
 
 > **Time, tide and Javascript wait for none.**
 
-*   ```js
-    function x() {
-        var i = 1;
-        setTimeout(function() {
-            console.log(i);
-        }, 3000);
-        console.log("Namaste Javascript");
-    }
-    x();
-    // Output:
-    // Namaste Javascript
-    // 1 // after waiting 3 seconds
-    ```
-    * We expect JS to wait 3 sec, print 1 and then go down and print the string. But JS prints string immediately, waits 3 sec and then prints 1.
-    * The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it. 
-    * setTimeout takes this callback function & attaches timer of 3000ms and stores it. Goes to next line without waiting and prints string. 
-    * After 3000ms runs out, JS takes function, puts it into call stack and runs it. 
+```js
+function x() {
+    var i = 1;
+    setTimeout(function() {
+        console.log(i);
+    }, 3000);
+    console.log("Namaste Javascript");
+}
+x();
+// Output:
+// Namaste Javascript
+// 1 // after waiting 3 seconds
+```
+
+* We expect JS to wait 3 sec, print 1 and then go down and print the string. But JS prints string immediately, waits 3 sec and then prints 1.
+* The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it. 
+* setTimeout takes this callback function & attaches timer of 3000ms and stores it. Goes to next line without waiting and prints string. 
+* After 3000ms runs out, JS takes function, puts it into call stack and runs it. 
  
 * Q: Print 1 after 1 sec, 2 after 2 sec till 5 : Tricky interview question
  
     We assume this has a simple approach as below
+
     ```js
     function x() {
     for(var i = 1; i<=5; i++){
@@ -724,6 +745,7 @@ alt="setTimeout + Closures Interview Question in JS Youtube Link"/></a>
 ### Q1: What is Closure in Javascript?
 **Ans**: A function along with reference to its outer environment together forms a closure. Or in other words, A Closure is a combination of a function and its lexical scope bundled together.
 eg:
+
 ```js
 function outer() {
     var a = 10;
@@ -736,6 +758,7 @@ outer()(); // 10 // over here first `()` will return inner function and then usi
 ```
 
 ### Q2: Will the below code still forms a closure?
+
 ```js
 function outer() {
     function inner() {
@@ -749,6 +772,7 @@ outer()(); // 10
 **Ans**: Yes, because inner function forms a closure with its outer environment so sequence doesn't matter.
 
 ### Q3: Changing var to let, will it make any difference?
+
 ```js
 function outer() {
     let a = 10;
@@ -1024,6 +1048,7 @@ alt="First Class Functions ft. Anonymous Functions in JS Youtube Link"/></a>
 
 ### Callback Functions
 * Functions are first class citizens ie. take a function A and pass it to another function B. Here, A is a callback function. So basically I am giving access to function B to call function A. This callback function gives us the access to whole **Asynchronous** world in **Synchronous** world.
+
 ```js
 setTimeout(function () {
     console.log("Timer");
@@ -1032,52 +1057,55 @@ setTimeout(function () {
 
 * JS is a synchronous and single threaded language. But due to callbacks, we can do async things in JS.
 
-* ```js
-  setTimeout(function () {
-    console.log("timer");
-  }, 5000);
-  function x(y) {
-    console.log("x");
-    y();
-  }
-  x(function y() {
-    console.log("y");
-  });
-  // x y timer
-  ```
+```js
+setTimeout(function () {
+console.log("timer");
+}, 5000);
+function x(y) {
+console.log("x");
+y();
+}
+x(function y() {
+console.log("y");
+});
+// x y timer
+```
+
   * In the call stack, first x and y are present. After code execution, they go away and stack is empty. Then after 5 seconds (from beginning) anonymous suddenly appear up in stack ie. setTimeout
   * All 3 functions are executed through call stack. If any operation blocks the call stack, its called blocking the main thread.
   * Say if x() takes 30 sec to run, then JS has to wait for it to finish as it has only 1 call stack/1 main thread. Never block main thread.
   * Always use **async** for functions that take time eg. setTimeout
 
-* ```js
-  // Another Example of callback
-  function printStr(str, cb) {
-      setTimeout(() => {
-          console.log(str);
-          cb();
-      }, Math.floor(Math.random() * 100) + 1)
-  }
-  function printAll() {
-      printStr("A", () => {
-          printStr("B", () => {
-              printStr("C", () => {})
-          })
-      })
-  }
-  printAll() // A B C // in order
-  ```
+```js
+// Another Example of callback
+function printStr(str, cb) {
+    setTimeout(() => {
+        console.log(str);
+        cb();
+    }, Math.floor(Math.random() * 100) + 1)
+}
+function printAll() {
+    printStr("A", () => {
+        printStr("B", () => {
+            printStr("C", () => {})
+        })
+    })
+}
+printAll() // A B C // in order
+```
+
 ### Event Listener
 * We will create a button in html and attach event to it.
-  ```js
-  // index.html
-    <button id="clickMe">Click Me!</button>
 
-  // in index.js
-  document.getElementById("clickMe").addEventListener("click", function xyz(){ //when event click occurs, this callback function (xyz) is called into callstack
-        console.log("Button clicked");
-  });
-  ```
+```js
+// index.html
+<button id="clickMe">Click Me!</button>
+
+// in index.js
+document.getElementById("clickMe").addEventListener("click", function xyz(){ //when event click occurs, this callback function (xyz) is called into callstack
+    console.log("Button clicked");
+});
+```
 * Lets implement a increment counter button. 
     - Using global variable (not good as anyone can change it)
         ```js
@@ -1190,6 +1218,7 @@ Q: Need of callback queue?
 
 ### Behaviour of fetch (**Microtask Queue?**)
 Let's observe the code below and try to understand
+
 ```js
 console.log("Start"); // this calls the console web api (through window) which in turn actually modifies values in console. 
 setTimeout(function cbT() { 
@@ -1212,6 +1241,7 @@ Code Explaination:
 * In console, first Start and End are printed in console. First cbF goes in callstack and "CB Netflix" is printed. cbF popped from callstack. Next cbT is removed from callback Queue, put in Call Stack, "CB Timeout" is printed, and cbT removed from callstack.
 * See below Image for more understanding
 ```
+
 ![Event Loop 6 Demo](../assets/eventloop6.jpg)
 Microtask Priority Visualization
 ![Event Loop 7 Demo](../assets/microtask.gif)
@@ -1385,6 +1415,7 @@ Let's try to understand how we should approach solution in interview.
 I have an array of radius and I have to calculate area using these radius and store in an array.
 
 First Approach:
+
 ```js
 const radius = [1, 2, 3, 4];
 const calculateArea = function(radius) {
@@ -1397,6 +1428,7 @@ const calculateArea = function(radius) {
 console.log(calculateArea(radius));
 ```
 The above solution works perfectly fine but what if we have now requirement to calculate array of circumference. Code now be like
+
 ```js
 const radius = [1, 2, 3, 4];
 const calculateCircumference = function(radius) {
@@ -1409,6 +1441,7 @@ const calculateCircumference = function(radius) {
 console.log(calculateCircumference(radius));
 ```
 But over here we are violating some principle like DRY Principle, now lets observe the better approach.
+
 ```js
 const radiusArr = [1, 2, 3, 4];
 
