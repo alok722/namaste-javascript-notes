@@ -1,15 +1,15 @@
 # Episode 18 : Higher-Order Functions ft. Functional Programming
 
 ### Q: What is Higher Order Function?
-**Ans**: A Higher-order functions are functions that take other functions as arguments or return functions as their results. Eg: 
+**Ans**: Higher-order functions are regaular functions that take one or more functions as arguments and/or return functions as a value from it. Eg: 
 ```js
 function x() {
-    console.log("Hi)";
+    console.log("Hi");
 };
 function y(x) {
     x();
 };
-y(); // Hi
+y(x); // Hi
 // y is a higher order function
 // x is a callback function
 ```
