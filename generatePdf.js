@@ -1,5 +1,3 @@
-const markdownpdf = require("markdown-pdf");
+const prettyMdPdf = require("pretty-markdown-pdf")
 
-markdownpdf().from("./notes/lectures.md").to("./dist/namaste-javascript-notes.pdf", () => {
-    console.log("Pdf Generated Successfully");
-});
+prettyMdPdf.convertMd({ markdownFilePath: "./notes/lectures.md", outputFilePath: "./dist/namaste-javascript-notes.pdf" })
