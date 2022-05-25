@@ -18,7 +18,7 @@ function getName() {
 
 ```js
 getName(); // Namaste JavaScript
-console.log(x); // undefined
+console.log(x); // Uncaught Reference: x is not defined.
 console.log(getName); // f getName(){ console.log("Namaste JavaScript); }
 function getName(){
     console.log("Namaste JavaScript");
