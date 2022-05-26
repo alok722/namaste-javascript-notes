@@ -6,6 +6,8 @@
 
 <br>
 
+<a href="https://www.buymeacoffee.com/alok722" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="40" width="190" style="border-radius:8px" />
+
 ## 🔗 [bit.ly/namaste-js](https://bit.ly/namaste-js)
 
 ## 🏠 [Namaste Javascript Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
