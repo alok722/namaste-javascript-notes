@@ -149,6 +149,8 @@ const report = users.reduce((acc, curr) => {
 	} else {
 		acc[curr.age] = 1;
 	}
+	
+	return acc;  //to every time return update object
 }, {})
 console.log(report) // {29 : 2, 75 : 1, 50 : 1}
 ```
