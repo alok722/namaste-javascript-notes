@@ -77,7 +77,7 @@ From the creator of Namaste Javascript himself, 🙌
 
 **alok raj (alokr417@gmail.com)**
 
-- website: https://alokraj.tech/
+- website: https://bit.do/alok722
 - linkedin: [@alok722](https://linkedin.com/in/alok722)
 
 <br>
@@ -88,13 +88,8 @@ From the creator of Namaste Javascript himself, 🙌
 - Clone the project to your machine, checkout to new branch & install dependencies using _yarn_
 - Commit changes to your branch only using **npm run commit** script
 - Don't use _git commit -m "commit message"_ to commit your changes
-- Push changes to your fork
+- Push changes to your forked repositories
 - Open a PR in my repository by providing all info and context of your PR.
-
-## 🙏 Special Thanks
-
-- https://github.com/HariAcidReign/JavaScript-A-Z-Notes
-- https://sakshambhatt.hashnode.dev/notes-or-namaste-javascript-by-akshay-saini
 
 ## ✨ Show your support
 

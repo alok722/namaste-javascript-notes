@@ -1467,7 +1467,100 @@ alt="map, filter & reduce Youtube Link"/></a></p>
 
 <br>
 
-<p><strong>To Be Continued</strong> ...</p>
+<h1 id="episode-20-season-2--episode-1--callback"><a class="header-link" href="#episode-20-season-2--episode-1--callback"></a>Episode 20 (Season 2 : Episode 1) : Callback</h1>
+<ul class="list">
+<li><p>There are 2 Parts of Callback:</p>
+<ol class="list">
+<li>Good Part of callback - Callback are super important while writing asynchronous code in JS</li>
+<li>Bad Part of Callback - Using callback we can face issue:<ul class="list">
+<li>Callback Hell</li>
+<li>Inversion of control</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>Understanding of Bad part of callback is super important to learn Promise in next lecture.</p>
+</li>
+</ul>
+<blockquote>
+<p>💡 JavaScript is synchronous, single threaded language. It can Just do one thing at a time, it has just one call-stack and it can execute one thing at a time. Whatever code we give to Javascript will be quickly executed by Javascript engine, it does not wait.</p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste&quot;</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;JavaScript&quot;</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Season 2&quot;</span>);
+<span class="hljs-comment">// Namaste</span>
+<span class="hljs-comment">// JavaScript</span>
+<span class="hljs-comment">// Season 2</span>
+
+<span class="hljs-comment">// 💡 It is quickly printing because `Time, tide &amp; Javascript waits for none.`</span></code></pre><p><em>But what if we have to delay execution of any line, we could utilize callback, How?</em></p>
+<pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste&quot;</span>);
+<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;JavaScript&quot;</span>);
+}, <span class="hljs-number">5000</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Season 2&quot;</span>);
+<span class="hljs-comment">// Namaste</span>
+<span class="hljs-comment">// Season 2</span>
+<span class="hljs-comment">// JavaScript</span>
+
+<span class="hljs-comment">// 💡 Here we are delaying the execution using callback approach of setTimeout.</span></code></pre><h3 id="🛒-e-commerce-web-app-situation"><a class="header-link" href="#🛒-e-commerce-web-app-situation"></a>🛒 e-Commerce web app situation</h3>
+<p>Assume a scenario of e-Commerce web, where one user is placing order, he has added items like, shoes, pants and kurta in cart and now he is placing order. So in backend the situation could look something like this.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
+<span class="hljs-comment">// Two steps to place a order</span>
+<span class="hljs-comment">// 1. Create a Order</span>
+<span class="hljs-comment">// 2. Proceed to Payment</span>
+
+<span class="hljs-comment">// It could look something like this:</span>
+api.createOrder();
+api.proceedToPayment();</code></pre><p>Assumption, once order is created then only we can proceed to payment, so there is a dependency. So How to manage this dependency.
+Callback can come as rescue, How?</p>
+<pre class="hljs"><code>api.createOrder(cart, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  api.proceedToPayment();
+});
+<span class="hljs-comment">// 💡 Over here `createOrder` api is first creating a order then it is responsible to call `api.proceedToPayment()` as part of callback approach.</span></code></pre><p>To make it a bit complicated, what if after payment is done, you have to show Order summary by calling <code>api.showOrderSummary()</code> and now it has dependency on <code>api.proceedToPayment()</code>
+Now my code should look something like this:</p>
+<pre class="hljs"><code>api.createOrder(cart, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  api.proceedToPayment(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    api.showOrderSummary();
+  });
+});</code></pre><p>Now what if we have to update the wallet, now this will have a dependency over <code>showOrderSummary</code></p>
+<pre class="hljs"><code>api.createOrder(cart, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  api.proceedToPayment(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    api.showOrderSummary(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      api.updateWallet();
+    });
+  });
+});
+<span class="hljs-comment">// 💡 Callback Hell</span></code></pre><p>When we have a large codebase and multiple apis and have dependency on each other, then we fall into callback hell.
+These codes are tough to maintain.
+These callback hell structure is also known as <strong>Pyramid of Doom</strong>.</p>
+<p>Till this point we are comfortable with concept of callback hell but now lets discuss about <code>Inversion of Control</code>. It is very important to understand in order to get comfortable around the concept of promise.</p>
+<blockquote>
+<p>💡 Inversion of control is like that you lose the control of code when we are using callback.</p>
+</blockquote>
+<p>Let&#39;s understand with the help of example code and comments:</p>
+<pre class="hljs"><code>api.createOrder(cart, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  api.proceedToPayment();
+});
+
+<span class="hljs-comment">// 💡 So over here, we are creating a order and then we are blindly trusting `createOrder` to call `proceedToPayment`.</span>
+
+<span class="hljs-comment">// 💡 It is risky, as `proceedToPayment` is important part of code and we are blindly trusting `createOrder` to call it and handle it.</span>
+
+<span class="hljs-comment">// 💡 When we pass a function as a callback, basically we are dependant on our parent function that it is his responsibility to run that function. This is called `inversion of control` because we are dependant on that function. What if parent function stopped working, what if it was developed by another programmer or callback runs two times or never run at all.</span>
+
+<span class="hljs-comment">// 💡 In next session, we will see how we can fix such problems.</span></code></pre><blockquote>
+<p>💡 Async programming in JavaScript exists because callback exits.</p>
+</blockquote>
+<p>more at <code>http://callbackhell.com/</code></p>
+<p>Watch Live On Youtube below:</p>
+<p><a href="https://www.youtube.com/watch?v=yEKtJGha3yM&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX" target="_blank"><img src="https://img.youtube.com/vi/yEKtJGha3yM/0.jpg" width="750"
+alt="map, filter & reduce Youtube Link"/></a></p>
 <br>
+
+<hr>
+
+<br>
+
+<p>To Be Continued...</p>
 </body>
 </html>
