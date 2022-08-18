@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Namaste JavaScript</title>
+    <title>title: Namaste JavaScript</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="assets/style.css" />
     <link type="text/css" rel="stylesheet" href="assets/pilcrow.css" />
     <link type="text/css" rel="stylesheet" href="assets/hljs-github.min.css"/>
   </head>
-<body><br>
+<body><h2 id="title-namaste-javascript"><a class="header-link" href="#title-namaste-javascript"></a>title: Namaste JavaScript</h2>
+<br>
 
 <h1 id="episode-1--execution-context"><a class="header-link" href="#episode-1--execution-context"></a>Episode 1 : Execution Context</h1>
 <ul class="list">
@@ -54,8 +55,8 @@ alt="Execution Context Youtube Link"/></a></p>
 </ul>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> n = <span class="hljs-number">2</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">square</span>(<span class="hljs-params">num</span>) </span>{
- <span class="hljs-keyword">var</span> ans = num * num;
- <span class="hljs-keyword">return</span> ans;
+  <span class="hljs-keyword">var</span> ans = num * num;
+  <span class="hljs-keyword">return</span> ans;
 }
 <span class="hljs-keyword">var</span> square2 = square(n);
 <span class="hljs-keyword">var</span> square4 = square(<span class="hljs-number">4</span>);</code></pre><p>The very <strong>first</strong> thing which JS does is <strong>memory creation phase</strong>, so it goes to line one of above code snippet, and <strong>allocates a memory space</strong> for variable <strong>&#39;n&#39;</strong> and then goes to line two, and <strong>allocates a memory space</strong> for <strong>function &#39;square&#39;</strong>. When allocating memory <strong>for n it stores &#39;undefined&#39;</strong>, a special value for &#39;n&#39;. <strong>For &#39;square&#39;, it stores the whole code of the function inside its memory space.</strong> Then, as square2 and square4 are variables as well, it allocates memory and stores &#39;undefined&#39; for them, and this is the end of first phase i.e. memory creation phase.</p>
@@ -95,7 +96,7 @@ alt="How JS is executed & Call Stack Youtube Link"/></a></p>
 <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// undefined</span>
 <span class="hljs-keyword">var</span> x = <span class="hljs-number">7</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>) </span>{
- <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste Javascript&quot;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste Javascript&quot;</span>);
 }</code></pre><ul class="list">
 <li><p>It should have been an outright error in many other languages, as it is not possible to even access something which is not even created (defined) yet But in JS, We know that in memory creation phase it assigns undefined and puts the content of function to function&#39;s memory. And in execution, it then executes whatever is asked. Here, as execution goes line by line and not after compiling, it could only print undefined and nothing else. This phenomenon, is not an error. However, if we remove var x = 7; then it gives error. Uncaught ReferenceError: x is not defined</p>
 </li>
@@ -107,16 +108,16 @@ alt="How JS is executed & Call Stack Youtube Link"/></a></p>
 <pre class="hljs"><code>getName(); <span class="hljs-comment">// Namaste JavaScript</span>
 <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// Uncaught Reference: x is not defined.</span>
 <span class="hljs-built_in">console</span>.log(getName); <span class="hljs-comment">// f getName(){ console.log(&quot;Namaste JavaScript); }</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getName</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
 }</code></pre><ul class="list">
 <li>Now let&#39;s observe a different example and try to understand the output.</li>
 </ul>
 <pre class="hljs"><code>getName(); <span class="hljs-comment">// Uncaught TypeError: getName is not a function</span>
 <span class="hljs-built_in">console</span>.log(getName);
 <span class="hljs-keyword">var</span> getName = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
-}
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste JavaScript&quot;</span>);
+};
 <span class="hljs-comment">// The code won&#x27;t execute as the first line itself throws an TypeError.</span></code></pre><hr>
 
 <p>Watch Live On Youtube below:</p>
@@ -224,7 +225,6 @@ alt="Shortest JS Program, window & this keyword Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-6--undefined-vs-not-defined-in-js"><a class="header-link" href="#episode-6--undefined-vs-not-defined-in-js"></a>Episode 6 : undefined vs not defined in JS</h1>
 <ul class="list">
 <li><p>In first phase (memory allocation) JS assigns each variable a placeholder called <strong>undefined</strong>.</p>
@@ -237,13 +237,13 @@ alt="Shortest JS Program, window & this keyword Youtube Link"/></a></p>
 </li>
 </ul>
 <blockquote>
-<p>When variable is declared but not assigned value, its current value is <strong>undefined</strong>. But when the variable itself is not declared but called in code, then it is <strong>not defined</strong>. </p>
+<p>When variable is declared but not assigned value, its current value is <strong>undefined</strong>. But when the variable itself is not declared but called in code, then it is <strong>not defined</strong>.</p>
 </blockquote>
 <pre class="hljs"><code><span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// undefined</span>
 <span class="hljs-keyword">var</span> x = <span class="hljs-number">25</span>;
 <span class="hljs-built_in">console</span>.log(x); <span class="hljs-comment">// 25</span>
 <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// Uncaught ReferenceError: a is not defined</span></code></pre><ul class="list">
-<li>JS is a <strong>loosely typed / weakly typed</strong> language. It doesn&#39;t attach variables to any datatype. We can say <em>var a = 5</em>, and then change the value to boolean <em>a = true</em> or string <em>a = &#39;hello&#39;</em> later on. </li>
+<li>JS is a <strong>loosely typed / weakly typed</strong> language. It doesn&#39;t attach variables to any datatype. We can say <em>var a = 5</em>, and then change the value to boolean <em>a = true</em> or string <em>a = &#39;hello&#39;</em> later on.</li>
 <li><strong>Never</strong> assign <em>undefined</em> to a variable manually. Let it happen on it&#39;s own accord.</li>
 </ul>
 <hr>
@@ -266,34 +266,34 @@ alt="undefined vs not defined in JS Youtube Link"/></a></p>
 </ul>
 <pre class="hljs"><code><span class="hljs-comment">// CASE 1</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 10</span>
-    <span class="hljs-comment">// Instead of printing undefined it prints 10, So somehow this a function could access the variable b outside the function scope. </span>
+  <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 10</span>
+  <span class="hljs-comment">// Instead of printing undefined it prints 10, So somehow this a function could access the variable b outside the function scope.</span>
 }
 <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
 a();</code></pre><pre class="hljs"><code><span class="hljs-comment">// CASE 2</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
-    c();
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 10</span>
-    }
+  c();
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 10</span>
+  }
 }
 <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
 a();</code></pre><pre class="hljs"><code><span class="hljs-comment">// CASE 3</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
-    c();
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> b = <span class="hljs-number">100</span>;
-        <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 100</span>
-    }
+  c();
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> b = <span class="hljs-number">100</span>;
+    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 100</span>
+  }
 }
 <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
 a();</code></pre><pre class="hljs"><code><span class="hljs-comment">// CASE 4</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
-    c();
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 10</span>
-    }
+  <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;
+  c();
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">c</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 10</span>
+  }
 }
 a();
 <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// Error, Not Defined</span></code></pre><ul class="list">
@@ -325,10 +325,10 @@ GEC =  [a:{},[lexical_environment pointer pointing to null]]
 <li><p>The process of going one by one to parent and checking for values is called scope chain or Lexcial environment chain.</p>
 </li>
 <li><pre class="prettyprint">function a() {
-    function c() {
-        // logic here
-    }
-    c(); // c is lexically inside a
+  function c() {
+    // logic here
+  }
+  c(); // c is lexically inside a
 } // a is lexically inside global execution
 </pre>
 </li>
@@ -341,9 +341,8 @@ GEC =  [a:{},[lexical_environment pointer pointing to null]]
 // Inner is surrounded by lexical scope of Outer
 </pre>
 </li>
-</ul>
-<ul class="list">
-<li><strong>TLDR</strong>; An inner function can access variables which are in outer functions even if inner function is nested deep. In any other case, a function can&#39;t access variables not in its scope.</li>
+<li><p><strong>TLDR</strong>; An inner function can access variables which are in outer functions even if inner function is nested deep. In any other case, a function can&#39;t access variables not in its scope.</p>
+</li>
 </ul>
 <hr>
 
@@ -356,7 +355,6 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-8--let--const-in-js-temporal-dead-zone"><a class="header-link" href="#episode-8--let--const-in-js-temporal-dead-zone"></a>Episode 8 : let &amp; const in JS, Temporal Dead Zone</h1>
 <ul class="list">
 <li>let and const declarations are hoisted. But its different from <strong>var</strong></li>
@@ -367,14 +365,14 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a></p>
 <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10</span>
 <span class="hljs-keyword">var</span> b = <span class="hljs-number">15</span>;
 <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.a); <span class="hljs-comment">// undefined</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.b); <span class="hljs-comment">// 15</span></code></pre><p>  It looks like let isn&#39;t hoisted, <strong>but it is</strong>, let&#39;s understand</p>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">window</span>.b); <span class="hljs-comment">// 15</span></code></pre><p>It looks like let isn&#39;t hoisted, <strong>but it is</strong>, let&#39;s understand</p>
 <ul class="list">
 <li>Both a and b are actually initialized as <em>undefined</em> in hoisting stage. But var <strong>b</strong> is inside the storage space of GLOBAL, and <strong>a</strong> is in a separate memory object called script, where it can be accessed only after assigning some value to it first ie. one can access &#39;a&#39; only if it is assigned. Thus, it throws error.</li>
 </ul>
 <br>
 
 <ul class="list">
-<li><p><strong>Temporal Dead Zone</strong> : Time since when the let variable was hoisted until it is initialized some value. </p>
+<li><p><strong>Temporal Dead Zone</strong> : Time since when the let variable was hoisted until it is initialized some value.</p>
 <ul class="list">
 <li>So any line till before &quot;let a = 10&quot; is the TDZ for a</li>
 <li>Since a is not accessible on global, its not accessible in <em>window/this</em> also. window.b or this.b -&gt; 15; But window.a or this.a -&gt;undefined, just like window.x-&gt;undefined (x isn&#39;t declared anywhere)</li>
@@ -401,7 +399,7 @@ b = <span class="hljs-number">10</span>;
 <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// SyntaxError: Missing initializer in const declaration. (This type of declaration won&#x27;t work with const. const b = 10 only will work)</span>
 ------------------
 <span class="hljs-keyword">const</span> b = <span class="hljs-number">100</span>;
-b = <span class="hljs-number">1000</span>; <span class="hljs-comment">//this gives us TypeError: Assignment to constant variable. </span></code></pre><ul class="list">
+b = <span class="hljs-number">1000</span>; <span class="hljs-comment">//this gives us TypeError: Assignment to constant variable.</span></code></pre><ul class="list">
 <li><p>Types of <strong>Error</strong>: Syntax, Reference, and Type.</p>
 <ul class="list">
 <li><p>Uncaught ReferenceError: x is not defined at ...</p>
@@ -449,42 +447,41 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-9--block-scope--shadowing-in-js"><a class="header-link" href="#episode-9--block-scope--shadowing-in-js"></a>Episode 9 : Block Scope &amp; Shadowing in JS</h1>
 <p>What is a <strong>Block</strong>?</p>
 <ul class="list">
 <li>Block aka <em>compound statement</em> is used to group JS statements together into 1 group. We group them within {...}</li>
 </ul>
 <pre class="hljs"><code>{
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
-    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
-    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
-    <span class="hljs-comment">// Here let and const are hoisted in Block scope,</span>
-    <span class="hljs-comment">// While, var is hoisted in Global scope.</span>
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+  <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
+  <span class="hljs-comment">// Here let and const are hoisted in Block scope,</span>
+  <span class="hljs-comment">// While, var is hoisted in Global scope.</span>
 }</code></pre><ul class="list">
 <li>Block Scope and its accessibility example</li>
 </ul>
 <pre class="hljs"><code>{
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
-    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
-    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+  <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
 }
 <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10</span>
 <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// Uncaught ReferenceError: b is not defined</span></code></pre><pre class="hljs"><code><span class="hljs-comment">* Reason?
     * In the BLOCK SCOPE;</span> we get b <span class="hljs-meta">and</span> c inside it initialized <span class="hljs-meta">as</span> <span class="hljs-comment">*undefined* as a part of hoisting (in a seperate memory space called **block**)
-    * While, a is stored inside a GLOBAL scope. 
+    * While, a is stored inside a GLOBAL scope.
 
     * Thus we say, *let* and *const* are BLOCK SCOPED. They are stored in a separate mem space which is reserved for this block. Also, they can&#x27;t be accessed outside this block. But var a can be accessed anywhere as it is in global scope. Thus, we can&#x27;t access them outside the Block.</span></code></pre><p>What is <strong>Shadowing</strong>?</p>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> a = <span class="hljs-number">100</span>;
 {
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>; <span class="hljs-comment">// same name as global var</span>
-    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
-    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
-    <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10</span>
-    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 20</span>
-    <span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 30 </span>
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>; <span class="hljs-comment">// same name as global var</span>
+  <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+  <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
+  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10</span>
+  <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 20</span>
+  <span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 30</span>
 }
-<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10, instead of the 100 we were expecting. So block &quot;a&quot; modified val of global &quot;a&quot; as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself. </span></code></pre><ul class="list">
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 10, instead of the 100 we were expecting. So block &quot;a&quot; modified val of global &quot;a&quot; as well. In console, only b and c are in block space. a initially is in global space(a = 100), and when a = 10 line is run, a is not created in block space, but replaces 100 with 10 in global space itself.</span></code></pre><ul class="list">
 <li><p>So, If one has same named variable outside the block, the variable inside the block <em>shadows</em> the outside variable. <strong>This happens only for var</strong></p>
 </li>
 <li><p>Let&#39;s observe the behaviour in case of let and const and understand it&#39;s reason.</p>
@@ -492,10 +489,10 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a></p>
 </ul>
 <pre class="hljs"><code><span class="hljs-keyword">let</span> b = <span class="hljs-number">100</span>;
 {
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
-    <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
-    <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
-    <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 20</span>
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">let</span> b = <span class="hljs-number">20</span>;
+  <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
+  <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 20</span>
 }
 <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 100, Both b&#x27;s are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.</span></code></pre><p class="img-container"><img src="../assets/scope.jpg" alt="Block Scope Explaination" title="Lexical Scope"></p>
 <ul class="list">
@@ -503,14 +500,14 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a></p>
 </ul>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> c = <span class="hljs-number">100</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">const</span> c = <span class="hljs-number">10</span>;
-    <span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 10</span>
+  <span class="hljs-keyword">const</span> c = <span class="hljs-number">10</span>;
+  <span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 10</span>
 }
 x();
 <span class="hljs-built_in">console</span>.log(c); <span class="hljs-comment">// 100</span></code></pre><p>What is <strong>Illegal Shadowing</strong>?</p>
 <pre class="hljs"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">20</span>;
 {
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;
 }
 <span class="hljs-comment">// Uncaught SyntaxError: Identifier &#x27;a&#x27; has already been declared</span></code></pre><ul class="list">
 <li>We cannot shadow let with var. But it is <strong>valid</strong> to shadow a let using a let. However, we can shadow var with let.</li>
@@ -519,7 +516,7 @@ x();
 </ul>
 <pre class="hljs"><code><span class="hljs-keyword">let</span> a = <span class="hljs-number">20</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;
 }</code></pre><hr>
 
 <p>Watch Live On Youtube below:</p>
@@ -531,21 +528,20 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a></p>
 
 <br>
 
-
-<h1 id="episode-10--closures--in-js"><a class="header-link" href="#episode-10--closures--in-js"></a>Episode 10 : Closures  in JS</h1>
+<h1 id="episode-10--closures-in-js"><a class="header-link" href="#episode-10--closures-in-js"></a>Episode 10 : Closures in JS</h1>
 <ul class="list">
 <li><p>Function bundled along with it&#39;s lexical scope is <strong>closure</strong>.</p>
 </li>
 <li><p>JavaScript has a lexcial scope environment. If a function needs to access a variable, it first goes to its local memory. When it does not find it there, it goes to the memory of its lexical parent. See Below code, Over here function <strong>y</strong> along with its lexical scope i.e. (function x) would be called a closure.</p>
 <pre class="prettyprint">function x() {
-    var a = 7;
-    function y() {
-        console.log(a);
-    }
-    return y;
+  var a = 7;
+  function y() {
+    console.log(a);
+  }
+  return y;
 }
 var z = x();
-console.log(z);  // value of z is entire code of function y.
+console.log(z); // value of z is entire code of function y.
 </pre>
 <ul class="list">
 <li>In above code, When y is returned, not only is the function returned but the entire closure (fun y + its lexical scope) is returned and put inside z. So when z is used somewhere else in program, it still remembers var a inside x()</li>
@@ -553,7 +549,7 @@ console.log(z);  // value of z is entire code of function y.
 </li>
 <li><p>Thus In simple words, we can say:</p>
 <ul class="list">
-<li><em><strong>A closure is a function</strong> that has access to its outer function scope even after the function has returned. Meaning, A closure can remember and access variables and arguments reference of its outer function even after the function has returned.</em></li>
+<li><strong>*A closure is a function</strong> that has access to its outer function scope even after the function has returned. Meaning, A closure can remember and access variables and arguments reference of its outer function even after the function has returned.*</li>
 </ul>
 </li>
 </ul>
@@ -590,17 +586,16 @@ alt="Closure in JS Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-11--settimeout--closures-interview-question"><a class="header-link" href="#episode-11--settimeout--closures-interview-question"></a>Episode 11 : setTimeout + Closures Interview Question</h1>
 <blockquote>
 <p><strong>Time, tide and Javascript wait for none.</strong></p>
 </blockquote>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>;
-    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(i);
-    }, <span class="hljs-number">3000</span>);
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste Javascript&quot;</span>);
+  <span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>;
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(i);
+  }, <span class="hljs-number">3000</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Namaste Javascript&quot;</span>);
 }
 x();
 <span class="hljs-comment">// Output:</span>
@@ -608,21 +603,21 @@ x();
 <span class="hljs-comment">// 1 // after waiting 3 seconds</span></code></pre><ul class="list">
 <li><p>We expect JS to wait 3 sec, print 1 and then go down and print the string. But JS prints string immediately, waits 3 sec and then prints 1.</p>
 </li>
-<li><p>The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it. </p>
+<li><p>The function inside setTimeout forms a closure (remembers reference to i). So wherever function goes it carries this ref along with it.</p>
 </li>
-<li><p>setTimeout takes this callback function &amp; attaches timer of 3000ms and stores it. Goes to next line without waiting and prints string. </p>
+<li><p>setTimeout takes this callback function &amp; attaches timer of 3000ms and stores it. Goes to next line without waiting and prints string.</p>
 </li>
-<li><p>After 3000ms runs out, JS takes function, puts it into call stack and runs it. </p>
+<li><p>After 3000ms runs out, JS takes function, puts it into call stack and runs it.</p>
 </li>
 <li><p>Q: Print 1 after 1 sec, 2 after 2 sec till 5 : Tricky interview question</p>
-<p>  We assume this has a simple approach as below</p>
+<p>We assume this has a simple approach as below</p>
 <pre class="prettyprint">function x() {
-for(var i = 1; i&lt;=5; i++){
-    setTimeout(function() {
-    console.log(i);
-    }, i*1000);
-    }
-    console.log(&quot;Namaste Javascript&quot;);
+  for (var i = 1; i &lt;= 5; i++) {
+    setTimeout(function () {
+      console.log(i);
+    }, i * 1000);
+  }
+  console.log(&quot;Namaste Javascript&quot;);
 }
 x();
 // Output:
@@ -636,22 +631,24 @@ x();
 <ul class="list">
 <li><p>Reason?</p>
 <ul class="list">
-<li>This happens because of closures. When setTimeout stores the function somewhere and attaches timer to it, the function remembers its reference to i, <strong>not value of i</strong>. All 5 copies of function point to same reference of i. JS stores these 5 functions, prints string and then comes back to the functions. By then the timer has run fully. And due to looping, the i value became 6. And when the callback fun runs the variable i = 6. So same 6 is printed in each log</li>
-<li>To avoid this, we can use <strong>let</strong> instead of <strong>var</strong> as let has Block scope. For each iteration, the i is a new variable altogether(new copy of i). Everytime setTimeout is run, the inside function forms closure with new variable i</li>
+<li><p>This happens because of closures. When setTimeout stores the function somewhere and attaches timer to it, the function remembers its reference to i, <strong>not value of i</strong>. All 5 copies of function point to same reference of i. JS stores these 5 functions, prints string and then comes back to the functions. By then the timer has run fully. And due to looping, the i value became 6. And when the callback fun runs the variable i = 6. So same 6 is printed in each log</p>
+</li>
+<li><p>To avoid this, we can use <strong>let</strong> instead of <strong>var</strong> as let has Block scope. For each iteration, the i is a new variable altogether(new copy of i). Everytime setTimeout is run, the inside function forms closure with new variable i</p>
+</li>
 </ul>
 </li>
 <li><p>But what if interviewer ask us to implement using <strong>var</strong>?</p>
 <pre class="prettyprint">function x() {
-    for(var i = 1; i&lt;=5; i++){
+  for (var i = 1; i &lt;= 5; i++) {
     function close(i) {
-        setTimeout(function() {
+      setTimeout(function () {
         console.log(i);
-        }, i*1000);
-        // put the setT function inside new function close()
+      }, i * 1000);
+      // put the setT function inside new function close()
     }
     close(i); // everytime you call close(i) it creates new copy of i. Only this time, it is with var itself!
-    }
-    console.log(&quot;Namaste Javascript&quot;);
+  }
+  console.log(&quot;Namaste Javascript&quot;);
 }
 x();
 </pre>
@@ -670,69 +667,68 @@ alt="setTimeout + Closures Interview Question in JS Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-12--famous-interview-questions-ft-closures"><a class="header-link" href="#episode-12--famous-interview-questions-ft-closures"></a>Episode 12 : Famous Interview Questions ft. Closures</h1>
 <h3 id="q1-what-is-closure-in-javascript"><a class="header-link" href="#q1-what-is-closure-in-javascript"></a>Q1: What is Closure in Javascript?</h3>
 <p><strong>Ans</strong>: A function along with reference to its outer environment together forms a closure. Or in other words, A Closure is a combination of a function and its lexical scope bundled together.
 eg:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(a);
-    } <span class="hljs-comment">// inner forms a closure with outer</span>
-    <span class="hljs-keyword">return</span> inner;
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(a);
+  } <span class="hljs-comment">// inner forms a closure with outer</span>
+  <span class="hljs-keyword">return</span> inner;
 }
-outer()(); <span class="hljs-comment">// 10 // over here first `()` will return inner function and then using secong `()` to call inner function </span></code></pre><h3 id="q2-will-the-below-code-still-forms-a-closure"><a class="header-link" href="#q2-will-the-below-code-still-forms-a-closure"></a>Q2: Will the below code still forms a closure?</h3>
+outer()(); <span class="hljs-comment">// 10 // over here first `()` will return inner function and then using secong `()` to call inner function</span></code></pre><h3 id="q2-will-the-below-code-still-forms-a-closure"><a class="header-link" href="#q2-will-the-below-code-still-forms-a-closure"></a>Q2: Will the below code still forms a closure?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(a);
-    }
-    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
-    <span class="hljs-keyword">return</span> inner;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(a);
+  }
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">return</span> inner;
 }
 outer()(); <span class="hljs-comment">// 10</span></code></pre><p><strong>Ans</strong>: Yes, because inner function forms a closure with its outer environment so sequence doesn&#39;t matter.</p>
 <h3 id="q3-changing-var-to-let-will-it-make-any-difference"><a class="header-link" href="#q3-changing-var-to-let-will-it-make-any-difference"></a>Q3: Changing var to let, will it make any difference?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(a);
-    }
-    <span class="hljs-keyword">return</span> inner;
+  <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(a);
+  }
+  <span class="hljs-keyword">return</span> inner;
 }
 outer()(); <span class="hljs-comment">// 10</span></code></pre><p><strong>Ans</strong>: It will still behave the same way.</p>
 <h3 id="q4-will-inner-function-have-the-access-to-outer-function-argument"><a class="header-link" href="#q4-will-inner-function-have-the-access-to-outer-function-argument"></a>Q4: Will inner function have the access to outer function argument?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
-    <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(a, str);
-    }
-    <span class="hljs-keyword">return</span> inner;
+  <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(a, str);
+  }
+  <span class="hljs-keyword">return</span> inner;
 }
 outer(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Inner function will now form closure and will have access to both a and b.</p>
 <h3 id="q5-in-below-code-will-inner-form-closure-with-outest"><a class="header-link" href="#q5-in-below-code-will-inner-form-closure-with-outest"></a>Q5: In below code, will inner form closure with <strong>outest</strong>?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outest</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> c = <span class="hljs-number">20</span>;
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
-        <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
-            <span class="hljs-built_in">console</span>.log(a, c, str);
-        }
-        <span class="hljs-keyword">return</span> inner;
+  <span class="hljs-keyword">var</span> c = <span class="hljs-number">20</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
+    <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(a, c, str);
     }
-    <span class="hljs-keyword">return</span> outer;
+    <span class="hljs-keyword">return</span> inner;
+  }
+  <span class="hljs-keyword">return</span> outer;
 }
 outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 20 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Yes, inner will have access to all its outer environment.</p>
 <h3 id="q6-output-of-below-code-and-explaination"><a class="header-link" href="#q6-output-of-below-code-and-explaination"></a>Q6: Output of below code and explaination?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outest</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">var</span> c = <span class="hljs-number">20</span>;
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
-        <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
-            <span class="hljs-built_in">console</span>.log(a, c, str);
-        }
-        <span class="hljs-keyword">return</span> inner;
+  <span class="hljs-keyword">var</span> c = <span class="hljs-number">20</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
+    <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(a, c, str);
     }
-    <span class="hljs-keyword">return</span> outer;
+    <span class="hljs-keyword">return</span> inner;
+  }
+  <span class="hljs-keyword">return</span> outer;
 }
 <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;
 outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 20 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Still the same output, the inner function will have reference to inner a, so conflicting name won&#39;t matter here. If it wouldn&#39;t have find a inside outer function then it would have went more outer to find a and thus have printed 100. So, it try to resolve variable in scope chain and if a wouldn&#39;t have been found it would have given reference error.</p>
@@ -750,7 +746,7 @@ outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span clas
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">increment</span>(<span class="hljs-params"></span>)</span>{
   count++;
 }
-<span class="hljs-comment">// in the above code, anyone can access count and change it. </span>
+<span class="hljs-comment">// in the above code, anyone can access count and change it.</span>
 
 ------------------------------------------------------------------
 
@@ -773,7 +769,7 @@ outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span clas
     <span class="hljs-built_in">console</span>.log(count);
   }
 }
-<span class="hljs-keyword">var</span> counter1 = counter(); <span class="hljs-comment">//counter function has closure with count var. </span>
+<span class="hljs-keyword">var</span> counter1 = counter(); <span class="hljs-comment">//counter function has closure with count var.</span>
 counter1(); <span class="hljs-comment">// increments counter</span>
 
 <span class="hljs-keyword">var</span> counter2 = counter();
@@ -781,12 +777,12 @@ counter2(); <span class="hljs-comment">// here counter2 is whole new copy of cou
 
 *************************
 
-<span class="hljs-comment">// Above code is not good and scalable for say, when you plan to implement decrement counter at a later stage. </span>
+<span class="hljs-comment">// Above code is not good and scalable for say, when you plan to implement decrement counter at a later stage.</span>
 <span class="hljs-comment">// To address this issue, we use *constructors*</span>
 
 <span class="hljs-comment">// Adding decrement counter and refactoring code:</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Counter</span>(<span class="hljs-params"></span>) </span>{
-<span class="hljs-comment">//constructor function. Good coding would be to capitalize first letter of constructor function. </span>
+<span class="hljs-comment">//constructor function. Good coding would be to capitalize first letter of constructor function.</span>
   <span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>;
   <span class="hljs-built_in">this</span>.incrementCounter = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">//anonymous function</span>
     count++;
@@ -810,13 +806,13 @@ So when creating many closures, more memory is accumulated and this can create m
   <span class="hljs-keyword">var</span> x = <span class="hljs-number">0</span>;
   <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(x);
-  }
+  };
 }
- 
+
 <span class="hljs-keyword">var</span> y = a(); <span class="hljs-comment">// y is a copy of b()</span>
-y(); 
- 
- <span class="hljs-comment">// Once a() is called, its element x should be garbage collected ideally. But fun b has closure over var x. So mem of x cannot be freed. Like this if more closures formed, it becomes an issue. To tacke this, JS engines like v8 and Chrome have smart garbage collection mechanisms. Say we have var x = 0, z = 10 in above code. When console log happens, x is printed as 0 but z is removed automatically.</span></code></pre><hr>
+y();
+
+<span class="hljs-comment">// Once a() is called, its element x should be garbage collected ideally. But fun b has closure over var x. So mem of x cannot be freed. Like this if more closures formed, it becomes an issue. To tacke this, JS engines like v8 and Chrome have smart garbage collection mechanisms. Say we have var x = 0, z = 10 in above code. When console log happens, x is printed as 0 but z is removed automatically.</span></code></pre><hr>
 
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=t1nFAMws5FI&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/t1nFAMws5FI/0.jpg" width="750"
@@ -826,7 +822,6 @@ alt="Closures Interview Question in JS Youtube Link"/></a></p>
 <hr>
 
 <br>
-
 
 <h1 id="episode-13--first-class-functions-ft-anonymous-functions"><a class="header-link" href="#episode-13--first-class-functions-ft-anonymous-functions"></a>Episode 13 : First Class Functions ft. Anonymous Functions</h1>
 <blockquote>
@@ -839,9 +834,9 @@ alt="Closures Interview Question in JS Youtube Link"/></a></p>
 }
 a(); <span class="hljs-comment">// Hello</span></code></pre><h3 id="q-what-is-function-expression"><a class="header-link" href="#q-what-is-function-expression"></a>Q: What is Function Expression?</h3>
 <p>Assigning a function to a variable. Function acts like a value.</p>
-<pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello&quot;</span>);
-}
+};
 b();</code></pre><h3 id="q-difference-between-function-statement-and-expression"><a class="header-link" href="#q-difference-between-function-statement-and-expression"></a>Q: Difference between function statement and expression</h3>
 <p>The major difference between these two lies in <strong>Hoisting</strong>.</p>
 <pre class="hljs"><code>a(); <span class="hljs-comment">// &quot;Hello A&quot;</span>
@@ -849,9 +844,9 @@ b(); <span class="hljs-comment">// TypeError</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello A&quot;</span>);
 }
-<span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello B&quot;</span>);
-}
+};
 <span class="hljs-comment">// Why? During mem creation phase a is created in memory and function assigned to a. But b is created like a variable (b:undefined) and until code reaches the function()  part, it is still undefined. So it cannot be called.</span></code></pre><h3 id="q-what-is-function-declaration"><a class="header-link" href="#q-what-is-function-declaration"></a>Q: What is Function Declaration?</h3>
 <p>Other name for <strong>function statement</strong>.</p>
 <h3 id="q-what-is-anonymous-function"><a class="header-link" href="#q-what-is-anonymous-function"></a>Q: What is Anonymous Function?</h3>
@@ -859,42 +854,41 @@ b(); <span class="hljs-comment">// TypeError</span>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 
 }<span class="hljs-comment">// this is going to throw Syntax Error - Function Statement requires function name.</span></code></pre><ul class="list">
-<li>They don&#39;t have their own identity. So an anonymous function without code inside it results in an error. </li>
+<li>They don&#39;t have their own identity. So an anonymous function without code inside it results in an error.</li>
 <li>Anonymous functions are used when functions are used as values eg. the code sample for <strong>function expression</strong> above.</li>
 </ul>
 <h3 id="q-what-is-named-function-expression"><a class="header-link" href="#q-what-is-named-function-expression"></a>Q: What is Named Function Expression?</h3>
 <p>Same as Function Expression but function has a name instead of being anonymous.</p>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xyz</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;b called&quot;</span>);
-}
+};
 b(); <span class="hljs-comment">// &quot;b called&quot;</span>
 xyz(); <span class="hljs-comment">// Throws ReferenceError:xyz is not defined.</span>
 <span class="hljs-comment">// xyz function is not created in global scope. So it can&#x27;t be called.</span></code></pre><h3 id="q-parameters-vs-arguments"><a class="header-link" href="#q-parameters-vs-arguments"></a>Q: Parameters vs Arguments?</h3>
-<pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">param1, param2</span>) </span>{ <span class="hljs-comment">// labels/identifiers are parameters</span>
+<pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">param1, param2</span>) </span>{
+  <span class="hljs-comment">// labels/identifiers are parameters</span>
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;b called&quot;</span>);
-}
+};
 b(arg1, arg2); <span class="hljs-comment">// arguments - values passed inside function call</span></code></pre><h3 id="q-what-is-first-class-function-aka-first-class-citizens"><a class="header-link" href="#q-what-is-first-class-function-aka-first-class-citizens"></a>Q: What is First Class Function aka First Class Citizens?</h3>
-<p>We can pass functions inside a function as arguments and 
+<p>We can pass functions inside a function as arguments and
 /or return a function(HOF). These ability are altogether known as First class function. It is programming concept available in some other languages too.</p>
-<pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">param1</span>) </span>{
+<pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">param1</span>) </span>{
   <span class="hljs-built_in">console</span>.log(param1); <span class="hljs-comment">// prints &quot; f() {} &quot;</span>
-}
-b(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{});
+};
+b(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{});
 
 <span class="hljs-comment">// Other way of doing the same thing:</span>
-<span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">param1</span>) </span>{
+<span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">param1</span>) </span>{
   <span class="hljs-built_in">console</span>.log(param1);
-}
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xyz</span>(<span class="hljs-params"></span>)</span>{
-}
+};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xyz</span>(<span class="hljs-params"></span>) </span>{}
 b(xyz); <span class="hljs-comment">// same thing as prev code</span>
 
 <span class="hljs-comment">// we can return a function from a function:</span>
-<span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">param1</span>) </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-  }  
-}
-<span class="hljs-built_in">console</span>.log(b()); <span class="hljs-comment">//we log the entire fun within b. </span></code></pre><hr>
+<span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">param1</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{};
+};
+<span class="hljs-built_in">console</span>.log(b()); <span class="hljs-comment">//we log the entire fun within b.</span></code></pre><hr>
 
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=SHINoHxvTso&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/SHINoHxvTso/0.jpg" width="750"
@@ -905,26 +899,25 @@ alt="First Class Functions ft. Anonymous Functions in JS Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-14--callback-functions-in-js-ft-event-listeners"><a class="header-link" href="#episode-14--callback-functions-in-js-ft-event-listeners"></a>Episode 14 : Callback Functions in JS ft. Event Listeners</h1>
 <h3 id="callback-functions"><a class="header-link" href="#callback-functions"></a>Callback Functions</h3>
 <ul class="list">
 <li>Functions are first class citizens ie. take a function A and pass it to another function B. Here, A is a callback function. So basically I am giving access to function B to call function A. This callback function gives us the access to whole <strong>Asynchronous</strong> world in <strong>Synchronous</strong> world.</li>
 </ul>
 <pre class="hljs"><code><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Timer&quot;</span>);
-}, <span class="hljs-number">1000</span>) <span class="hljs-comment">// first argument is callback function and second is timer.</span></code></pre><ul class="list">
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Timer&quot;</span>);
+}, <span class="hljs-number">1000</span>); <span class="hljs-comment">// first argument is callback function and second is timer.</span></code></pre><ul class="list">
 <li>JS is a synchronous and single threaded language. But due to callbacks, we can do async things in JS.</li>
 </ul>
 <pre class="hljs"><code><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;timer&quot;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;timer&quot;</span>);
 }, <span class="hljs-number">5000</span>);
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params">y</span>) </span>{
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;x&quot;</span>);
-y();
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;x&quot;</span>);
+  y();
 }
 x(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">y</span>(<span class="hljs-params"></span>) </span>{
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;y&quot;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;y&quot;</span>);
 });
 <span class="hljs-comment">// x y timer</span></code></pre><ul class="list">
 <li>In the call stack, first x and y are present. After code execution, they go away and stack is empty. Then after 5 seconds (from beginning) anonymous suddenly appear up in stack ie. setTimeout</li>
@@ -934,45 +927,51 @@ x(<span class="hljs-function"><span class="hljs-keyword">function</span> <span c
 </ul>
 <pre class="hljs"><code><span class="hljs-comment">// Another Example of callback</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printStr</span>(<span class="hljs-params">str, cb</span>) </span>{
-    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-built_in">console</span>.log(str);
-        cb();
-    }, <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>)
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(str);
+    cb();
+  }, <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>);
 }
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printAll</span>(<span class="hljs-params"></span>) </span>{
-    printStr(<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-        printStr(<span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-function">() =&gt;</span> {
-            printStr(<span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-function">() =&gt;</span> {})
-        })
-    })
+  printStr(<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+    printStr(<span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-function">() =&gt;</span> {
+      printStr(<span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-function">() =&gt;</span> {});
+    });
+  });
 }
-printAll() <span class="hljs-comment">// A B C // in order</span></code></pre><h3 id="event-listener"><a class="header-link" href="#event-listener"></a>Event Listener</h3>
+printAll(); <span class="hljs-comment">// A B C // in order</span></code></pre><h3 id="event-listener"><a class="header-link" href="#event-listener"></a>Event Listener</h3>
 <ul class="list">
 <li>We will create a button in html and attach event to it.</li>
 </ul>
 <pre class="hljs"><code><span class="hljs-comment">// index.html</span>
-&lt;button id=<span class="hljs-string">&quot;clickMe&quot;</span>&gt;Click Me!&lt;/button&gt;
+&lt;button id=<span class="hljs-string">&quot;clickMe&quot;</span>&gt;Click Me!&lt;/button&gt;;
 
 <span class="hljs-comment">// in index.js</span>
-<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;clickMe&quot;</span>).addEventListener(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xyz</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-comment">//when event click occurs, this callback function (xyz) is called into callstack</span>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Button clicked&quot;</span>);
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;clickMe&quot;</span>).addEventListener(<span class="hljs-string">&quot;click&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xyz</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">//when event click occurs, this callback function (xyz) is called into callstack</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Button clicked&quot;</span>);
 });</code></pre><ul class="list">
-<li>Lets implement a increment counter button. <ul class="list">
+<li>Lets implement a increment counter button.<ul class="list">
 <li>Using global variable (not good as anyone can change it)<pre class="prettyprint">let count = 0;
-document.getElementById(&quot;clickMe&quot;).addEventListener(&quot;click&quot;, function xyz(){ 
+document
+  .getElementById(&quot;clickMe&quot;)
+  .addEventListener(&quot;click&quot;, function xyz() {
     console.log(&quot;Button clicked&quot;, ++count);
-});
+  });
 </pre>
 </li>
-<li>Use closures for data abstraction<pre class="prettyprint">function attachEventList() {  //creating new function for closure
-    let count = 0;
-    document.getElementById(&quot;clickMe&quot;).addEventListener(&quot;click&quot;, function xyz(){ 
-    console.log(&quot;Button clicked&quot;, ++count);  //now callback function forms closure with outer scope(count)
-});
+<li>Use closures for data abstraction<pre class="prettyprint">function attachEventList() {
+  //creating new function for closure
+  let count = 0;
+  document
+    .getElementById(&quot;clickMe&quot;)
+    .addEventListener(&quot;click&quot;, function xyz() {
+      console.log(&quot;Button clicked&quot;, ++count); //now callback function forms closure with outer scope(count)
+    });
 }
 attachEventList();
 </pre>
-  <img src="../assets/event.jpg" alt="Event Listerner Demo"></li>
+<img src="../assets/event.jpg" alt="Event Listerner Demo"></li>
 </ul>
 </li>
 </ul>
@@ -990,7 +989,6 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a></p>
 <hr>
 
 <br>
-
 
 <h1 id="episode-15--asynchronous-javascript--event-loop-from-scratch"><a class="header-link" href="#episode-15--asynchronous-javascript--event-loop-from-scratch"></a>Episode 15 : Asynchronous JavaScript &amp; EVENT LOOP from scratch</h1>
 <blockquote>
@@ -1022,11 +1020,11 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a></p>
 </ul>
 </li>
 <li><p>Let&#39;s undertand the below code image and its explaination:
-  <img src="../assets/eventloop3.jpg" alt="Event Loop 3 Demo"></p>
+<img src="../assets/eventloop3.jpg" alt="Event Loop 3 Demo"></p>
 <ul class="list">
 <li><pre class="prettyprint">console.log(&quot;start&quot;);
 setTimeout(function cb() {
-    console.log(&quot;timer&quot;);
+  console.log(&quot;timer&quot;);
 }, 5000);
 console.log(&quot;end&quot;);
 // start end timer
@@ -1054,9 +1052,9 @@ console.log(&quot;end&quot;);
 <img src="../assets/eventloop5.jpg" alt="Event Loop 5 Demo">
 Explaination?</p>
 <ul class="list">
-<li><pre class="prettyprint">console.log(&quot;Start&quot;); 
-document. getElementById(&quot;btn&quot;).addEventListener(&quot;click&quot;, function cb() { 
-  // cb() registered inside webapi environment and event(click) attached to it. i.e. REGISTERING CALLBACK AND ATTACHING EVENT TO IT. 
+<li><pre class="prettyprint">console.log(&quot;Start&quot;);
+document.getElementById(&quot;btn&quot;).addEventListener(&quot;click&quot;, function cb() {
+  // cb() registered inside webapi environment and event(click) attached to it. i.e. REGISTERING CALLBACK AND ATTACHING EVENT TO IT.
   console.log(&quot;Callback&quot;);
 });
 console.log(&quot;End&quot;); // calls console api and logs in console window. After this GEC get removed from call stack.
@@ -1072,15 +1070,15 @@ console.log(&quot;End&quot;); // calls console api and logs in console window. A
 
 <h3 id="behaviour-of-fetch-microtask-queue"><a class="header-link" href="#behaviour-of-fetch-microtask-queue"></a>Behaviour of fetch (<strong>Microtask Queue?</strong>)</h3>
 <p>Let&#39;s observe the code below and try to understand</p>
-<pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Start&quot;</span>); <span class="hljs-comment">// this calls the console web api (through window) which in turn actually modifies values in console. </span>
-<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cbT</span>(<span class="hljs-params"></span>) </span>{ 
+<pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Start&quot;</span>); <span class="hljs-comment">// this calls the console web api (through window) which in turn actually modifies values in console.</span>
+<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cbT</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;CB Timeout&quot;</span>);
 }, <span class="hljs-number">5000</span>);
 fetch(<span class="hljs-string">&quot;https://api.netflix.com&quot;</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cbF</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;CB Netflix&quot;</span>);
 }); <span class="hljs-comment">// take 2 seconds to bring response</span>
 <span class="hljs-comment">// millions lines of code</span>
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;End&quot;</span>); 
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;End&quot;</span>);
 
 Code Explaination:
 * Same steps <span class="hljs-keyword">for</span> everything before fetch() <span class="hljs-keyword">in</span> above code.
@@ -1141,7 +1139,7 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 </li>
 <li><p>JRE consists of a JS Engine (❤️ of JRE), set of APIs to connect with outside environment, event loop, Callback queue, Microtask queue etc.</p>
 </li>
-<li><p>Browser can execute javascript code because it has the Javascript Runtime Environment. </p>
+<li><p>Browser can execute javascript code because it has the Javascript Runtime Environment.</p>
 </li>
 <li><p>ECMAScript is a governing body of JS. It has set of rules which are followed by all JS engines like Chakra(Edge), Spidermonkey(Firefox)(first javascript engine created by JS creator himself), v8(Chrome)</p>
 </li>
@@ -1176,7 +1174,6 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-17--trust-issues-with-settimeout"><a class="header-link" href="#episode-17--trust-issues-with-settimeout"></a>Episode 17 : Trust issues with setTimeout()</h1>
 <ul class="list">
 <li><p>setTimeout with timer of 5 secs sometimes does not exactly guarantees that the callback function will execute exactly after 5s.</p>
@@ -1184,14 +1181,14 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a></p>
 <li><p>Let&#39;s observe the below code and it&#39;s explaination</p>
 <pre class="prettyprint">console.log(&quot;Start&quot;);
 setTimeout(function cb() {
-console.log(&quot;Callback&quot;);
+  console.log(&quot;Callback&quot;);
 }, 5000);
 console.log(&quot;End&quot;);
 // Millions of lines of code to execute
 
 // o/p: Over here setTimeout exactly doesn&#39;t guarantee that the callback function will be called exactly after 5s. Maybe 6,7 or even 10! It all depends on callstack. Why?
 </pre>
-<p>  Reason?</p>
+<p>Reason?</p>
 <ul class="list">
 <li>First GEC is created and pushed in callstack.</li>
 <li>Start is printed in console</li>
@@ -1215,7 +1212,7 @@ console.log(&quot;End&quot;);
 <li><p>What if <strong>timeout = 0sec</strong>?</p>
 <pre class="prettyprint">console.log(&quot;Start&quot;);
 setTimeout(function cb() {
-console.log(&quot;Callback&quot;);
+  console.log(&quot;Callback&quot;);
 }, 0);
 console.log(&quot;End&quot;);
 // Even though timer = 0s, the cb() has to go through the queue. Registers calback in webapi&#39;s env , moves to callback queue, and execute once callstack is empty.
@@ -1235,10 +1232,9 @@ alt="Trust issues with setTimeout() in JS Youtube Link"/></a></p>
 
 <br>
 
-
 <h1 id="episode-18--higher-order-functions-ft-functional-programming"><a class="header-link" href="#episode-18--higher-order-functions-ft-functional-programming"></a>Episode 18 : Higher-Order Functions ft. Functional Programming</h1>
 <h3 id="q-what-is-higher-order-function"><a class="header-link" href="#q-what-is-higher-order-function"></a>Q: What is Higher Order Function?</h3>
-<p><strong>Ans</strong>: A Higher-order functions are functions that take other functions as arguments or return functions as their results. Eg: </p>
+<p><strong>Ans</strong>: A Higher-order functions are functions that take other functions as arguments or return functions as their results. Eg:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hi)&quot;</span>;
 };
@@ -1251,22 +1247,22 @@ y(); <span class="hljs-comment">// Hi</span>
 I have an array of radius and I have to calculate area using these radius and store in an array.</p>
 <p>First Approach:</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> radius = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
-<span class="hljs-keyword">const</span> calculateArea = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">radius</span>) </span>{
-    <span class="hljs-keyword">const</span> output = [];
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; radius.length; i++) {
-        output.push(<span class="hljs-built_in">Math</span>.PI * radius[i] * radius[i]);
-    } 
-    <span class="hljs-keyword">return</span> output;
-}
+<span class="hljs-keyword">const</span> calculateArea = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">radius</span>) </span>{
+  <span class="hljs-keyword">const</span> output = [];
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; radius.length; i++) {
+    output.push(<span class="hljs-built_in">Math</span>.PI * radius[i] * radius[i]);
+  }
+  <span class="hljs-keyword">return</span> output;
+};
 <span class="hljs-built_in">console</span>.log(calculateArea(radius));</code></pre><p>The above solution works perfectly fine but what if we have now requirement to calculate array of circumference. Code now be like</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> radius = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
-<span class="hljs-keyword">const</span> calculateCircumference = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">radius</span>) </span>{
-    <span class="hljs-keyword">const</span> output = [];
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; radius.length; i++) {
-        output.push(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI * radius[i]);
-    } 
-    <span class="hljs-keyword">return</span> output;
-}
+<span class="hljs-keyword">const</span> calculateCircumference = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">radius</span>) </span>{
+  <span class="hljs-keyword">const</span> output = [];
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; radius.length; i++) {
+    output.push(<span class="hljs-number">2</span> * <span class="hljs-built_in">Math</span>.PI * radius[i]);
+  }
+  <span class="hljs-keyword">return</span> output;
+};
 <span class="hljs-built_in">console</span>.log(calculateCircumference(radius));</code></pre><p>But over here we are violating some principle like DRY Principle, now lets observe the better approach.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> radiusArr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
 
@@ -1284,7 +1280,7 @@ I have an array of radius and I have to calculate area using these radius and st
     <span class="hljs-keyword">const</span> output = [];
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; radiusArr.length; i++) {
         output.push(operation(radiusArr[i]));
-    } 
+    }
     <span class="hljs-keyword">return</span> output;
 }
 <span class="hljs-built_in">console</span>.log(calculate(radiusArr, area));
@@ -1303,7 +1299,7 @@ Lets convert above calculate <span class="hljs-function"><span class="hljs-keywo
     <span class="hljs-title">const</span> <span class="hljs-title">output</span> = []</span>;
     <span class="hljs-title">for</span> (<span class="hljs-params"><span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">this</span>.length; i++</span>) </span>{
         output.push(operation(<span class="hljs-built_in">this</span>[i]));
-    } 
+    }
     <span class="hljs-keyword">return</span> output;
 }
 <span class="hljs-built_in">console</span>.log(radiusArr.calculate(area))</code></pre><hr>
@@ -1327,14 +1323,14 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
 <span class="hljs-comment">// Task 1: Double the array element: [10, 2, 6, 4, 12]</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">double</span>(<span class="hljs-params">x</span>) </span>{
-    <span class="hljs-keyword">return</span> x * <span class="hljs-number">2</span>;
+  <span class="hljs-keyword">return</span> x * <span class="hljs-number">2</span>;
 }
 <span class="hljs-keyword">const</span> doubleArr = arr.map(double); <span class="hljs-comment">// Internally map will run double function for each element of array and create a new array and returns it.</span>
 <span class="hljs-built_in">console</span>.log(doubleArr); <span class="hljs-comment">// [10, 2, 6, 4, 12]</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// Task 2: Triple the array element</span>
 <span class="hljs-keyword">const</span> arr = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
 <span class="hljs-comment">// Transformation logic</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">triple</span>(<span class="hljs-params">x</span>) </span>{
-    <span class="hljs-keyword">return</span> x * <span class="hljs-number">3</span>;
+  <span class="hljs-keyword">return</span> x * <span class="hljs-number">3</span>;
 }
 <span class="hljs-keyword">const</span> tripleArr = arr.map(triple);
 <span class="hljs-built_in">console</span>.log(tripleArr); <span class="hljs-comment">// [15, 3, 9, 6, 18]</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// Task 3: Convert array elements to binary</span>
@@ -1356,8 +1352,8 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 <p>Filter function is basically used to filter the value inside an array. The arr.filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument method.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
 <span class="hljs-comment">// filter odd values</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOdd</span> (<span class="hljs-params">x</span>) </span>{
-    <span class="hljs-keyword">return</span> x % <span class="hljs-number">2</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOdd</span>(<span class="hljs-params">x</span>) </span>{
+  <span class="hljs-keyword">return</span> x % <span class="hljs-number">2</span>;
 }
 <span class="hljs-keyword">const</span> oddArr = array.filter(isOdd); <span class="hljs-comment">// [5,1,3]</span>
 
@@ -1368,21 +1364,21 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
 <span class="hljs-comment">// Calculate sum of elements of array - Non functional programming way</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">findSum</span>(<span class="hljs-params">arr</span>) </span>{
-    <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
-        sum = sum + arr[i];
-    }
-    <span class="hljs-keyword">return</span> sum;
+  <span class="hljs-keyword">let</span> sum = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  <span class="hljs-keyword">return</span> sum;
 }
 <span class="hljs-built_in">console</span>.log(findSum(array)); <span class="hljs-comment">// 17</span>
 
 <span class="hljs-comment">// reduce function way</span>
 <span class="hljs-keyword">const</span> sumOfElem = arr.reduce(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">accumulator, current</span>) </span>{
-    <span class="hljs-comment">// current represent the value of array</span>
-    <span class="hljs-comment">// accumulator is used the result from element of array.</span>
-    <span class="hljs-comment">// In comparison to previous code snippet, *sum* variable is *accumulator* and *arr[i]* is *current*</span>
-    accumulator = accumulator + current;
-    <span class="hljs-keyword">return</span> accumulator;
+  <span class="hljs-comment">// current represent the value of array</span>
+  <span class="hljs-comment">// accumulator is used the result from element of array.</span>
+  <span class="hljs-comment">// In comparison to previous code snippet, *sum* variable is *accumulator* and *arr[i]* is *current*</span>
+  accumulator = accumulator + current;
+  <span class="hljs-keyword">return</span> accumulator;
 }, <span class="hljs-number">0</span>); <span class="hljs-comment">//In above example sum was initialized with 0, so over here accumulator also needs to be initialized, so the second argument to reduce function represent the initialization value.</span>
 <span class="hljs-built_in">console</span>.log(sumOfElem); <span class="hljs-comment">// 17</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// find max inside array: Non functional programming way:</span>
 <span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
@@ -1400,7 +1396,7 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 <span class="hljs-comment">// using reduce</span>
 <span class="hljs-keyword">const</span> output = arr.reduce(<span class="hljs-function">(<span class="hljs-params">acc, current</span>) =&gt;</span> {
     <span class="hljs-keyword">if</span> (current &gt; acc ) {
-        acc = current;    
+        acc = current;
     }
     <span class="hljs-keyword">return</span> acc;
 }, <span class="hljs-number">0</span>);
@@ -1410,7 +1406,7 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 <span class="hljs-comment">// so we can also label it as max in this case</span>
 <span class="hljs-keyword">const</span> output = arr.reduce(<span class="hljs-function">(<span class="hljs-params">max, current</span>) =&gt;</span> {
     <span class="hljs-keyword">if</span> (current &gt; max) {
-        max= current;    
+        max= current;
     }
     <span class="hljs-keyword">return</span> max;
 }, <span class="hljs-number">0</span>);
@@ -1436,26 +1432,29 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
     } <span class="hljs-keyword">else</span> {
         acc[curr.age] = <span class="hljs-number">1</span>;
     }
+    <span class="hljs-keyword">return</span> acc;  <span class="hljs-comment">//to every time return update object</span>
 }, {})
 <span class="hljs-built_in">console</span>.log(report) <span class="hljs-comment">// {29 : 2, 75 : 1, 50 : 1}</span></code></pre><h2 id="function-chaining"><a class="header-link" href="#function-chaining"></a>Function Chaining</h2>
 <pre class="hljs"><code><span class="hljs-comment">// First name of all people whose age is less than 30</span>
 <span class="hljs-keyword">const</span> users = [
-    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Alok&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Raj&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">23</span> },
-    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ashish&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Kumar&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
-    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ankit&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Roy&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
-    { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Pranav&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Mukherjee&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">50</span> },
+  { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Alok&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Raj&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">23</span> },
+  { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ashish&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Kumar&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
+  { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ankit&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Roy&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
+  { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Pranav&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Mukherjee&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">50</span> },
 ];
 
 <span class="hljs-comment">// function chaining</span>
-<span class="hljs-keyword">const</span> output = users.filter(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> user.age &lt; <span class="hljs-number">30</span>).map(<span class="hljs-function"><span class="hljs-params">user</span> =&gt;</span> user.firstName);
+<span class="hljs-keyword">const</span> output = users
+  .filter(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> user.age &lt; <span class="hljs-number">30</span>)
+  .map(<span class="hljs-function">(<span class="hljs-params">user</span>) =&gt;</span> user.firstName);
 <span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// [&quot;Alok&quot;, &quot;Ashish&quot;, &quot;Ankit&quot;]</span>
 
 <span class="hljs-comment">// Homework challenge: Implement the same logic using reduce</span>
 <span class="hljs-keyword">const</span> output = users.reduce(<span class="hljs-function">(<span class="hljs-params">acc, curr</span>) =&gt;</span> {
-    <span class="hljs-keyword">if</span> (curr.age &lt; <span class="hljs-number">30</span>) {
-        acc.push(curr.firstName)
-    }
-    <span class="hljs-keyword">return</span> acc;
+  <span class="hljs-keyword">if</span> (curr.age &lt; <span class="hljs-number">30</span>) {
+    acc.push(curr.firstName);
+  }
+  <span class="hljs-keyword">return</span> acc;
 }, []);
 <span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// [&quot;Alok&quot;, &quot;Ashish&quot;, &quot;Ankit&quot;]</span></code></pre><hr>
 
@@ -1469,5 +1468,6 @@ alt="map, filter & reduce Youtube Link"/></a></p>
 <br>
 
 <p><strong>To Be Continued</strong> ...</p>
-<br></body>
+<br>
+</body>
 </html>
