@@ -544,7 +544,23 @@ var z = x();
 console.log(z); // value of z is entire code of function y.
 </pre>
 <ul class="list">
-<li>In above code, When y is returned, not only is the function returned but the entire closure (fun y + its lexical scope) is returned and put inside z. So when z is used somewhere else in program, it still remembers var a inside x()</li>
+<li><p>In above code, When y is returned, not only is the function returned but the entire closure (fun y + its lexical scope) is returned and put inside z. So when z is used somewhere else in program, it still remembers var a inside x()</p>
+</li>
+<li><p>Another Example</p>
+<pre class="prettyprint">function z() {
+  var b = 900;
+  function x() {
+    var a = 7;
+    function y() {
+      console.log(a, b);
+    }
+    y();
+  }
+  x();
+}
+z(); // 7 900
+</pre>
+</li>
 </ul>
 </li>
 <li><p>Thus In simple words, we can say:</p>
@@ -1234,7 +1250,7 @@ alt="Trust issues with setTimeout() in JS Youtube Link"/></a></p>
 
 <h1 id="episode-18--higher-order-functions-ft-functional-programming"><a class="header-link" href="#episode-18--higher-order-functions-ft-functional-programming"></a>Episode 18 : Higher-Order Functions ft. Functional Programming</h1>
 <h3 id="q-what-is-higher-order-function"><a class="header-link" href="#q-what-is-higher-order-function"></a>Q: What is Higher Order Function?</h3>
-<p><strong>Ans</strong>: A Higher-order functions are functions that take other functions as arguments or return functions as their results. Eg:</p>
+<p><strong>Ans</strong>: A Higher-order functions are regular functions that take other functions as arguments or return functions as their results. Eg:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hi)&quot;</span>;
 };
