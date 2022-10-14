@@ -1559,6 +1559,139 @@ alt="map, filter & reduce Youtube Link"/></a></p>
 
 <hr>
 
+<h1 id="episode-21-season-2--episode-2--promises"><a class="header-link" href="#episode-21-season-2--episode-2--promises"></a>Episode 21 (Season 2 : Episode 2) : Promises</h1>
+<blockquote>
+<p>Promises are used to handle async operations in JavaScript.</p>
+</blockquote>
+<p>We will discuss with code example that how things used to work before <code>Promises</code> and then how it works after <code>Promises</code></p>
+<p>Suppose, taking an example of E-Commerce</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
+
+<span class="hljs-comment">// Below two functions are asynchronous and dependent on each other</span>
+<span class="hljs-keyword">const</span> orderId = createOrder(cart);
+proceedToPayment(orderId);
+
+<span class="hljs-comment">// with Callback (Before Promise)</span>
+<span class="hljs-comment">// Below here, it is the responsibility of createOrder function to first create the order then call the callback function</span>
+createOrder(cart, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  proceedToPayment(orderId);
+});
+<span class="hljs-comment">// Above there is the issue of `Inversion of Control`</span></code></pre><p>Q: How to fix the above issue?<br><em>A: Using Promise.</em></p>
+<p>Now, we will make <code>createOrder</code> function return a promise and we will capture that <code>promise</code> into a <code>variable</code></p>
+<p>Promise is nothing but we can assume it to be empty object with some data value in it, and this data value will hold whatever this <code>createOrder</code> function will return.</p>
+<p>Since <code>createOrder</code> function is an async function and we don&#39;t know how much time will it take to finish execution.</p>
+<p>So the moment <code>createOrder</code> will get executed, it will return you a <code>undefined</code> value. Let&#39;s say after 5 secs execution finished so now <code>orderId</code> is ready so, it will fill the <code>undefined</code> value with the <code>orderId</code>.</p>
+<p>In short, When <code>createOrder</code> get executed, it immediately returns a <code>promise object</code> with <code>undefined</code> value. then javascript will continue to execute with other lines of code. After sometime when <code>createOrder</code> has finished execution and <code>orderId</code> is ready then that will <code>automatically</code> be assigned to our returned <code>promise</code> which was earlier <code>undefined</code>.</p>
+<p>Q: Question is how we will get to know <code>response</code> is ready?<br><em>A: So, we will attach a <code>callback</code> function to the <code>promise object</code> using <code>then</code> to get triggered automatically when <code>result</code> is ready.</em></p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
+
+<span class="hljs-keyword">const</span> promiseRef = createOrder(cart);
+<span class="hljs-comment">// this promiseRef has access to `then`</span>
+
+<span class="hljs-comment">// {data: undefined}</span>
+<span class="hljs-comment">// Initially it will be undefined so below code won&#x27;t trigger</span>
+<span class="hljs-comment">// After some time, when execution has finished and promiseRef has the data then automatically the below line will get triggered.</span>
+
+promiseRef.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  proceedToPayment(orderId);
+});</code></pre><p>Q: How it is better than callback approach?</p>
+<p>In Earlier solution we used to pass the function and then used to trust the function to execute the callback.</p>
+<p>But with promise, we are attaching a callback function to a promiseObject.</p>
+<p>There is difference between these words, passing a function and attaching a function.</p>
+<p>Promise guarantee, it will callback the attached function once it has the fulfilled data. And it will call it only once. Just once.</p>
+<p>Earlier we talked about promise are object with empty data but that&#39;s not entirely true, <code>Promise</code> are much more than that.</p>
+<p>Now let&#39;s understand and see a real promise object.</p>
+<p>fetch is a web-api which is utilized to make api call and it returns a promise.</p>
+<p>We will be calling public github api to fetch data
+<a href="https://api.github.com/users/alok722">https://api.github.com/users/alok722</a></p>
+<pre class="hljs"><code><span class="hljs-comment">// We will be calling public github api to fetch data</span>
+<span class="hljs-keyword">const</span> URL = <span class="hljs-string">&quot;https://api.github.com/users/alok722&quot;</span>;
+<span class="hljs-keyword">const</span> user = fetch(URL);
+<span class="hljs-comment">// User above will be a promise.</span>
+<span class="hljs-built_in">console</span>.log(user); <span class="hljs-comment">// Promise {&lt;Pending&gt;}</span>
+
+<span class="hljs-comment">/** OBSERVATIONS:
+ * If we will deep dive and see, this `promise` object has 3 things
+ * `prototype`, `promiseState` &amp; `promiseResult`
+ * &amp; this `promiseResult` is the same data which we talked earlier as data
+ * &amp; initially `promiseResult` is `undefined`
+ *
+ * `promiseResult` will store data returned from API call
+ * `promiseState` will tell in which state the promise is currently, initially it will be in `pending` state and later it will become `fulfilled`
+ */</span>
+
+<span class="hljs-comment">/**
+ * When above line is executed, `fetch` makes API call and return a `promise` instantly which is in `Pending` state and Javascript doesn&#x27;t wait to get it `fulfilled`
+ * And in next line it console out the `pending promise`.
+ * <span class="hljs-doctag">NOTE:</span> chrome browser has some in-consistency, the moment console happens it shows in pending state but if you will expand that it will show fulfilled because chrome updated the log when promise get fulfilled.
+ * Once fulfilled data is there in promiseResult and it is inside body in ReadableStream format and there is a way to extract data.
+ */</span></code></pre><p>Now we can attach callback to above response?</p>
+<p>Using <code>.then</code></p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> URL = <span class="hljs-string">&quot;https://api.github.com/users/alok722&quot;</span>;
+<span class="hljs-keyword">const</span> user = fetch(URL);
+
+user.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(data);
+});
+<span class="hljs-comment">// And this is how Promise is used.</span>
+<span class="hljs-comment">// It guarantees that it could be resolved only once, either it could be `success` or `failure`</span>
+<span class="hljs-comment">/**
+    A Promise is in one of these states:
+
+    pending: initial state, neither fulfilled nor rejected.
+    fulfilled: meaning that the operation was completed successfully.
+    rejected: meaning that the operation failed.
+ */</span></code></pre><p>💡Promise Object are immutable.<br>-&gt; Once promise is fulfilled and we have data we can pass here and there and we don&#39;t have to worry that someone can mutate that data. So over above we can&#39;t directly mutate <code>user</code> promise object, we will have to use <code>.then</code></p>
+<h3 id="interview-guide"><a class="header-link" href="#interview-guide"></a>Interview Guide</h3>
+<p>💡What is Promise?<br>-&gt; Promise object is a placeholder for certain period of time until we receive value from asynchronous operation.</p>
+<p>-&gt; A container for a future value.</p>
+<p>-&gt; <strong>A Promise is an object representing the eventual completion or failure of an asynchronous operation.</strong></p>
+<p>We are now done solving one issue of callback i.e. Inversion of Control</p>
+<p>But there is one more issue, callback hell...</p>
+<pre class="hljs"><code><span class="hljs-comment">// Callback Hell Example</span>
+createOrder(cart, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+  proceedToPayment(orderId, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">paymentInf</span>) </span>{
+    showOrderSummary(paymentInf, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">balance</span>) </span>{
+      updateWalletBalance(balance);
+    });
+  });
+});
+<span class="hljs-comment">// And now above code is expanding horizontally and this is called pyramid of doom.</span>
+<span class="hljs-comment">// Callback hell is ugly and hard to maintain.</span>
+
+<span class="hljs-comment">// 💡 Promise fixes this issue too using `Promise Chaining`</span>
+<span class="hljs-comment">// Example Below is a Promise Chaining</span>
+createOrder(cart)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+    proceedToPayment(orderId);
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">paymentInf</span>) </span>{
+    showOrderSummary(paymentInf);
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">balance</span>) </span>{
+    updateWalletBalance(balance);
+  });
+
+<span class="hljs-comment">// ⚠️ Common PitFall</span>
+<span class="hljs-comment">// We forget to return promise in Promise Chaining</span>
+<span class="hljs-comment">// The idea is promise/data returned from one .then become data for next .then</span>
+<span class="hljs-comment">// So,</span>
+createOrder(cart)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+    <span class="hljs-keyword">return</span> proceedToPayment(orderId);
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">paymentInf</span>) </span>{
+    <span class="hljs-keyword">return</span> showOrderSummary(paymentInf);
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">balance</span>) </span>{
+    <span class="hljs-keyword">return</span> updateWalletBalance(balance);
+  });
+
+<span class="hljs-comment">// To improve readability you can use arrow function instead of regular function</span></code></pre><hr>
+
+<p>Watch Live On Youtube below:</p>
+<p><a href="https://www.youtube.com/watch?v=ap-6PPAuK1Y&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=3&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/ap-6PPAuK1Y/0.jpg" width="750"
+alt="promise in Javascript Youtube Link"/></a></p>
 <br>
 
 <p>To Be Continued...</p>

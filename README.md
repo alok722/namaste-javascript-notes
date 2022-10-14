@@ -66,6 +66,8 @@
 
 #### [Episode 1 : Callback Hell](./notes/lecture-20.md)
 
+#### [Episode 2 : Promises](./notes/lecture-21.md)
+
 <br>
 
 ## ✨ Testimonial
