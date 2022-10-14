@@ -20,7 +20,13 @@
 
 ## 📝 Content List
 
-### 💡 <ins>Season 1<ins>
+### 📌 <ins>Season 2<ins>
+
+#### [Episode 1 : Callback Hell](./notes/lecture-20.md)
+
+#### [Episode 2 : Promises](./notes/lecture-21.md)
+
+### 📌 <ins>Season 1<ins>
 
 #### [Episode 1 : Execution Context](./notes/lecture-1.md)
 
@@ -62,14 +68,6 @@
 
 <br>
 
-### 💡 <ins>Season 2<ins>
-
-#### [Episode 1 : Callback Hell](./notes/lecture-20.md)
-
-#### [Episode 2 : Promises](./notes/lecture-21.md)
-
-<br>
-
 ## ✨ Testimonial
 
 From the creator of Namaste Javascript himself, 🙌
@@ -89,6 +87,7 @@ From the creator of Namaste Javascript himself, 🙌
 - Fork the repository to your own Github account
 - Clone the project to your machine, checkout to new branch & install dependencies using _yarn_
 - Commit changes to your branch only using **npm run commit** script
+- make sure to update in `lectures.md` too.
 - Don't use _git commit -m "commit message"_ to commit your changes
 - Push changes to your forked repositories
 - Open a PR in my repository by providing all info and context of your PR.
