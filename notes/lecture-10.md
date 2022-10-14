@@ -16,6 +16,22 @@
     ```
     * In above code, When y is returned, not only is the function returned but the entire closure (fun y + its lexical scope) is returned and put inside z. So when z is used somewhere else in program, it still remembers var a inside x()
 
+* Another Example
+```js
+    function z() {
+        var b = 900;
+        function x() {
+            var a=7;
+            function y(){
+                console.log(a,b);
+            }
+            y();
+        }
+        x();
+    }
+    z();    // 7 900
+```
+
 * Thus In simple words, we can say:
     * ***A closure is a function** that has access to its outer function scope even after the function has returned. Meaning, A closure can remember and access variables and arguments reference of its outer function even after the function has returned.*
 
