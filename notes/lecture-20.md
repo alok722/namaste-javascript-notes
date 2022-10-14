@@ -119,4 +119,4 @@ more at `http://callbackhell.com/`
 Watch Live On Youtube below:
 
 <a href="https://www.youtube.com/watch?v=yEKtJGha3yM&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX" target="_blank"><img src="https://img.youtube.com/vi/yEKtJGha3yM/0.jpg" width="750"
-alt="map, filter & reduce Youtube Link"/></a>
+alt="callback Youtube Link"/></a>
