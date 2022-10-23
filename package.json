@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "node generatePdf && generate-md --layout markedapp-byword --input ./notes/lectures.md --output ./dist",
-    "commit": "npm run build && git add . && git-cz"
+    "stage": "git add ."
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "pre-commit": "^1.2.2"
   },
   "pre-commit": [
-    "build"
+    "build",
+    "stage"
   ]
 }
