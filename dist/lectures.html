@@ -1710,6 +1710,176 @@ createOrder(cart)
 alt="promise in Javascript Youtube Link"/></a></p>
 <br>
 
+<hr>
+
+<h1 id="episode-22-season-2--episode-3--creating-a-promise-chaining--error-handling"><a class="header-link" href="#episode-22-season-2--episode-3--creating-a-promise-chaining--error-handling"></a>Episode 22 (Season 2 : Episode 3) : Creating a Promise, Chaining &amp; Error Handling</h1>
+<h3 id=""><a class="header-link" href="#"></a></h3>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
+
+<span class="hljs-comment">// Consumer part of promise</span>
+<span class="hljs-keyword">const</span> promise = createOrder(cart); <span class="hljs-comment">// orderId</span>
+<span class="hljs-comment">// Our expectation is above function is going to return me a promise.</span>
+
+promise.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+  proceedToPayment(orderId);
+});
+
+<span class="hljs-comment">// Above snippet we have observed in our previous lecture itself.</span>
+<span class="hljs-comment">// Now we will see, how createOrder is implemented so that it is returning a promise</span>
+<span class="hljs-comment">// In short we will see, &quot;How we can create Promise&quot; and then return it.</span>
+
+<span class="hljs-comment">// Producer part of Promise</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createOrder</span>(<span class="hljs-params">cart</span>) </span>{
+  <span class="hljs-comment">// JS provides a Promise constructor through which we can create promise</span>
+  <span class="hljs-comment">// It accepts a callback function with two parameter `resolve` &amp; `reject`</span>
+  <span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">// What is this `resolve` and `reject`?</span>
+    <span class="hljs-comment">// These are function which are passed by javascript to us in order to handle success and failure of function call.</span>
+    <span class="hljs-comment">// Now we will write logic to `createOrder`</span>
+    <span class="hljs-comment">/** Mock logic steps
+     * 1. validateCart
+     * 2. Insert in DB and get an orderId
+     */</span>
+    <span class="hljs-comment">// We are assuming in real world scenario, validateCart would be defined</span>
+    <span class="hljs-keyword">if</span> (!validateCart(cart)) {
+      <span class="hljs-comment">// If cart not valid, reject the promise</span>
+      <span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Cart is not Valid&quot;</span>);
+      reject(err);
+    }
+    <span class="hljs-keyword">const</span> orderId = <span class="hljs-string">&quot;12345&quot;</span>; <span class="hljs-comment">// We got this id by calling to db (Assumption)</span>
+    <span class="hljs-keyword">if</span> (orderId) {
+      <span class="hljs-comment">// Success scenario</span>
+      resolve(orderId);
+    }
+  });
+  <span class="hljs-keyword">return</span> promise;
+}</code></pre><p>Over above, if your validateCart is returning true, so the above promise will be resolved (success),</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
+
+<span class="hljs-keyword">const</span> promise = createOrder(cart); <span class="hljs-comment">// orderId</span>
+<span class="hljs-comment">// ❓ What will be printed in below line?</span>
+<span class="hljs-comment">// It prints Promise {&lt;pending&gt;}, but why?</span>
+<span class="hljs-comment">// Because above createOrder is going to take sometime to get resolved, so pending state. But once the promise is resolved, `.then` would be executed for callback.</span>
+<span class="hljs-built_in">console</span>.log(promise);
+
+promise.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+  proceedToPayment(orderId);
+});
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createOrder</span>(<span class="hljs-params">cart</span>) </span>{
+  <span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-keyword">if</span> (!validateCart(cart)) {
+      <span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Cart is not Valid&quot;</span>);
+      reject(err);
+    }
+    <span class="hljs-keyword">const</span> orderId = <span class="hljs-string">&quot;12345&quot;</span>;
+    <span class="hljs-keyword">if</span> (orderId) {
+      resolve(orderId);
+    }
+  });
+  <span class="hljs-keyword">return</span> promise;
+}</code></pre><p>Now let&#39;s see if there was some error and we are rejecting the promise, how we could catch that?<br>-&gt; Using <code>.catch</code></p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
+
+<span class="hljs-keyword">const</span> promise = createOrder(cart); <span class="hljs-comment">// orderId</span>
+
+<span class="hljs-comment">// Here we are consuming Promise and will try to catch promise error</span>
+promise
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+    <span class="hljs-comment">// ✅ success aka resolved promise handling</span>
+    proceedToPayment(orderId);
+  })
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-comment">// ⚠️ failure aka reject handling</span>
+    <span class="hljs-built_in">console</span>.log(err);
+  });
+
+<span class="hljs-comment">// Here we are creating Promise</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createOrder</span>(<span class="hljs-params">cart</span>) </span>{
+  <span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">// Assume below `validateCart` return false then the promise will be rejected</span>
+    <span class="hljs-comment">// And then our browser is going to throw the error.</span>
+    <span class="hljs-keyword">if</span> (!validateCart(cart)) {
+      <span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Cart is not Valid&quot;</span>);
+      reject(err);
+    }
+    <span class="hljs-keyword">const</span> orderId = <span class="hljs-string">&quot;12345&quot;</span>;
+    <span class="hljs-keyword">if</span> (orderId) {
+      resolve(orderId);
+    }
+  });
+  <span class="hljs-keyword">return</span> promise;
+}</code></pre><p>Now, Let&#39;s understand the concept of Promise Chaining<br>-&gt; for this we will assume after <code>createOrder</code> we have to invoke <code>proceedToPayment</code><br>-&gt; In promise chaining, whatever is returned from first <code>.then</code> become data for next <code>.then</code> and so on...<br>-&gt; At any point of promise chaining, if promise is rejected, the execution will fallback to <code>.catch</code> and others promise won&#39;t run.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
+
+createOrder(cart)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+    <span class="hljs-comment">// ✅ success aka resolved promise handling</span>
+    proceedToPayment(orderId);
+    <span class="hljs-keyword">return</span> orderId;
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+    <span class="hljs-comment">// Promise chaining</span>
+    <span class="hljs-comment">// 💡 we will make sure that `proceedToPayment` returns a promise too</span>
+    <span class="hljs-keyword">return</span> proceedToPayment(orderId);
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">paymentInfo</span>) </span>{
+    <span class="hljs-comment">// from above, `proceedToPayment` is returning a promise so we can consume using `.then`</span>
+    <span class="hljs-built_in">console</span>.log(paymentInfo);
+  })
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-comment">// ⚠️ failure aka reject handling</span>
+    <span class="hljs-built_in">console</span>.log(err);
+  });
+
+<span class="hljs-comment">// Here we are creating Promise</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createOrder</span>(<span class="hljs-params">cart</span>) </span>{
+  <span class="hljs-keyword">const</span> promise = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">// Assume below `validateCart` return false then the promise will be rejected</span>
+    <span class="hljs-comment">// And then our browser is going to throw the error.</span>
+    <span class="hljs-keyword">if</span> (!validateCart(cart)) {
+      <span class="hljs-keyword">const</span> err = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&quot;Cart is not Valid&quot;</span>);
+      reject(err);
+    }
+    <span class="hljs-keyword">const</span> orderId = <span class="hljs-string">&quot;12345&quot;</span>;
+    <span class="hljs-keyword">if</span> (orderId) {
+      resolve(orderId);
+    }
+  });
+  <span class="hljs-keyword">return</span> promise;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">proceedToPayment</span>(<span class="hljs-params">cart</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">// For time being, we are simply `resolving` promise</span>
+    resolve(<span class="hljs-string">&quot;Payment Successful&quot;</span>);
+  });
+}</code></pre><p>Q: What if we want to continue execution even if any of my promise is failing, how to achieve this?<br>-&gt; By placing the <code>.catch</code> block at some level after which we are not concerned with failure.<br>-&gt; There could be multiple <code>.catch</code> too.
+Eg:</p>
+<pre class="hljs"><code>createOrder(cart)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+    <span class="hljs-comment">// ✅ success aka resolved promise handling</span>
+    proceedToPayment(orderId);
+    <span class="hljs-keyword">return</span> orderId;
+  })
+    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-comment">// ⚠️ Whatever fails below it, catch wont care</span>
+    <span class="hljs-comment">// this block is responsible for code block above it.</span>
+    <span class="hljs-built_in">console</span>.log(err);
+  });
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
+    <span class="hljs-comment">// Promise chaining</span>
+    <span class="hljs-comment">// 💡 we will make sure that `proceedToPayment` returns a promise too</span>
+    <span class="hljs-keyword">return</span> proceedToPayment(orderId);
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">paymentInfo</span>) </span>{
+    <span class="hljs-comment">// from above, `proceedToPayment` is returning a promise so we can consume using `.then`</span>
+    <span class="hljs-built_in">console</span>.log(paymentInfo);
+  })</code></pre><hr>
+
+<p>Watch Live On Youtube below:</p>
+<p><a href="https://www.youtube.com/watch?v=U74BJcr8NeQ&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/U74BJcr8NeQ/0.jpg" width="750"
+alt="promise in Javascript Youtube Link"/></a></p>
 <p>To Be Continued...</p>
 </body>
 </html>
