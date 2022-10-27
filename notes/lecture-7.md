@@ -86,7 +86,7 @@ console.log(b); // Error, Not Defined
   } // a is lexically inside global execution
   ```
 
-* Lexical or Static scope refers to the accessibility of variables, functions and object based on phylical location in source code.
+* Lexical or Static scope refers to the accessibility of variables, functions and object based on physical location in source code.
     ```js
     Global {
         Outer {
