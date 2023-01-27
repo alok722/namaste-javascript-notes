@@ -332,7 +332,7 @@ GEC =  [a:{},[lexical_environment pointer pointing to null]]
 } // a is lexically inside global execution
 </pre>
 </li>
-<li><p>Lexical or Static scope refers to the accessibility of variables, functions and object based on phylical location in source code.</p>
+<li><p>Lexical or Static scope refers to the accessibility of variables, functions and object based on physical location in source code.</p>
 <pre class="prettyprint">Global {
     Outer {
         Inner
@@ -720,7 +720,7 @@ outer()(); <span class="hljs-comment">// 10</span></code></pre><p><strong>Ans</s
   }
   <span class="hljs-keyword">return</span> inner;
 }
-outer(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Inner function will now form closure and will have access to both a and b.</p>
+outer(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Inner function will now form closure and will have access to both a and str.</p>
 <h3 id="q5-in-below-code-will-inner-form-closure-with-outest"><a class="header-link" href="#q5-in-below-code-will-inner-form-closure-with-outest"></a>Q5: In below code, will inner form closure with <strong>outest</strong>?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outest</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> c = <span class="hljs-number">20</span>;
