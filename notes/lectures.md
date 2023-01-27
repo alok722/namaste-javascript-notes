@@ -362,7 +362,7 @@ console.log(b); // Error, Not Defined
   } // a is lexically inside global execution
   ```
 
-- Lexical or Static scope refers to the accessibility of variables, functions and object based on phylical location in source code.
+- Lexical or Static scope refers to the accessibility of variables, functions and object based on physical location in source code.
 
   ```js
   Global {
@@ -805,7 +805,7 @@ function outer(str) {
 outer("Hello There")(); // 10 "Hello There"
 ```
 
-**Ans**: Inner function will now form closure and will have access to both a and b.
+**Ans**: Inner function will now form closure and will have access to both a and str.
 
 ### Q5: In below code, will inner form closure with **outest**?
 
