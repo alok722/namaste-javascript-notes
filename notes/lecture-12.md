@@ -51,7 +51,7 @@ function outer(str) {
 }
 outer("Hello There")(); // 10 "Hello There"
 ```
-**Ans**: Inner function will now form closure and will have access to both a and b.
+**Ans**: Inner function will now form closure and will have access to both a and str.
 
 ### Q5: In below code, will inner form closure with **outest**?
 ```js
