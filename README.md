@@ -89,6 +89,3 @@ From the creator of Namaste Javascript himself, 🙌
 - Push changes to your forked repositories
 - Open a PR in my repository by providing all info and context of your PR.
 
-## ✨ Show your support
-
-Give a ⭐️ if this project helped you!
