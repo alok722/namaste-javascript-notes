@@ -68,24 +68,4 @@
 
 <br>
 
-## ✨ Testimonial
-
-From the creator of Namaste Javascript himself, 🙌
-![Testimonial](./assets/testimonial.png)
-
-## 👤 Author
-
-**alok raj (alokr417@gmail.com)**
-
-- website: https://bit.do/alok722
-- linkedin: [@alok722](https://linkedin.com/in/alok722)
-
-<br>
-
-## 🤝 Contribution Guidelines
-
-- Fork the repository to your own Github account
-- Clone the project to your machine, checkout to new branch & install dependencies using _yarn_
-- Push changes to your forked repositories
-- Open a PR in my repository by providing all info and context of your PR.
 
