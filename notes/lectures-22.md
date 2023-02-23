@@ -123,7 +123,8 @@ const cart = ["shoes", "pants", "kurta"];
 createOrder(cart)
   .then(function (orderId) {
     // ✅ success aka resolved promise handling
-    proceedToPayment(orderId);
+    // 💡 we have return data or promise so that we can keep chaining the promises, here we are returning data
+    console.log(orderId);
     return orderId;
   })
   .then(function (orderId) {
@@ -174,7 +175,8 @@ Eg:
 createOrder(cart)
   .then(function (orderId) {
     // ✅ success aka resolved promise handling
-    proceedToPayment(orderId);
+    // 💡 we have return data or promise so that we can keep chaining the promises, here we are returning data
+    console.log(orderId);
     return orderId;
   })
     .catch(function (err) {
