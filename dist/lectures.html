@@ -1815,7 +1815,8 @@ promise
 createOrder(cart)
   .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
     <span class="hljs-comment">// ✅ success aka resolved promise handling</span>
-    proceedToPayment(orderId);
+    <span class="hljs-comment">// 💡 we have return data or promise so that we can keep chaining the promises, here we are returning data</span>
+    <span class="hljs-built_in">console</span>.log(orderId);
     <span class="hljs-keyword">return</span> orderId;
   })
   .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
@@ -1859,7 +1860,8 @@ Eg:</p>
 <pre class="hljs"><code>createOrder(cart)
   .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">orderId</span>) </span>{
     <span class="hljs-comment">// ✅ success aka resolved promise handling</span>
-    proceedToPayment(orderId);
+    <span class="hljs-comment">// 💡 we have return data or promise so that we can keep chaining the promises, here we are returning data</span>
+    <span class="hljs-built_in">console</span>.log(orderId);
     <span class="hljs-keyword">return</span> orderId;
   })
     .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
