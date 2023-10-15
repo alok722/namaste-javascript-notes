@@ -4,8 +4,8 @@
   "description": "> This repo maintains my version of javascript notes which I learned from the famous [Namaste Javascript Youtube Series](https://www.youtube.com/watch?v=pN6jk0uUrD8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=1&ab_channel=AkshaySaini) by Akshay Saini.",
   "main": "index.js",
   "scripts": {
-    "build": "node generatePdf && generate-md --layout markedapp-byword --input ./notes/lectures.md --output ./dist",
-    "stage": "git add ."
+    "commit": "git add . && git-cz",
+    "build": "node generatePdf && generate-md --layout markedapp-byword --input ./notes/lectures.md --output ./dist"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,6 @@
     "pretty-markdown-pdf": "^1.5.1"
   },
   "devDependencies": {
-    "git-cz": "^4.9.0",
-    "pre-commit": "^1.2.2"
-  },
-  "pre-commit": [
-    "build",
-    "stage"
-  ]
+    "git-cz": "^4.9.0"
+  }
 }
