@@ -14,8 +14,8 @@
 - Code component is the place where code is executed one line at a time. It is also called the **Thread of Execution**.
 
 - JS is a **synchronous**, **single-threaded** language
-  - Synchronous:- One command at a time.
-  - Single-threaded:- In a specific synchronous order.
+  - Synchronous:- In a specific synchronous order.
+  - Single-threaded:- One command at a time.
 
 <hr>
 
