@@ -1882,6 +1882,208 @@ Eg:</p>
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=U74BJcr8NeQ&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/U74BJcr8NeQ/0.jpg" width="750"
 alt="promise in Javascript Youtube Link"/></a></p>
+<br>
+
+<hr>
+
+<h1 id="episode-23-season-2--episode-4--async-await"><a class="header-link" href="#episode-23-season-2--episode-4--async-await"></a>Episode 23 (Season 2 : Episode 4) : async await</h1>
+<h3 id="-1"><a class="header-link" href="#-1"></a></h3>
+<p>Topics Covered</p>
+<ul class="list">
+<li>What is async?</li>
+<li>What is await?</li>
+<li>How async await works behind the scenes?</li>
+<li>Example of using async/await</li>
+<li>Error Handling</li>
+<li>Interviews</li>
+<li>Async await vs Promise.then/.catch</li>
+</ul>
+<p>Q: What is async?<br>A: Async is a keyword that is used before a function to create a async function.</p>
+<p>Q: What is async function and how it is different from normal function?  </p>
+<pre class="hljs"><code><span class="hljs-comment">// 💡 async function always returns a promise, even if I return a simple string from below function, async keyword will wrap it under Promise and then return.</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Namaste JavaScript&quot;</span>;
+}
+<span class="hljs-keyword">const</span> dataPromise = getData();
+<span class="hljs-built_in">console</span>.log(dataPromise); <span class="hljs-comment">// Promise {&lt;fulfilled&gt;: &#x27;Namaste JavaScript&#x27;}</span>
+
+<span class="hljs-comment">//❓How to extract data from above promise? One way is using promise .then</span>
+dataPromise.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res)); <span class="hljs-comment">// Namaste JavaScript</span></code></pre><p>Another example where <code>async</code> function is returning a Promise</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  resolve(<span class="hljs-string">&#x27;Promise resolved value!!&#x27;</span>);
+})
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> p;
+}
+<span class="hljs-comment">// In above case, since we are already returning a promise async function would simply return that instead of wrapping with a new Promise.</span>
+<span class="hljs-keyword">const</span> dataPromise = getData();
+<span class="hljs-built_in">console</span>.log(dataPromise); <span class="hljs-comment">// Promise {&lt;fulfilled&gt;: &#x27;Promise resolved value!!&#x27;}</span>
+dataPromise.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res)); <span class="hljs-comment">// Promise resolved value!!</span></code></pre><p>Q: How we can use <code>await</code> along with async function?<br>A: <code>async</code> and <code>await</code> combo is used to handle promises.</p>
+<p>But Question is how we used to handle promises earlier and why we even need async/await?</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  resolve(<span class="hljs-string">&#x27;Promise resolved value!!&#x27;</span>);
+})
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
+  p.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res));
+}
+
+getData(); <span class="hljs-comment">// Promise resolved value!!</span>
+
+<span class="hljs-comment">//📌 Till now we have been using Promise.then/.catch to handle promise.</span>
+<span class="hljs-comment">// Now let&#x27;s see how async await can help us and how it is different</span>
+
+<span class="hljs-comment">// The rule is we have to use keyword await in front of promise.</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
+  <span class="hljs-built_in">console</span>.log(val);
+}
+handlePromise(); <span class="hljs-comment">// Promise resolved value!!</span></code></pre><p>📌 <code>await</code> is a keyword that can only be used inside a <code>async</code> function.</p>
+<pre class="hljs"><code><span class="hljs-keyword">await</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{} <span class="hljs-comment">// Syntax error: await is only valid under async function.</span></code></pre><p>Q: What makes <code>async</code>-<code>await</code> special?<br>A: Let&#39;s understand with one example where we will compare async-await way of resolving promise with older .then/.catch fashion. For that we will modify our promise <code>p</code>.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;Promise resolved value!!&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+})
+
+<span class="hljs-comment">// Let&#x27;s now compare with some modification:</span>
+
+<span class="hljs-comment">// 📌 Promise.then/.catch way</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// JS engine will not wait for promise to be resolved</span>
+  p.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res));
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+}
+
+getData(); <span class="hljs-comment">// First `Hello There!` would be printed and then after 3 secs &#x27;Promise resolved value!!&#x27; will be printed.</span>
+<span class="hljs-comment">// Above happened as Javascript wait for none, so it will register this promise and take this callback function and register separately then js will move on and execute the following console and later once promise is resolved, following console will be printed.</span>
+
+<span class="hljs-comment">//❓ Problem: Normally one used to get confused that JS will wait for promise to be resolved before executing following lines.</span>
+
+<span class="hljs-comment">// 📌 async-wait way:</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// JS Engine will waiting for promise to resolve.</span>
+  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(val);
+}
+handlePromise(); <span class="hljs-comment">// This time `Hello There!` won&#x27;t be printed immediately instead after 3 secs `Hello There!` will be printed followed by &#x27;Promise resolved value!!&#x27;</span>
+<span class="hljs-comment">// 💡 So basically code was waiting at `await` line to get the promise resolve before moving on to next line.</span>
+
+<span class="hljs-comment">// Above is the major difference between Promise.then/.catch vs async-await</span>
+
+<span class="hljs-comment">//🤓 Let&#x27;s brainstorm more around async-await</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(val);
+
+  <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(val2);
+}
+handlePromise(); 
+<span class="hljs-comment">// In above code example, will our program wait for 2 time or will it execute parallely.</span>
+<span class="hljs-comment">//📌 `Hi` printed instantly -&gt; now code will wait for 3 secs -&gt; After 3 secs both promises will be resolved so (&#x27;Hello There!&#x27; &#x27;Promise resolved value!!&#x27; &#x27;Hello There! 2&#x27; &#x27;Promise resolved value!!&#x27;) will get printed immediately.</span>
+
+<span class="hljs-comment">// Let&#x27;s create one promise and then resolve two different promise.</span>
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;Promise resolved value by p2!!&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+})
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(val);
+
+  <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p2;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(val2);
+}
+handlePromise(); 
+<span class="hljs-comment">// 📌 `Hi` printed instantly -&gt; now code will wait for 3 secs -&gt; After 3 secs both promises will be resolved so (&#x27;Hello There!&#x27; &#x27;Promise resolved value!!&#x27; &#x27;Hello There! 2&#x27; &#x27;Promise resolved value by p2!!&#x27;) will get printed immediately. So even though `p2` was resolved after 2 secs it had to wait for `p` to get resolved</span>
+
+
+<span class="hljs-comment">// Now let&#x27;s reverse the order execution of promise and observe response.</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p2;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(val);
+
+  <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(val2);
+}
+handlePromise(); 
+<span class="hljs-comment">// 📌 `Hi` printed instantly -&gt; now code will wait for 2 secs -&gt; After 2 secs (&#x27;Hello There!&#x27; &#x27;Promise resolved value by p2!!&#x27;) will get printed and in the subsequent second i.e. after 3 secs (&#x27;Hello There! 2&#x27; &#x27;Promise resolved value!!&#x27;) will get printed</span></code></pre><p>Q: Question is Is program actually waiting or what is happening behind the scene?<br>A: As we know, Time, Tide and JS wait for none. And it&#39;s true. Over here it appears that JS engine is waiting but JS engine is not waiting over here. It has not occupied the call stack if that would have been the case our page may have got frozen. So JS engine is not waiting. So if it is not waiting then what it is doing behind the scene? Let&#39;s understand with below code snippet.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;Promise resolved value by p1!!&#x27;</span>);
+  }, <span class="hljs-number">5000</span>);
+})
+
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;Promise resolved value by p2!!&#x27;</span>);
+  }, <span class="hljs-number">10000</span>);
+})
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-keyword">debugger</span>;
+  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-keyword">debugger</span>;
+  <span class="hljs-built_in">console</span>.log(val);
+
+  <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p2;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-keyword">debugger</span>;
+  <span class="hljs-built_in">console</span>.log(val2);
+}
+handlePromise(); 
+<span class="hljs-comment">// When this function is executed, it will go line by line as JS is synchronous single threaded language. Lets observe what is happening under call-stack. Above you can see we have set the break-points.</span>
+
+<span class="hljs-comment">// call stack flow -&gt; handlePromise() is pushed -&gt; It will log `Hi` to console -&gt; Next it sees we have await where promise is suppose to be resolved -&gt; So will it wait for promise to resolve and block call stack? No -&gt; thus handlePromise() execution get suspended and moved out of call stack -&gt; So when JS sees await keyword it suspend the execution of function till promise is resolved -&gt; So `p` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs. -&gt; But this time it will start executing from where it had left. -&gt; Now it will log &#x27;Hello There!&#x27; and &#x27;Promise resolved value!!&#x27; -&gt; then it will check whether `p2` is resolved or not -&gt; It will find since `p2` will take 10 secs to resolve so the same above process will repeat -&gt; execution will be suspended until promise is resolved.</span>
+
+<span class="hljs-comment">// 📌 Thus JS is not waiting, call stack is not getting blocked.</span>
+
+<span class="hljs-comment">// Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -&gt; even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.</span></code></pre><h3 id="real-world-example-of-asyncawait"><a class="header-link" href="#real-world-example-of-asyncawait"></a>Real World example of async/await</h3>
+<pre class="hljs"><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-comment">// fetch() =&gt; Response Object which as body as Readable stream =&gt; Response.json() is also a promise which when resolved =&gt; value</span>
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&#x27;https://api.github.com/users/alok722&#x27;</span>);
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> data.json();
+  <span class="hljs-built_in">console</span>.log(res);
+};
+handlePromise()</code></pre><h3 id="error-handling"><a class="header-link" href="#error-handling"></a>Error Handling</h3>
+<p>While we were using normal Promise we were using .catch to handle error, now in <code>async-await</code> we would be using <code>try-catch</code> block to handle error.</p>
+<pre class="hljs"><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&#x27;https://api.github.com/users/alok722&#x27;</span>);
+    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> data.json();
+    <span class="hljs-built_in">console</span>.log(res);
+  } <span class="hljs-keyword">catch</span> (err) {
+    <span class="hljs-built_in">console</span>.log(err)
+  }
+};
+handlePromise()
+
+<span class="hljs-comment">// In above whenever any error will occur the execution will move to catch block. One could try above with bad url which will result in error.</span>
+
+<span class="hljs-comment">// Other way of handling error:</span>
+handlePromise().catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(err)); <span class="hljs-comment">// this will work as handlePromise will return error promise in case of failure.</span></code></pre><h3 id="async-await-vs-promisethencatch"><a class="header-link" href="#async-await-vs-promisethencatch"></a>Async await vs Promise.then/.catch</h3>
+<p>What one should use? <code>async-await</code> is just a syntactic sugar around promise. Behind the scene <code>async-await</code> is just promise. So both are same, it&#39;s just <code>async-await</code> is new way of writing code. <code>async-await</code> solves few of the short-coming of Promise like <code>Promise Chaining</code>. <code>async-await</code> also increases the readability. So sort of it is always advisable to use <code>async-await.</code></p>
+<hr>
+
+<p>Watch Live On Youtube below:</p>
+<p><a href="https://www.youtube.com/watch?v=6nv3qy3oNkc&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/6nv3qy3oNkc/0.jpg" width="750"
+alt="async-await in Javascript Youtube Link"/></a></p>
 <p>To Be Continued...</p>
 </body>
 </html>

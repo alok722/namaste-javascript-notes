@@ -26,6 +26,8 @@
 
 #### [Episode 3 : Creating a Promise, Chaining & Error Handling](./notes/lecture-22.md)
 
+#### [Episode 4 : async await](./notes/lecture-23.md)
+
 ### 📌 <ins>Season 1<ins>
 
 #### [Episode 1 : Execution Context](./notes/lecture-1.md)
