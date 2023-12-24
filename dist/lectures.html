@@ -2084,6 +2084,277 @@ handlePromise().catch(<span class="hljs-function"><span class="hljs-params">err<
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=6nv3qy3oNkc&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/6nv3qy3oNkc/0.jpg" width="750"
 alt="async-await in Javascript Youtube Link"/></a></p>
+<br>
+
+<hr>
+
+<h1 id="episode-24-season-2--episode-5--promise-apis-all-allsettled-race-any--interview-questions-🔥"><a class="header-link" href="#episode-24-season-2--episode-5--promise-apis-all-allsettled-race-any--interview-questions-🔥"></a>Episode 24 (Season 2 : Episode 5) : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥</h1>
+<h3 id="-2"><a class="header-link" href="#-2"></a></h3>
+<p>4 Promise APIs which are majorly used:</p>
+<ul class="list">
+<li>Promise.all()</li>
+<li>Promise.allSettled()</li>
+<li>Promise.race()</li>
+<li>Promise.any()</li>
+</ul>
+<p>💡 One simply doesn&#39;t use async/await without knowing promises!</p>
+<h3 id="promiseall"><a class="header-link" href="#promiseall"></a>Promise.all()</h3>
+<blockquote>
+<p>A promise is a placeholder for a value that&#39;s going to be available sometime later. The promise helps handle asynchronous operations. JavaScript provides a helper function Promise.all(promisesArrayOrIterable) to handle multiple promises at once, in parallel, and get the results in a single aggregate array.</p>
+</blockquote>
+<p>Q: In what situation one could use above api?<br>A: Suppose, you have to make parallel API call and get the result, how one can do? This is where Promise.all can be utilized. It is used to handle multiple promises together.</p>
+<p>Promise.all([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  </p>
+<p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.all will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.  </p>
+<p>What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.all will throw same error as p2 immediately as soon as error happened. It will not wait for other promise to either become success or failure. Moreover, p1 and p2 wont get cancelled as they are already triggered so it may result in success or failure depending upon their fate but Promise.all wont care. So its a situation of or/null.</p>
+<p>💡 To conclude, the Promise.all() waits for all the input promises to resolve and returns a new promise that resolves to an array containing the results of the input promises. If one of the input promises is rejected, the Promise.all() method immediately returns a promise that is rejected with an error of the first rejected promise.</p>
+<h3 id="promiseallsettled"><a class="header-link" href="#promiseallsettled"></a>Promise.allSettled()</h3>
+<blockquote>
+<p>Promise.allSettled() method that accepts a list of Promises and returns a new promise that resolves after all the input promises have settled, either resolved or rejected.</p>
+</blockquote>
+<p>Promise.allSettled([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  </p>
+<p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.allSettled will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.  </p>
+<p>What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.allSettled will still wait for all promises to get settled. So After 3 secs, it will be [val1, err, val3]</p>
+<p>💡 Promise.all() -&gt; Fail Fast<br>💡 Promise.allSettled() -&gt; Will wait and provide accumulative result</p>
+<h3 id="promiserace"><a class="header-link" href="#promiserace"></a>Promise.race()</h3>
+<blockquote>
+<p>The Promise.race() static method accepts a list of promises as an iterable object and returns a new promise that fulfills or rejects as soon as there is one promise that fulfills or rejects, with the value or reason from that promise. The name of Promise.race() implies that all the promises race against each other with a single winner, either resolved or rejected.</p>
+</blockquote>
+<p>Promise.race([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  So as soon as first promise will resolve or reject, it will give the output.  </p>
+<p>So in Happy scenario, Promise.race will give (val2) as output after 1sec as p2 got resolved at the earliest. Whereas if it would have been failed Promise.race would have still given output after 1 sec but this time with error.</p>
+<h3 id="promiseany"><a class="header-link" href="#promiseany"></a>Promise.any()</h3>
+<blockquote>
+<p>The Promise.any() method accepts a list of Promise objects as an iterable object. If one of the promises in the iterable object is fulfilled, the Promise.any() returns a single promise that resolves to a value which is the result of the fulfilled promise.</p>
+</blockquote>
+<p>Promise.any([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  So as soon as first promise will be successful, it will give the output.</p>
+<p>If in above situation what if p2 got rejected, nothing will happen as Promise.any seek for success, so the moment first success will happen that will become the result.</p>
+<p>❓ But what if all promises got failed, so the returned result will be aggregated error i.e. [err1, err2, err3].</p>
+<h2 id="code-examples"><a class="header-link" href="#code-examples"></a>Code Examples:</h2>
+<h3 id="promiseall-1"><a class="header-link" href="#promiseall-1"></a>Promise.all()</h3>
+<pre class="hljs"><code><span class="hljs-comment">// 📌 First Scenario</span>
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+  }, <span class="hljs-number">1000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P3 Success&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.all([p1, p2, p3]).then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(results); <span class="hljs-comment">// [&#x27;P1 Success&#x27;, &#x27;P2 Success&#x27;, &#x27;P3 Success&#x27;] -&gt; took 3 secs</span>
+});</code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Second Scenario</span>
+
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P2 Fail&#x27;</span>);
+  }, <span class="hljs-number">1000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P3 Success&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.all([p1, p2, p3])
+  .then(<span class="hljs-function"><span class="hljs-params">results</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err)); <span class="hljs-comment">// throws error after 1 sec i.e. &#x27;P2 Fails&#x27;</span></code></pre><h3 id="promiseallsettled-1"><a class="header-link" href="#promiseallsettled-1"></a>Promise.allSettled()</h3>
+<p>💡This is safest among all Promises API.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+  }, <span class="hljs-number">1000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.allSettled([p1, p2, p3])
+  .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+
+<span class="hljs-comment">// Over here, it will wait for all promises to be either settled or rejected and then return,</span>
+  <span class="hljs-comment">/*
+    [
+      {status: &#x27;fulfilled&#x27;, value: &#x27;P1 Success&#x27;},
+      {status: &#x27;fulfilled&#x27;, value: &#x27;P2 Success&#x27;},
+      {status: &#x27;rejected&#x27;, reason: &#x27;P3 Fail&#x27;}
+    ]
+  */</span></code></pre><h3 id="promiserace-1"><a class="header-link" href="#promiserace-1"></a>Promise.race()</h3>
+<pre class="hljs"><code><span class="hljs-comment">// 📌 First Scenario</span>
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+  }, <span class="hljs-number">1000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.race([p1, p2, p3])
+  .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+
+ <span class="hljs-comment">// It will return as soon as first promise is resolved or rejected.</span>
+ <span class="hljs-comment">// In above example O/P: &quot;P2 Success&quot;</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Second Scenario</span>
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+  }, <span class="hljs-number">5000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.race([p1, p2, p3])
+  .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+
+ <span class="hljs-comment">//After 2 secs O/P: &quot;P3 Fail&quot;</span></code></pre><p>Notes:  </p>
+<ul class="list">
+<li>Once promise is settled, it means -&gt; got the result. Moreover, settled is broadly divided into two categories:</li>
+</ul>
+<ol class="list">
+<li>resolve, success, fulfilled</li>
+<li>reject, failure, rejected</li>
+</ol>
+<h3 id="promiseany-1"><a class="header-link" href="#promiseany-1"></a>Promise.any()</h3>
+<pre class="hljs"><code><span class="hljs-comment">// 📌 First Scenario</span>
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+  }, <span class="hljs-number">5000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.any([p1, p2, p3])
+  .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+
+<span class="hljs-comment">// It will wait for first settled **success**</span>
+<span class="hljs-comment">// In above, p3 will settled first, but since it is rejected, so it will wait further so at 3rd second it will print &quot;P1 Success&quot;</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Second Scenario</span>
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P1 Fail&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+  }, <span class="hljs-number">5000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.any([p1, p2, p3])
+  .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+
+<span class="hljs-comment">// After 5 secs: &#x27;P2 Success&#x27;</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Third Scenario</span>
+
+<span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P1 Fail&#x27;</span>);
+  }, <span class="hljs-number">3000</span>);
+});
+<span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P2 Fail&#x27;</span>);
+  }, <span class="hljs-number">5000</span>);
+});
+<span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+
+<span class="hljs-built_in">Promise</span>.any([p1, p2, p3])
+  .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    <span class="hljs-built_in">console</span>.error(err.errors); <span class="hljs-comment">// [&#x27;P1 Fail&#x27;, &#x27;P2 Fail&#x27;, &#x27;P3 Fail&#x27;]</span>
+  });
+
+<span class="hljs-comment">// Since all are rejected, so it will give &quot;aggregate error&quot; as output</span>
+<span class="hljs-comment">// AggregateError: All promises were rejected</span>
+<span class="hljs-comment">// To get AggregateError array you need to write &quot;err.errors&quot;</span></code></pre><h3 id="summary"><a class="header-link" href="#summary"></a>Summary</h3>
+<p>There are 6 static methods of Promise class:</p>
+<blockquote>
+<p>Promise.all(promises) – waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, it becomes the error of Promise.all, and all other results are ignored.</p>
+</blockquote>
+<blockquote>
+<p>Promise.allSettled(promises) (recently added method) – waits for all promises to settle and returns their results as an array of objects with:
+status: &quot;fulfilled&quot; or &quot;rejected&quot;
+value (if fulfilled) or reason (if rejected).</p>
+</blockquote>
+<blockquote>
+<p>Promise.race(promises) – waits for the first promise to settle, and its result/error becomes the outcome.</p>
+</blockquote>
+<blockquote>
+<p>Promise.any(promises) (recently added method) – waits for the first promise to fulfill, and its result becomes the outcome. If all of the given promises are rejected, AggregateError becomes the error of Promise.any.</p>
+</blockquote>
+<blockquote>
+<p>Promise.resolve(value) – makes a resolved promise with the given value.</p>
+</blockquote>
+<blockquote>
+<p>Promise.reject(error) – makes a rejected promise with the given error.
+Of all these, Promise.all is probably the most common in practice.</p>
+</blockquote>
+<hr>
+
+<p>Watch Live On Youtube below:</p>
+<p><a href="https://www.youtube.com/watch?v=DlTVt1rZjIo&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/DlTVt1rZjIo/0.jpg" width="750"
+alt="promise-apis in Javascript Youtube Link"/></a></p>
 <p>To Be Continued...</p>
 </body>
 </html>
