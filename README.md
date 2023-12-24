@@ -28,6 +28,8 @@
 
 #### [Episode 4 : async await](./notes/lecture-23.md)
 
+#### [Episode 5 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥](./notes/lecture-24.md)
+
 ### 📌 <ins>Season 1<ins>
 
 #### [Episode 1 : Execution Context](./notes/lecture-1.md)
@@ -79,7 +81,7 @@ From the creator of Namaste Javascript himself, 🙌
 
 **alok raj (alokr417@gmail.com)**
 
-- website: https://bit.do/alok722
+- website: https://alok722.github.io/
 - linkedin: [@alok722](https://linkedin.com/in/alok722)
 
 <br>
