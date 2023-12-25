@@ -1,4 +1,4 @@
-# Episode 24 (Season 2 : Episode 5) : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥
+# Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥
 
 ###
 

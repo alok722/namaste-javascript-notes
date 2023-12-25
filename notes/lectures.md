@@ -1735,7 +1735,7 @@ alt="map, filter & reduce Youtube Link"/></a>
 
 <br>
 
-# Episode 20 (Season 2 : Episode 1) : Callback
+# Episode 20 : Callback
 
 - There are 2 Parts of Callback:
 
@@ -1860,7 +1860,7 @@ alt="map, filter & reduce Youtube Link"/></a>
 
 <hr>
 
-# Episode 21 (Season 2 : Episode 2) : Promises
+# Episode 21 : Promises
 
 > Promises are used to handle async operations in JavaScript.
 
@@ -2050,7 +2050,7 @@ alt="promise in Javascript Youtube Link"/></a>
 
 <hr>
 
-# Episode 22 (Season 2 : Episode 3) : Creating a Promise, Chaining & Error Handling
+# Episode 22 : Creating a Promise, Chaining & Error Handling
 
 ###
 
@@ -2258,7 +2258,7 @@ alt="promise in Javascript Youtube Link"/></a>
 
 <hr>
 
-# Episode 23 (Season 2 : Episode 4) : async await
+# Episode 23 : async await
 
 ###
 Topics Covered
@@ -2503,7 +2503,7 @@ alt="async-await in Javascript Youtube Link"/></a>
 
 <hr>
 
-# Episode 24 (Season 2 : Episode 5) : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥
+# Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥
 
 ###
 

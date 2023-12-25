@@ -1,4 +1,4 @@
-# Episode 23 (Season 2 : Episode 4) : async await
+# Episode 23 : async await
 
 ###
 Topics Covered
