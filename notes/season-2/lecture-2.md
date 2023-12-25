@@ -1,4 +1,4 @@
-# Episode 21 (Season 2 : Episode 2) : Promises
+# Episode 21 : Promises
 
 > Promises are used to handle async operations in JavaScript.
 

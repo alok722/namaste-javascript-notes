@@ -1,4 +1,4 @@
-# Episode 22 (Season 2 : Episode 3) : Creating a Promise, Chaining & Error Handling
+# Episode 22 : Creating a Promise, Chaining & Error Handling
 
 ###
 

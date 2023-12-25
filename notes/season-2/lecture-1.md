@@ -1,4 +1,4 @@
-# Episode 20 (Season 2 : Episode 1) : Callback
+# Episode 20 : Callback
 
 - There are 2 Parts of Callback:
 
