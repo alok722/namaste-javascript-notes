@@ -20,19 +20,19 @@ The very **first** thing which JS does is **memory creation phase**, so it goes 
 
 So O/P will look something like
 
-![Execution Context Phase 1](../assets/phase1.jpg "Execution Context")
+![Execution Context Phase 1](/assets/phase1.jpg "Execution Context")
 
 Now, in **2nd phase** i.e. code execution phase, it starts going through the whole code line by line. As it encounters var n = 2, it assigns 2 to 'n'. Until now, the value of 'n' was undefined. For function, there is nothing to execute. As these lines were already dealt with in memory creation phase.
 
 Coming to line 6 i.e. **var square2 = square(n)**, here **functions are a bit different than any other language. A new execution context is created altogether.** Again in this new execution context, in memory creation phase, we allocate memory to num and ans the two variables. And undefined is placed in them. Now, in code execution phase of this execution context, first 2 is assigned to num. Then var ans = num * num will store 4 in ans. After that, return ans returns the control of program back to where this function was invoked from.
 
-![Execution Context Phase 2](../assets/phase2.jpg "Execution Context")
+![Execution Context Phase 2](/assets/phase2.jpg "Execution Context")
 
 When **return** keyword is encountered, It returns the control to the called line and also **the function execution context is deleted**.
 Same thing will be repeated for square4 and then after that is finished, the global execution context will be destroyed.
 So the **final diagram** before deletion would look something like:
 
-![Execution Context Phase 2](../assets/final_execution_context.jpg "Execution Context")
+![Execution Context Phase 2](/assets/final_execution_context.jpg "Execution Context")
 
 * Javascript manages code execution context creation and deletion with the the help of **Call Stack**.
 

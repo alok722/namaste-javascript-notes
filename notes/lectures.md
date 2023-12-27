@@ -5,7 +5,7 @@
 # Episode 1 : Execution Context
 
 - Everything in JS happens inside the execution context. Imagine a sealed-off container inside which JS runs. It is an abstract concept that hold info about the env. within the current code is being executed.
-  ![Execution Context](../assets/execution-context.jpg "Execution Context")
+  ![Execution Context](/assets/execution-context.jpg "Execution Context")
 
 - In the container the first component is **memory component** and the 2nd one is **code component**
 
@@ -55,19 +55,19 @@ The very **first** thing which JS does is **memory creation phase**, so it goes 
 
 So O/P will look something like
 
-![Execution Context Phase 1](../assets/phase1.jpg "Execution Context")
+![Execution Context Phase 1](/assets/phase1.jpg "Execution Context")
 
 Now, in **2nd phase** i.e. code execution phase, it starts going through the whole code line by line. As it encounters var n = 2, it assigns 2 to 'n'. Until now, the value of 'n' was undefined. For function, there is nothing to execute. As these lines were already dealt with in memory creation phase.
 
 Coming to line 6 i.e. **var square2 = square(n)**, here **functions are a bit different than any other language. A new execution context is created altogether.** Again in this new execution context, in memory creation phase, we allocate memory to num and ans the two variables. And undefined is placed in them. Now, in code execution phase of this execution context, first 2 is assigned to num. Then var ans = num \* num will store 4 in ans. After that, return ans returns the control of program back to where this function was invoked from.
 
-![Execution Context Phase 2](../assets/phase2.jpg "Execution Context")
+![Execution Context Phase 2](/assets/phase2.jpg "Execution Context")
 
 When **return** keyword is encountered, It returns the control to the called line and also **the function execution context is deleted**.
 Same thing will be repeated for square4 and then after that is finished, the global execution context will be destroyed.
 So the **final diagram** before deletion would look something like:
 
-![Execution Context Phase 2](../assets/final_execution_context.jpg "Execution Context")
+![Execution Context Phase 2](/assets/final_execution_context.jpg "Execution Context")
 
 - Javascript manages code execution context creation and deletion with the the help of **Call Stack**.
 
@@ -191,7 +191,7 @@ Outputs:
 
 - reference:
 
-![Execution Context Phase 1](../assets/function.jpg "Execution Context")
+![Execution Context Phase 1](/assets/function.jpg "Execution Context")
 
 <hr>
 
@@ -340,8 +340,8 @@ console.log(b); // Error, Not Defined
     a() = [b:10, c:{}, [lexical environment pointer pointing to GEC]]
     GEC =  [a:{},[lexical_environment pointer pointing to null]]
     ```
-    ![Lexical Scope Explaination](../assets/lexical.jpg "Lexical Scope")
-    ![Lexical Scope Explaination](../assets/lexical2.jpg "Lexical Scope")
+    ![Lexical Scope Explaination](/assets/lexical.jpg "Lexical Scope")
+    ![Lexical Scope Explaination](/assets/lexical2.jpg "Lexical Scope")
 
 <br>
 
@@ -544,7 +544,7 @@ let b = 100;
 console.log(b); // 100, Both b's are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.
 ```
 
-![Block Scope Explaination](../assets/scope.jpg "Lexical Scope")
+![Block Scope Explaination](/assets/scope.jpg "Lexical Scope")
 
 - Same logic is true even for **functions**
 
@@ -633,7 +633,7 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
 
 <br>
 
-- ![Closure Explaination](../assets/closure.jpg "Lexical Scope")
+- ![Closure Explaination](/assets/closure.jpg "Lexical Scope")
 
 - Advantages of Closure:
 
@@ -1160,7 +1160,7 @@ document.getElementById("clickMe").addEventListener("click", function xyz() {
     }
     attachEventList();
     ```
-    ![Event Listerner Demo](../assets/event.jpg)
+    ![Event Listerner Demo](/assets/event.jpg)
 
 ### Garbage Collection and removeEventListeners
 
@@ -1186,12 +1186,12 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a>
 - Browser has JS Engine which has Call Stack which has Global execution context, local execution context etc.
   - But browser has many other superpowers - Local storage space, Timer, place to enter URL, Bluetooth access, Geolocation access and so on.
   - Now JS needs some way to connect the callstack with all these superpowers. This is done using Web APIs.
-    ![Event Loop 1 Demo](../assets/eventloop1.jpg)
+    ![Event Loop 1 Demo](/assets/eventloop1.jpg)
 
 ### WebAPIs
 
 None of the below are part of Javascript! These are extra superpowers that browser has. Browser gives access to JS callstack to use these powers.
-![Event Loop 2 Demo](../assets/eventloop2.jpg)
+![Event Loop 2 Demo](/assets/eventloop2.jpg)
 
 - setTimeout(), DOM APIs, fetch(), localstorage, console (yes, even console.log is not JS!!), location and so many more.
 
@@ -1205,7 +1205,7 @@ None of the below are part of Javascript! These are extra superpowers that brows
   - As window is global obj, and all the above functions are present in global object, we don't explicity write window but it is implied.
 
 - Let's undertand the below code image and its explaination:
-  ![Event Loop 3 Demo](../assets/eventloop3.jpg)
+  ![Event Loop 3 Demo](/assets/eventloop3.jpg)
   - ```js
     console.log("start");
     setTimeout(function cb() {
@@ -1228,12 +1228,12 @@ Q: How after 5 secs timer is console?
 - cb() cannot simply directly go to callstack to be execeuted. It goes through the callback queue when timer expires.
 - Event loop keep checking the callback queue, and see if it has any element to puts it into call stack. It is like a gate keeper.
 - Once cb() is in callback queue, eventloop pushes it to callstack to run. Console API is used and log printed
-- ![Event Loop 4 Demo](../assets/eventloop4.jpg)
+- ![Event Loop 4 Demo](/assets/eventloop4.jpg)
 
 Q: Another example to understand Eventloop & Callback Queue.
 
 See the below Image and code and try to understand the reason:
-![Event Loop 5 Demo](../assets/eventloop5.jpg)
+![Event Loop 5 Demo](/assets/eventloop5.jpg)
 Explaination?
 
 - ```js
@@ -1281,9 +1281,9 @@ Code Explaination:
 * See below Image for more understanding
 ```
 
-![Event Loop 6 Demo](../assets/eventloop6.jpg)
+![Event Loop 6 Demo](/assets/eventloop6.jpg)
 Microtask Priority Visualization
-![Event Loop 7 Demo](../assets/microtask.gif)
+![Event Loop 7 Demo](/assets/microtask.gif)
 
 #### What enters the Microtask Queue ?
 
@@ -1307,12 +1307,12 @@ Microtask Priority Visualization
 
 ### Observation of Eventloop, Callback Queue & Microtask Queue [**GiF**]
 
-![microtask 1 Demo](../assets/microtask1.gif)
-![microtask 2 Demo](../assets/microtask2.gif)
-![microtask 3 Demo](../assets/microtask3.gif)
-![microtask 4 Demo](../assets/microtask4.gif)
-![microtask 5 Demo](../assets/microtask5.gif)
-![microtask 6 Demo](../assets/microtask6.gif)
+![microtask 1 Demo](/assets/microtask1.gif)
+![microtask 2 Demo](/assets/microtask2.gif)
+![microtask 3 Demo](/assets/microtask3.gif)
+![microtask 4 Demo](/assets/microtask4.gif)
+![microtask 5 Demo](/assets/microtask5.gif)
+![microtask 6 Demo](/assets/microtask6.gif)
 
 <hr>
 
@@ -1346,14 +1346,14 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
   1. **Parsing** - Code is broken down into tokens. In "let a = 7" -> let, a, =, 7 are all tokens. Also we have a syntax parser that takes code and converts it into an AST (Abstract Syntax Tree) which is a JSON with all key values like type, start, end, body etc (looks like package.json but for a line of code in JS. Kinda unimportant)(Check out astexplorer.net -> converts line of code into AST).
   2. **Compilation** - JS has something called Just-in-time(JIT) Compilation - uses both interpreter & compiler. Also compilation and execution both go hand in hand. The AST from previous step goes to interpreter which converts hi-level code to byte code and moves to execeution. While interpreting, compiler also works hand in hand to compile and form optimized code during runtime. **Does JavaScript really Compiles?** The answer is a loud **YES**. More info at: [Link 1](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#whats-in-an-interpretation), [Link 2](https://web.stanford.edu/class/cs98si/slides/overview.html), [Link 3](https://blog.greenroots.info/javascript-interpreted-or-compiled-the-debate-is-over-ckb092cv302mtl6s17t14hq1j). JS used to be only interpreter in old times, but now has both to compile and interpreter code and this make JS a JIT compiled language, its like best of both world.
   3. **Execution** - Needs 2 components ie. Memory heap(place where all memory is stored) and Call Stack(same call stack from prev episodes). There is also a garbage collector. It uses an algo called **Mark and Sweep**.
-     ![JS Engine Demo](../assets/jsengine.jpg)
+     ![JS Engine Demo](/assets/jsengine.jpg)
      GiF Demo
-     ![JS Engine Demo](../assets/jsenginegif.gif)
+     ![JS Engine Demo](/assets/jsenginegif.gif)
 
 - Companies use different JS engines and each try to make theirs the best.
   - v8 of Google has Interpreter called Ignition, a compiler called Turbo Fan and garbage collector called Orinoco
   - v8 architecture:
-    ![JS Engine Demo](../assets/jsengine.png)
+    ![JS Engine Demo](/assets/jsengine.png)
 
 <hr>
 
@@ -1399,7 +1399,7 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a>
 - The First rule of JavaScript: Do not **block the main thread** (as JS is a single threaded(only 1 callstack) language).
 
 - In below example, we are blocking the main thread. Observe Questiona and Output.
-  ![setTimeout Demo](../assets/settimeout1.jpg)
+  ![setTimeout Demo](/assets/settimeout1.jpg)
 
 - setTimeout guarantees that it will take at least the given timer to execute the code.
 

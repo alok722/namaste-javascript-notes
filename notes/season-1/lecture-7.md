@@ -64,8 +64,8 @@ console.log(b); // Error, Not Defined
     a() = [b:10, c:{}, [lexical environment pointer pointing to GEC]]
     GEC =  [a:{},[lexical_environment pointer pointing to null]]
     ```
-    ![Lexical Scope Explaination](../assets/lexical.jpg "Lexical Scope")
-    ![Lexical Scope Explaination](../assets/lexical2.jpg "Lexical Scope")
+    ![Lexical Scope Explaination](/assets/lexical.jpg "Lexical Scope")
+    ![Lexical Scope Explaination](/assets/lexical2.jpg "Lexical Scope")
 
 <br>
 
