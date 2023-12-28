@@ -56,7 +56,7 @@ What is **Shadowing**?
     }
     console.log(b); // 100, Both b's are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.
     ```
-    ![Block Scope Explaination](../assets/scope.jpg "Lexical Scope")
+    ![Block Scope Explaination](/assets/scope.jpg "Lexical Scope")
 
 
 * Same logic is true even for **functions**

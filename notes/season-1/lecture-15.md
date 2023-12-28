@@ -5,11 +5,11 @@
 * Browser has JS Engine which has Call Stack which has Global execution context, local execution context etc.
   * But browser has many other superpowers - Local storage space, Timer, place to enter URL, Bluetooth access, Geolocation access and so on.
   * Now JS needs some way to connect the callstack with all these superpowers. This is done using Web APIs.
-  ![Event Loop 1 Demo](../assets/eventloop1.jpg)
+  ![Event Loop 1 Demo](/assets/eventloop1.jpg)
 
 ### WebAPIs
 None of the below are part of Javascript! These are extra superpowers that browser has. Browser gives access to JS callstack to use these powers.
-![Event Loop 2 Demo](../assets/eventloop2.jpg)
+![Event Loop 2 Demo](/assets/eventloop2.jpg)
 
 * setTimeout(), DOM APIs, fetch(), localstorage, console (yes, even console.log is not JS!!), location and so many more.
     * setTimeout() : Timer function
@@ -21,7 +21,7 @@ None of the below are part of Javascript! These are extra superpowers that brows
     * As window is global obj, and all the above functions are present in global object, we don't explicity write window but it is implied.
 
 * Let's undertand the below code image and its explaination:
-    ![Event Loop 3 Demo](../assets/eventloop3.jpg)
+    ![Event Loop 3 Demo](/assets/eventloop3.jpg)
     * ```js
       console.log("start");
       setTimeout(function cb() {
@@ -43,12 +43,12 @@ Q: How after 5 secs timer is console?
 * cb() cannot simply directly go to callstack to be execeuted. It goes through the callback queue when timer expires.
 * Event loop keep checking the callback queue, and see if it has any element to puts it into call stack. It is like a gate keeper.
 * Once cb() is in callback queue, eventloop pushes it to callstack to run. Console API is used and log printed
-* ![Event Loop 4 Demo](../assets/eventloop4.jpg)
+* ![Event Loop 4 Demo](/assets/eventloop4.jpg)
 
 Q: Another example to understand Eventloop & Callback Queue.
 
 See the below Image and code and try to understand the reason:
-![Event Loop 5 Demo](../assets/eventloop5.jpg)
+![Event Loop 5 Demo](/assets/eventloop5.jpg)
 Explaination?
 
 * ```js
@@ -93,9 +93,9 @@ Code Explaination:
 * In console, first Start and End are printed in console. First cbF goes in callstack and "CB Netflix" is printed. cbF popped from callstack. Next cbT is removed from callback Queue, put in Call Stack, "CB Timeout" is printed, and cbT removed from callstack.
 * See below Image for more understanding
 ```
-![Event Loop 6 Demo](../assets/eventloop6.jpg)
+![Event Loop 6 Demo](/assets/eventloop6.jpg)
 Microtask Priority Visualization
-![Event Loop 7 Demo](../assets/microtask.gif)
+![Event Loop 7 Demo](/assets/microtask.gif)
 
 #### What enters the Microtask Queue ?
 * All the callback functions that come through promises go in microtask Queue.
@@ -118,12 +118,12 @@ Microtask Priority Visualization
 <br>
 
 ### Observation of Eventloop, Callback Queue & Microtask Queue [**GiF**]
-![microtask 1 Demo](../assets/microtask1.gif)
-![microtask 2 Demo](../assets/microtask2.gif)
-![microtask 3 Demo](../assets/microtask3.gif)
-![microtask 4 Demo](../assets/microtask4.gif)
-![microtask 5 Demo](../assets/microtask5.gif)
-![microtask 6 Demo](../assets/microtask6.gif)
+![microtask 1 Demo](/assets/microtask1.gif)
+![microtask 2 Demo](/assets/microtask2.gif)
+![microtask 3 Demo](/assets/microtask3.gif)
+![microtask 4 Demo](/assets/microtask4.gif)
+![microtask 5 Demo](/assets/microtask5.gif)
+![microtask 6 Demo](/assets/microtask6.gif)
 
 <hr>
 

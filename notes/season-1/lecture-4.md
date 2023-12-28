@@ -49,7 +49,7 @@ Outputs:
 
 * reference:
 
-![Execution Context Phase 1](../assets/function.jpg "Execution Context")
+![Execution Context Phase 1](/assets/function.jpg "Execution Context")
 
 <hr>
 
