@@ -38,7 +38,7 @@
 
 <br>
 
-* ![Closure Explaination](../assets/closure.jpg "Lexical Scope")
+* ![Closure Explaination](/assets/closure.jpg "Lexical Scope")
 
 * Advantages of Closure:
   * Module Design Pattern
