@@ -88,10 +88,8 @@ From the creator of Namaste Javascript himself, 🙌
 
 ## 🤝 Contribution Guidelines
 
-- Fork the repository to your own Github account
-- Clone the project to your machine, checkout to new branch & install dependencies using _yarn_
-- Push changes to your forked repositories
-- Open a PR in my repository by providing all info and context of your PR.
+- Please create an issue with your suggestion, if found valid I would push the fix. 
+- Please, Don't open the PR directly without conversation.
 
 ## ✨ Show your support
 
