@@ -70,6 +70,8 @@
 
 #### [Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥](./notes/season-2/lecture-5.md)
 
+#### [Episode 25 : `this` keyword in JavaScript](./notes/season-2/lecture-6.md)
+
 <br>
 
 ## ✨ Testimonial
