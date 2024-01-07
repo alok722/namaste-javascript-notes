@@ -2355,6 +2355,96 @@ Of all these, Promise.all is probably the most common in practice.</p>
 <p>Watch Live On Youtube below:</p>
 <p><a href="https://www.youtube.com/watch?v=DlTVt1rZjIo&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/DlTVt1rZjIo/0.jpg" width="750"
 alt="promise-apis in Javascript Youtube Link"/></a></p>
+<br>
+
+<hr>
+
+<h1 id="episode-25--this-keyword-in-javascript"><a class="header-link" href="#episode-25--this-keyword-in-javascript"></a>Episode 25 : <code>this</code> keyword in JavaScript</h1>
+<h3 id="-3"><a class="header-link" href="#-3"></a></h3>
+<blockquote>
+<p>In JavaScript, the this keyword refers to an object, which object depends on how this is being invoked (used or called).</p>
+</blockquote>
+<h2 id="this-in-global-space"><a class="header-link" href="#this-in-global-space"></a><code>this</code> in global space</h2>
+<p>Anything defined globally is said to be in a global space.</p>
+<pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// refers to global object i.e. window in case of browser</span>
+<span class="hljs-comment">// 💡 global object differs based on runtime environment,</span></code></pre><h2 id="this-inside-a-function"><a class="header-link" href="#this-inside-a-function"></a><code>this</code> inside a function</h2>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// the below value depends on strict/non-strict mode</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);
+    <span class="hljs-comment">// in strict mode - refers to global window object</span>
+    <span class="hljs-comment">// in non-strict mode - undefined</span>
+}
+x();
+<span class="hljs-comment">// 💡 Notes:</span>
+
+<span class="hljs-comment">// On the first go feels like `this` keyword in global space and inside function behaves same but in reality it&#x27;s different.</span>
+
+<span class="hljs-comment">// The moment you make JS run in strict mode by using: &quot;use strict&quot; at the top, `this` keyword inside function returns `undefined` whereas global space will still refers to global window object</span></code></pre><p><code>this substitution</code> -&gt; According to <code>this</code> substitution, if the value of <code>this</code> keyword is <code>null/undefined</code>, it will be replaced by globalObject only in non-strict mode. This is the reason why <code>this</code> refers to global window object inside function in non-strict mode.</p>
+<p>💡 So to summarize, the value of <code>this</code> keyword inside function is <code>undefined</code>, but because of <code>this substitution</code> in non-strict mode <code>this</code> keyword refers to <code>globalWindowObject</code> and in strict mode it will still be <code>undefined</code></p>
+<p><code>this</code> keyword value depends on how the <code>function</code> is called. For eg:<br>In strict mode:  </p>
+<pre class="hljs"><code>x(); <span class="hljs-comment">// undefined  </span>
+<span class="hljs-built_in">window</span>.x(); <span class="hljs-comment">// global window object</span></code></pre><h2 id="this-inside-a-objects-method"><a class="header-link" href="#this-inside-a-objects-method"></a><code>this</code> inside a object&#39;s method</h2>
+<pre class="hljs"><code><span class="hljs-comment">// `x` key below is a method as per terminology</span>
+<span class="hljs-keyword">const</span> obj = {
+    <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">x</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// {a: 10, x: f()}</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a); <span class="hljs-comment">// 10</span>
+    }
+}
+obj.x(); <span class="hljs-comment">// value of `this` is referring to current object i.e. `obj`</span></code></pre><h2 id="call-apply--bind-methods"><a class="header-link" href="#call-apply--bind-methods"></a><code>call</code>, <code>apply</code> &amp; <code>bind</code> methods</h2>
+<blockquote>
+<p>For detail around call, apply and bind method. Refer <a href="https://www.youtube.com/watch?v=75W8UPQ5l7k&ab_channel=AkshaySaini">here</a>.</p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> student = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Alok&#x27;</span>,
+    <span class="hljs-attr">printName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);
+    }
+}
+student.printName(); <span class="hljs-comment">// Alok</span>
+
+<span class="hljs-keyword">const</span> student2 = {
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Kajal&#x27;</span>,
+}
+student2.printName(); <span class="hljs-comment">// throw error</span>
+
+<span class="hljs-comment">// ❓ how to re-use printName method from `student` object</span>
+student.printName.call(student2); <span class="hljs-comment">// Kajal</span>
+<span class="hljs-comment">// Above `call` method is taking the value of `this` keyword</span>
+<span class="hljs-comment">// So, Inside `printName` method value of `this` is now `student2` object</span>
+
+<span class="hljs-comment">// So, call, bind and apply is used to set the value of this keyword.</span></code></pre><h2 id="this-inside-arrow-function"><a class="header-link" href="#this-inside-arrow-function"></a><code>this</code> inside arrow function</h2>
+<p>Arrow function doesn&#39;t have their own <code>this</code> value, they take the value from enclosing lexical context.</p>
+<pre class="hljs"><code><span class="hljs-keyword">const</span> obj = {
+    <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">x</span>: <span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// window object</span>
+        <span class="hljs-comment">// Above the value of `this` won&#x27;t be obj anymore instead it will be enclosing lexical context i.e. window object in current scenario.</span>
+    }
+}
+obj.x();
+
+<span class="hljs-keyword">const</span> obj2 = {
+    <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">x</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">const</span> y = <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);
+            <span class="hljs-comment">// Above the value of `this` will be obj2 as function y&#x27;s enclosing lexical context is function `x`.</span>
+        };
+        y();
+    }
+}
+obj2.x();</code></pre><h2 id="this-inside-dom"><a class="header-link" href="#this-inside-dom"></a><code>this</code> inside DOM</h2>
+<blockquote>
+<p>It refers to HTML element.</p>
+</blockquote>
+<pre class="hljs"><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;alert(this)&quot;</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- [object HTMLButtonElement] Button element --&gt;</span></code></pre><hr>
+
+<p>Watch Live On Youtube below:</p>
+<p><a href="https://www.youtube.com/watch?v=9T4z98JcHR0&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/9T4z98JcHR0/0.jpg" width="750"
+alt="this keyword in Javascript Youtube Link"/></a></p>
 <p>To Be Continued...</p>
 </body>
 </html>
