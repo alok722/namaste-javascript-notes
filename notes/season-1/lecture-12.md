@@ -11,7 +11,7 @@ function outer() {
     } // inner forms a closure with outer
     return inner;
 }
-outer()(); // 10 // over here first `()` will return inner function and then using secong `()` to call inner function 
+outer()(); // 10 // over here first `()` will return inner function and then using second `()` to call inner function 
 ```
 
 ### Q2: Will the below code still forms a closure?
