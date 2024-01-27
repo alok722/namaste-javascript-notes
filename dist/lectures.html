@@ -694,7 +694,7 @@ eg:</p>
   } <span class="hljs-comment">// inner forms a closure with outer</span>
   <span class="hljs-keyword">return</span> inner;
 }
-outer()(); <span class="hljs-comment">// 10 // over here first `()` will return inner function and then using secong `()` to call inner function</span></code></pre><h3 id="q2-will-the-below-code-still-forms-a-closure"><a class="header-link" href="#q2-will-the-below-code-still-forms-a-closure"></a>Q2: Will the below code still forms a closure?</h3>
+outer()(); <span class="hljs-comment">// 10 // over here first `()` will return inner function and then using second `()` to call inner function</span></code></pre><h3 id="q2-will-the-below-code-still-forms-a-closure"><a class="header-link" href="#q2-will-the-below-code-still-forms-a-closure"></a>Q2: Will the below code still forms a closure?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(a);

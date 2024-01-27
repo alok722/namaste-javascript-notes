@@ -8,8 +8,6 @@
 
 <br>
 
-## 🔗 [bit.ly/namaste-js](https://bit.ly/namaste-js)
-
 ## 🏠 [Namaste Javascript Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
 
 ## 🚀 [PDF Version of Complete Notes](./dist/namaste-javascript-notes.pdf)
@@ -20,23 +18,23 @@
 
 ### 📌 <ins>Season 1<ins>
 
-#### [Episode 1 : Execution Context](./notes/season-1/lecture-1.md)
+#### [Episode 1 : Execution Context](./notes/season-1/lecture-01.md)
 
-#### [Episode 2 : How JS is executed & Call Stack](./notes/season-1/lecture-2.md)
+#### [Episode 2 : How JS is executed & Call Stack](./notes/season-1/lecture-02.md)
 
-#### [Episode 3 : Hoisting in JavaScript (variables & functions)](./notes/season-1/lecture-3.md)
+#### [Episode 3 : Hoisting in JavaScript (variables & functions)](./notes/season-1/lecture-03.md)
 
-#### [Episode 4 : Functions and Variable Environments](./notes/season-1/lecture-4.md)
+#### [Episode 4 : Functions and Variable Environments](./notes/season-1/lecture-04.md)
 
-#### [Episode 5 : Shortest JS Program, window & this keyword](./notes/season-1/lecture-5.md)
+#### [Episode 5 : Shortest JS Program, window & this keyword](./notes/season-1/lecture-05.md)
 
-#### [Episode 6 : undefined vs not defined in JS](./notes/season-1/lecture-6.md)
+#### [Episode 6 : undefined vs not defined in JS](./notes/season-1/lecture-06.md)
 
-#### [Episode 7 : The Scope Chain, Scope & Lexical Environment](./notes/season-1/lecture-7.md)
+#### [Episode 7 : The Scope Chain, Scope & Lexical Environment](./notes/season-1/lecture-07.md)
 
-#### [Episode 8 : let & const in JS, Temporal Dead Zone](./notes/season-1/lecture-8.md)
+#### [Episode 8 : let & const in JS, Temporal Dead Zone](./notes/season-1/lecture-08.md)
 
-#### [Episode 9 : Block Scope & Shadowing in JS](./notes/season-1/lecture-9.md)
+#### [Episode 9 : Block Scope & Shadowing in JS](./notes/season-1/lecture-09.md)
 
 #### [Episode 10 : Closure in JS](./notes/season-1/lecture-10.md)
 
@@ -60,17 +58,17 @@
 
 ### 📌 <ins>Season 2<ins>
 
-#### [Episode 20 : Callback Hell](./notes/season-2/lecture-1.md)
+#### [Episode 20 : Callback Hell](./notes/season-2/lecture-01.md)
 
-#### [Episode 21 : Promises](./notes/season-2/lecture-2.md)
+#### [Episode 21 : Promises](./notes/season-2/lecture-02.md)
 
-#### [Episode 22 : Creating a Promise, Chaining & Error Handling](./notes/season-2/lecture-3.md)
+#### [Episode 22 : Creating a Promise, Chaining & Error Handling](./notes/season-2/lecture-03.md)
 
-#### [Episode 23 : async await](./notes/season-2/lecture-4.md)
+#### [Episode 23 : async await](./notes/season-2/lecture-04.md)
 
-#### [Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥](./notes/season-2/lecture-5.md)
+#### [Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥](./notes/season-2/lecture-05.md)
 
-#### [Episode 25 : `this` keyword in JavaScript](./notes/season-2/lecture-6.md)
+#### [Episode 25 : `this` keyword in JavaScript](./notes/season-2/lecture-06.md)
 
 <br>
 
