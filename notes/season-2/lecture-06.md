@@ -18,8 +18,8 @@ console.log(this); // refers to global object i.e. window in case of browser
 function x() {
     // the below value depends on strict/non-strict mode
     console.log(this);
-    // in strict mode - refers to global window object
-    // in non-strict mode - undefined
+    // in strict mode - undefined
+    // in non-strict mode - refers to global window object
 }
 x();
 // 💡 Notes:
