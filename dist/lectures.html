@@ -575,13 +575,135 @@ z(); // 7 900
 <li><p class="img-container"><img src="../assets/closure.jpg" alt="Closure Explaination" title="Lexical Scope"></p>
 </li>
 <li><p>Advantages of Closure:</p>
+<p>  Certainly! Let&#39;s explore examples for each of the advantages you&#39;ve
+  mentioned:</p>
+<ol class="list">
+<li><p><strong>Module Design Pattern</strong>:</p>
 <ul class="list">
-<li>Module Design Pattern</li>
-<li>Currying</li>
-<li>Memoize</li>
-<li>Data hiding and encapsulation</li>
-<li>setTimeouts etc.</li>
+<li><p>The module design pattern allows us to encapsulate related
+functionality into a single module or file. It helps organize
+code, prevent global namespace pollution, and promotes
+reusability.</p>
+</li>
+<li><p>Example: Suppose we&#39;re building a web application, and we want
+to create a module for handling user authentication. We can
+create a <code>auth.js</code> module that exports functions like <code>login</code>,
+<code>logout</code>, and <code>getUserInfo</code>.</p>
+<pre class="prettyprint">// auth.js
+const authModule = (function () {
+  let loggedInUser = null;
+
+  function login(username, password) {
+    // Authenticate user logic...
+    loggedInUser = username;
+  }
+
+  function logout() {
+    loggedInUser = null;
+  }
+
+  function getUserInfo() {
+    return loggedInUser;
+  }
+
+  return {
+    login,
+    logout,
+    getUserInfo,
+  };
+})();
+
+// Usage
+authModule.login(&#39;john_doe&#39;, &#39;secret&#39;);
+console.log(authModule.getUserInfo()); // &#39;john_doe&#39;
+</pre>
+</li>
 </ul>
+</li>
+<li><p><strong>Currying</strong>:</p>
+<ul class="list">
+<li><p>Currying is a technique where a function that takes multiple
+arguments is transformed into a series of functions that take
+one argument each. It enables partial function application and
+enhances code flexibility.</p>
+</li>
+<li><p>Example: Let&#39;s create a curried function to calculate the total
+price of items with tax.</p>
+<pre class="prettyprint">const calculateTotalPrice = (taxRate) =&gt; (price) =&gt; price + price * (taxRate / 100);
+
+const calculateSalesTax = calculateTotalPrice(8); // 8% sales tax
+const totalPrice = calculateSalesTax(100); // Price with tax
+console.log(totalPrice); // 108
+</pre>
+</li>
+</ul>
+</li>
+<li><p><strong>Memoization</strong>:</p>
+<ul class="list">
+<li><p>Memoization optimizes expensive function calls by caching their
+results. It&#39;s useful for recursive or repetitive computations.</p>
+</li>
+<li><p>Example: Implement a memoized Fibonacci function.</p>
+<pre class="prettyprint">function fibonacci(n, memo = {}) {
+  if (n in memo) return memo[n];
+  if (n &lt;= 1) return n;
+
+  memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
+  return memo[n];
+}
+
+console.log(fibonacci(10)); // 55
+</pre>
+</li>
+</ul>
+</li>
+<li><p><strong>Data Hiding and Encapsulation</strong>:</p>
+<ul class="list">
+<li><p>Encapsulation hides the internal details of an object and
+exposes only necessary methods and properties. It improves code
+maintainability and security.</p>
+</li>
+<li><p>Example: Create a <code>Person</code> class with private properties.</p>
+<pre class="prettyprint">class Person {
+  #name; // Private field
+
+  constructor(name) {
+    this.#name = name;
+  }
+
+  getName() {
+    return this.#name;
+  }
+}
+
+const person = new Person(&#39;Alice&#39;);
+console.log(person.getName()); // &#39;Alice&#39;
+// console.log(person.#name); // Error: Private field &#39;#name&#39; must be declared in an enclosing class
+</pre>
+</li>
+</ul>
+</li>
+<li><p><strong>setTimeouts</strong>:</p>
+<ul class="list">
+<li><p><code>setTimeout</code> allows scheduling a function to run after a
+specified delay. It&#39;s commonly used for asynchronous tasks,
+animations, and event handling.</p>
+</li>
+<li><p>Example: Delayed message display.</p>
+<pre class="prettyprint">function showMessage(message, delay) {
+  setTimeout(() =&gt; {
+    console.log(message);
+  }, delay);
+}
+
+showMessage(&#39;Hello, world!&#39;, 2000); // Display after 2 seconds
+</pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>These examples demonstrate the power and versatility of closures in
+JavaScript! 🚀</p>
 </li>
 <li><p>Disadvantages of Closure:</p>
 <ul class="list">
