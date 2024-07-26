@@ -94,3 +94,5 @@ From the creator of Namaste Javascript himself, 🙌
 ## ✨ Show your support
 
 Give a ⭐️ if this project helped you!
+
+![image info](https://api.star-history.com/svg?repos=alok722/namaste-javascript-notes&type=Timeline)
