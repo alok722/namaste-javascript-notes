@@ -38,6 +38,8 @@ So the **final diagram** before deletion would look something like:
 
 * Call Stack is a mechanism to keep track of its place in script that calls multiple function.
 
+* Call Stack maintains order of execution of execution context.
+
 * Call Stack maintains the order of execution of execution contexts. It is also known as Program Stack, Control Stack, Runtime stack, Machine Stack, Execution context stack.
 
 <hr>
