@@ -175,7 +175,7 @@ const p2 = new Promise((resolve, reject) => {
 async function handlePromise() {
   console.log('Hi');
   debugger;
-  const val = await p;
+  const val = await p1;
   console.log('Hello There!');
   debugger;
   console.log(val);
