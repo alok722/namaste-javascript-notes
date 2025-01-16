@@ -5,6 +5,7 @@
 > In JavaScript, the this keyword refers to an object, which object depends on how this is being invoked (used or called).
 
 ## `this` in global space
+
 Anything defined globally is said to be in a global space.
 
 ```js
@@ -16,10 +17,10 @@ console.log(this); // refers to global object i.e. window in case of browser
 
 ```js
 function x() {
-    // the below value depends on strict/non-strict mode
-    console.log(this);
-    // in strict mode - undefined
-    // in non-strict mode - refers to global window object
+  // the below value depends on strict/non-strict mode
+  console.log(this);
+  // in strict mode - undefined
+  // in non-strict mode - refers to global window object
 }
 x();
 // 💡 Notes:
@@ -28,14 +29,16 @@ x();
 
 // The moment you make JS run in strict mode by using: "use strict" at the top, `this` keyword inside function returns `undefined` whereas global space will still refers to global window object
 ```
+
 `this substitution` -> According to `this` substitution, if the value of `this` keyword is `null/undefined`, it will be replaced by globalObject only in non-strict mode. This is the reason why `this` refers to global window object inside function in non-strict mode.
 
 💡 So to summarize, the value of `this` keyword inside function is `undefined`, but because of `this substitution` in non-strict mode `this` keyword refers to `globalWindowObject` and in strict mode it will still be `undefined`
 
 `this` keyword value depends on how the `function` is called. For eg:  
-In strict mode:  
+In strict mode:
+
 ```js
-x(); // undefined  
+x(); // undefined
 window.x(); // global window object
 ```
 
@@ -44,12 +47,12 @@ window.x(); // global window object
 ```js
 // `x` key below is a method as per terminology
 const obj = {
-    a: 10,
-    x: function () {
-        console.log(this); // {a: 10, x: f()}
-        console.log(this.a); // 10
-    }
-}
+  a: 10,
+  x: function () {
+    console.log(this); // {a: 10, x: f()}
+    console.log(this.a); // 10
+  },
+};
 obj.x(); // value of `this` is referring to current object i.e. `obj`
 ```
 
@@ -59,16 +62,16 @@ obj.x(); // value of `this` is referring to current object i.e. `obj`
 
 ```js
 const student = {
-    name: 'Alok',
-    printName: function () {
-        console.log(this.name);
-    }
-}
+  name: "Alok",
+  printName: function () {
+    console.log(this.name);
+  },
+};
 student.printName(); // Alok
 
 const student2 = {
-    name: 'Kajal',
-}
+  name: "Kajal",
+};
 student2.printName(); // throw error
 
 // ❓ how to re-use printName method from `student` object
@@ -85,24 +88,24 @@ Arrow function doesn't have their own `this` value, they take the value from enc
 
 ```js
 const obj = {
-    a: 10,
-    x: () => {
-        console.log(this); // window object
-        // Above the value of `this` won't be obj anymore instead it will be enclosing lexical context i.e. window object in current scenario.
-    }
-}
+  a: 10,
+  x: () => {
+    console.log(this); // window object
+    // Above the value of `this` won't be obj anymore instead it will be enclosing lexical context i.e. window object in current scenario.
+  },
+};
 obj.x();
 
 const obj2 = {
-    a: 10,
-    x: function () {
-        const y = () => {
-            console.log(this);
-            // Above the value of `this` will be obj2 as function y's enclosing lexical context is function `x`.
-        };
-        y();
-    }
-}
+  a: 10,
+  x: function () {
+    const y = () => {
+      console.log(this);
+      // Above the value of `this` will be obj2 as function y's enclosing lexical context is function `x`.
+    };
+    y();
+  },
+};
 obj2.x();
 ```
 

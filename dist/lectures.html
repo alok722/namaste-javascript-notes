@@ -575,8 +575,9 @@ z(); // 7 900
 <li><p class="img-container"><img src="../assets/closure.jpg" alt="Closure Explaination" title="Lexical Scope"></p>
 </li>
 <li><p>Advantages of Closure:</p>
-<p>  Certainly! Let&#39;s explore examples for each of the advantages you&#39;ve
-  mentioned:</p>
+<pre class="prettyprint">Certainly! Let&#39;s explore examples for each of the advantages you&#39;ve
+mentioned:
+</pre>
 <ol class="list">
 <li><p><strong>Module Design Pattern</strong>:</p>
 <ul class="list">
@@ -614,7 +615,7 @@ const authModule = (function () {
 })();
 
 // Usage
-authModule.login(&#39;john_doe&#39;, &#39;secret&#39;);
+authModule.login(&quot;john_doe&quot;, &quot;secret&quot;);
 console.log(authModule.getUserInfo()); // &#39;john_doe&#39;
 </pre>
 </li>
@@ -629,7 +630,8 @@ enhances code flexibility.</p>
 </li>
 <li><p>Example: Let&#39;s create a curried function to calculate the total
 price of items with tax.</p>
-<pre class="prettyprint">const calculateTotalPrice = (taxRate) =&gt; (price) =&gt; price + price * (taxRate / 100);
+<pre class="prettyprint">const calculateTotalPrice = (taxRate) =&gt; (price) =&gt;
+  price + price * (taxRate / 100);
 
 const calculateSalesTax = calculateTotalPrice(8); // 8% sales tax
 const totalPrice = calculateSalesTax(100); // Price with tax
@@ -676,7 +678,7 @@ maintainability and security.</p>
   }
 }
 
-const person = new Person(&#39;Alice&#39;);
+const person = new Person(&quot;Alice&quot;);
 console.log(person.getName()); // &#39;Alice&#39;
 // console.log(person.#name); // Error: Private field &#39;#name&#39; must be declared in an enclosing class
 </pre>
@@ -696,7 +698,7 @@ animations, and event handling.</p>
   }, delay);
 }
 
-showMessage(&#39;Hello, world!&#39;, 2000); // Display after 2 seconds
+showMessage(&quot;Hello, world!&quot;, 2000); // Display after 2 seconds
 </pre>
 </li>
 </ul>
@@ -1279,7 +1281,7 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 </li>
 <li><p>Browser can execute javascript code because it has the Javascript Runtime Environment.</p>
 </li>
-<li><p>ECMAScript is a governing body of JS. It has set of rules which are followed by all JS engines like Chakra(Edge), Spidermonkey(Firefox)(first javascript engine created by JS creator himself), v8(Chrome)</p>
+<li><p>ECMAScript is a governing body of JS. It has set of rules which are followed by all JS engines like Chakra(Internet Explorer), V8 Engine (Edge) Spidermonkey(Firefox)(first javascript engine created by JS creator himself), v8(Chrome)</p>
 </li>
 <li><p>Javascript Engine is not a machine. Its software written in low level languages (eg. C++) that takes in hi-level code in JS and spits out low level machine code.</p>
 </li>
@@ -2021,7 +2023,7 @@ alt="promise in Javascript Youtube Link"/></a></p>
 <li>Async await vs Promise.then/.catch</li>
 </ul>
 <p>Q: What is async?<br>A: Async is a keyword that is used before a function to create a async function.</p>
-<p>Q: What is async function and how it is different from normal function?  </p>
+<p>Q: What is async function and how it is different from normal function?</p>
 <pre class="hljs"><code><span class="hljs-comment">// 💡 async function always returns a promise, even if I return a simple string from below function, async keyword will wrap it under Promise and then return.</span>
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Namaste JavaScript&quot;</span>;
@@ -2030,10 +2032,10 @@ alt="promise in Javascript Youtube Link"/></a></p>
 <span class="hljs-built_in">console</span>.log(dataPromise); <span class="hljs-comment">// Promise {&lt;fulfilled&gt;: &#x27;Namaste JavaScript&#x27;}</span>
 
 <span class="hljs-comment">//❓How to extract data from above promise? One way is using promise .then</span>
-dataPromise.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res)); <span class="hljs-comment">// Namaste JavaScript</span></code></pre><p>Another example where <code>async</code> function is returning a Promise</p>
+dataPromise.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(res)); <span class="hljs-comment">// Namaste JavaScript</span></code></pre><p>Another example where <code>async</code> function is returning a Promise</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
-  resolve(<span class="hljs-string">&#x27;Promise resolved value!!&#x27;</span>);
-})
+  resolve(<span class="hljs-string">&quot;Promise resolved value!!&quot;</span>);
+});
 
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">return</span> p;
@@ -2041,14 +2043,14 @@ dataPromise.then(<span class="hljs-function"><span class="hljs-params">res</span
 <span class="hljs-comment">// In above case, since we are already returning a promise async function would simply return that instead of wrapping with a new Promise.</span>
 <span class="hljs-keyword">const</span> dataPromise = getData();
 <span class="hljs-built_in">console</span>.log(dataPromise); <span class="hljs-comment">// Promise {&lt;fulfilled&gt;: &#x27;Promise resolved value!!&#x27;}</span>
-dataPromise.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res)); <span class="hljs-comment">// Promise resolved value!!</span></code></pre><p>Q: How we can use <code>await</code> along with async function?<br>A: <code>async</code> and <code>await</code> combo is used to handle promises.</p>
+dataPromise.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(res)); <span class="hljs-comment">// Promise resolved value!!</span></code></pre><p>Q: How we can use <code>await</code> along with async function?<br>A: <code>async</code> and <code>await</code> combo is used to handle promises.</p>
 <p>But Question is how we used to handle promises earlier and why we even need async/await?</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
-  resolve(<span class="hljs-string">&#x27;Promise resolved value!!&#x27;</span>);
-})
+  resolve(<span class="hljs-string">&quot;Promise resolved value!!&quot;</span>);
+});
 
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
-  p.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res));
+  p.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(res));
 }
 
 getData(); <span class="hljs-comment">// Promise resolved value!!</span>
@@ -2062,20 +2064,20 @@ getData(); <span class="hljs-comment">// Promise resolved value!!</span>
   <span class="hljs-built_in">console</span>.log(val);
 }
 handlePromise(); <span class="hljs-comment">// Promise resolved value!!</span></code></pre><p>📌 <code>await</code> is a keyword that can only be used inside a <code>async</code> function.</p>
-<pre class="hljs"><code><span class="hljs-keyword">await</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{} <span class="hljs-comment">// Syntax error: await is only valid under async function.</span></code></pre><p>Q: What makes <code>async</code>-<code>await</code> special?<br>A: Let&#39;s understand with one example where we will compare async-await way of resolving promise with older .then/.catch fashion. For that we will modify our promise <code>p</code>.</p>
+<pre class="hljs"><code><span class="hljs-keyword">await</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{}; <span class="hljs-comment">// Syntax error: await is only valid under async function.</span></code></pre><p>Q: What makes <code>async</code>-<code>await</code> special?<br>A: Let&#39;s understand with one example where we will compare async-await way of resolving promise with older .then/.catch fashion. For that we will modify our promise <code>p</code>.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;Promise resolved value!!&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;Promise resolved value!!&quot;</span>);
   }, <span class="hljs-number">3000</span>);
-})
+});
 
 <span class="hljs-comment">// Let&#x27;s now compare with some modification:</span>
 
 <span class="hljs-comment">// 📌 Promise.then/.catch way</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getData</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// JS engine will not wait for promise to be resolved</span>
-  p.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res));
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  p.then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(res));
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There!&quot;</span>);
 }
 
 getData(); <span class="hljs-comment">// First `Hello There!` would be printed and then after 3 secs &#x27;Promise resolved value!!&#x27; will be printed.</span>
@@ -2087,7 +2089,7 @@ getData(); <span class="hljs-comment">// First `Hello There!` would be printed a
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// JS Engine will waiting for promise to resolve.</span>
   <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There!&quot;</span>);
   <span class="hljs-built_in">console</span>.log(val);
 }
 handlePromise(); <span class="hljs-comment">// This time `Hello There!` won&#x27;t be printed immediately instead after 3 secs `Hello There!` will be printed followed by &#x27;Promise resolved value!!&#x27;</span>
@@ -2097,79 +2099,78 @@ handlePromise(); <span class="hljs-comment">// This time `Hello There!` won&#x27
 
 <span class="hljs-comment">//🤓 Let&#x27;s brainstorm more around async-await</span>
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hi&quot;</span>);
   <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There!&quot;</span>);
   <span class="hljs-built_in">console</span>.log(val);
 
   <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There! 2&quot;</span>);
   <span class="hljs-built_in">console</span>.log(val2);
 }
-handlePromise(); 
+handlePromise();
 <span class="hljs-comment">// In above code example, will our program wait for 2 time or will it execute parallely.</span>
 <span class="hljs-comment">//📌 `Hi` printed instantly -&gt; now code will wait for 3 secs -&gt; After 3 secs both promises will be resolved so (&#x27;Hello There!&#x27; &#x27;Promise resolved value!!&#x27; &#x27;Hello There! 2&#x27; &#x27;Promise resolved value!!&#x27;) will get printed immediately.</span>
 
 <span class="hljs-comment">// Let&#x27;s create one promise and then resolve two different promise.</span>
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;Promise resolved value by p2!!&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;Promise resolved value by p2!!&quot;</span>);
   }, <span class="hljs-number">2000</span>);
-})
+});
 
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hi&quot;</span>);
   <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There!&quot;</span>);
   <span class="hljs-built_in">console</span>.log(val);
 
   <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p2;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There! 2&quot;</span>);
   <span class="hljs-built_in">console</span>.log(val2);
 }
-handlePromise(); 
+handlePromise();
 <span class="hljs-comment">// 📌 `Hi` printed instantly -&gt; now code will wait for 3 secs -&gt; After 3 secs both promises will be resolved so (&#x27;Hello There!&#x27; &#x27;Promise resolved value!!&#x27; &#x27;Hello There! 2&#x27; &#x27;Promise resolved value by p2!!&#x27;) will get printed immediately. So even though `p2` was resolved after 2 secs it had to wait for `p` to get resolved</span>
-
 
 <span class="hljs-comment">// Now let&#x27;s reverse the order execution of promise and observe response.</span>
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hi&quot;</span>);
   <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p2;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There!&quot;</span>);
   <span class="hljs-built_in">console</span>.log(val);
 
   <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There! 2&quot;</span>);
   <span class="hljs-built_in">console</span>.log(val2);
 }
-handlePromise(); 
+handlePromise();
 <span class="hljs-comment">// 📌 `Hi` printed instantly -&gt; now code will wait for 2 secs -&gt; After 2 secs (&#x27;Hello There!&#x27; &#x27;Promise resolved value by p2!!&#x27;) will get printed and in the subsequent second i.e. after 3 secs (&#x27;Hello There! 2&#x27; &#x27;Promise resolved value!!&#x27;) will get printed</span></code></pre><p>Q: Question is Is program actually waiting or what is happening behind the scene?<br>A: As we know, Time, Tide and JS wait for none. And it&#39;s true. Over here it appears that JS engine is waiting but JS engine is not waiting over here. It has not occupied the call stack if that would have been the case our page may have got frozen. So JS engine is not waiting. So if it is not waiting then what it is doing behind the scene? Let&#39;s understand with below code snippet.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;Promise resolved value by p1!!&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;Promise resolved value by p1!!&quot;</span>);
   }, <span class="hljs-number">5000</span>);
-})
+});
 
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;Promise resolved value by p2!!&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;Promise resolved value by p2!!&quot;</span>);
   }, <span class="hljs-number">10000</span>);
-})
+});
 
 <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hi&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hi&quot;</span>);
   <span class="hljs-keyword">debugger</span>;
-  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There!&#x27;</span>);
+  <span class="hljs-keyword">const</span> val = <span class="hljs-keyword">await</span> p1;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There!&quot;</span>);
   <span class="hljs-keyword">debugger</span>;
   <span class="hljs-built_in">console</span>.log(val);
 
   <span class="hljs-keyword">const</span> val2 = <span class="hljs-keyword">await</span> p2;
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Hello There! 2&#x27;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello There! 2&quot;</span>);
   <span class="hljs-keyword">debugger</span>;
   <span class="hljs-built_in">console</span>.log(val2);
 }
-handlePromise(); 
+handlePromise();
 <span class="hljs-comment">// When this function is executed, it will go line by line as JS is synchronous single threaded language. Lets observe what is happening under call-stack. Above you can see we have set the break-points.</span>
 
 <span class="hljs-comment">// call stack flow -&gt; handlePromise() is pushed -&gt; It will log `Hi` to console -&gt; Next it sees we have await where promise is suppose to be resolved -&gt; So will it wait for promise to resolve and block call stack? No -&gt; thus handlePromise() execution get suspended and moved out of call stack -&gt; So when JS sees await keyword it suspend the execution of function till promise is resolved -&gt; So `p` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs. -&gt; But this time it will start executing from where it had left. -&gt; Now it will log &#x27;Hello There!&#x27; and &#x27;Promise resolved value!!&#x27; -&gt; then it will check whether `p2` is resolved or not -&gt; It will find since `p2` will take 10 secs to resolve so the same above process will repeat -&gt; execution will be suspended until promise is resolved.</span>
@@ -2179,27 +2180,27 @@ handlePromise();
 <span class="hljs-comment">// Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -&gt; even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.</span></code></pre><h3 id="real-world-example-of-asyncawait"><a class="header-link" href="#real-world-example-of-asyncawait"></a>Real World example of async/await</h3>
 <pre class="hljs"><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// fetch() =&gt; Response Object which as body as Readable stream =&gt; Response.json() is also a promise which when resolved =&gt; value</span>
-  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&#x27;https://api.github.com/users/alok722&#x27;</span>);
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&quot;https://api.github.com/users/alok722&quot;</span>);
   <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> data.json();
   <span class="hljs-built_in">console</span>.log(res);
-};
-handlePromise()</code></pre><h3 id="error-handling"><a class="header-link" href="#error-handling"></a>Error Handling</h3>
+}
+handlePromise();</code></pre><h3 id="error-handling"><a class="header-link" href="#error-handling"></a>Error Handling</h3>
 <p>While we were using normal Promise we were using .catch to handle error, now in <code>async-await</code> we would be using <code>try-catch</code> block to handle error.</p>
 <pre class="hljs"><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">try</span> {
-    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&#x27;https://api.github.com/users/alok722&#x27;</span>);
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&quot;https://api.github.com/users/alok722&quot;</span>);
     <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> data.json();
     <span class="hljs-built_in">console</span>.log(res);
   } <span class="hljs-keyword">catch</span> (err) {
-    <span class="hljs-built_in">console</span>.log(err)
+    <span class="hljs-built_in">console</span>.log(err);
   }
-};
-handlePromise()
+}
+handlePromise();
 
 <span class="hljs-comment">// In above whenever any error will occur the execution will move to catch block. One could try above with bad url which will result in error.</span>
 
 <span class="hljs-comment">// Other way of handling error:</span>
-handlePromise().catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(err)); <span class="hljs-comment">// this will work as handlePromise will return error promise in case of failure.</span></code></pre><h3 id="async-await-vs-promisethencatch"><a class="header-link" href="#async-await-vs-promisethencatch"></a>Async await vs Promise.then/.catch</h3>
+handlePromise().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(err)); <span class="hljs-comment">// this will work as handlePromise will return error promise in case of failure.</span></code></pre><h3 id="async-await-vs-promisethencatch"><a class="header-link" href="#async-await-vs-promisethencatch"></a>Async await vs Promise.then/.catch</h3>
 <p>What one should use? <code>async-await</code> is just a syntactic sugar around promise. Behind the scene <code>async-await</code> is just promise. So both are same, it&#39;s just <code>async-await</code> is new way of writing code. <code>async-await</code> solves few of the short-coming of Promise like <code>Promise Chaining</code>. <code>async-await</code> also increases the readability. So sort of it is always advisable to use <code>async-await.</code></p>
 <hr>
 
@@ -2225,29 +2226,29 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 <p>A promise is a placeholder for a value that&#39;s going to be available sometime later. The promise helps handle asynchronous operations. JavaScript provides a helper function Promise.all(promisesArrayOrIterable) to handle multiple promises at once, in parallel, and get the results in a single aggregate array.</p>
 </blockquote>
 <p>Q: In what situation one could use above api?<br>A: Suppose, you have to make parallel API call and get the result, how one can do? This is where Promise.all can be utilized. It is used to handle multiple promises together.</p>
-<p>Promise.all([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  </p>
-<p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.all will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.  </p>
+<p>Promise.all([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.</p>
+<p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.all will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.</p>
 <p>What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.all will throw same error as p2 immediately as soon as error happened. It will not wait for other promise to either become success or failure. Moreover, p1 and p2 wont get cancelled as they are already triggered so it may result in success or failure depending upon their fate but Promise.all wont care. So its a situation of or/null.</p>
 <p>💡 To conclude, the Promise.all() waits for all the input promises to resolve and returns a new promise that resolves to an array containing the results of the input promises. If one of the input promises is rejected, the Promise.all() method immediately returns a promise that is rejected with an error of the first rejected promise.</p>
 <h3 id="promiseallsettled"><a class="header-link" href="#promiseallsettled"></a>Promise.allSettled()</h3>
 <blockquote>
 <p>Promise.allSettled() method that accepts a list of Promises and returns a new promise that resolves after all the input promises have settled, either resolved or rejected.</p>
 </blockquote>
-<p>Promise.allSettled([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  </p>
-<p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.allSettled will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.  </p>
+<p>Promise.allSettled([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.</p>
+<p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.allSettled will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.</p>
 <p>What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.allSettled will still wait for all promises to get settled. So After 3 secs, it will be [val1, err, val3]</p>
 <p>💡 Promise.all() -&gt; Fail Fast<br>💡 Promise.allSettled() -&gt; Will wait and provide accumulative result</p>
 <h3 id="promiserace"><a class="header-link" href="#promiserace"></a>Promise.race()</h3>
 <blockquote>
 <p>The Promise.race() static method accepts a list of promises as an iterable object and returns a new promise that fulfills or rejects as soon as there is one promise that fulfills or rejects, with the value or reason from that promise. The name of Promise.race() implies that all the promises race against each other with a single winner, either resolved or rejected.</p>
 </blockquote>
-<p>Promise.race([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  So as soon as first promise will resolve or reject, it will give the output.  </p>
+<p>Promise.race([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>. So as soon as first promise will resolve or reject, it will give the output.</p>
 <p>So in Happy scenario, Promise.race will give (val2) as output after 1sec as p2 got resolved at the earliest. Whereas if it would have been failed Promise.race would have still given output after 1 sec but this time with error.</p>
 <h3 id="promiseany"><a class="header-link" href="#promiseany"></a>Promise.any()</h3>
 <blockquote>
 <p>The Promise.any() method accepts a list of Promise objects as an iterable object. If one of the promises in the iterable object is fulfilled, the Promise.any() returns a single promise that resolves to a value which is the result of the fulfilled promise.</p>
 </blockquote>
-<p>Promise.any([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>.  So as soon as first promise will be successful, it will give the output.</p>
+<p>Promise.any([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>. So as soon as first promise will be successful, it will give the output.</p>
 <p>If in above situation what if p2 got rejected, nothing will happen as Promise.any seek for success, so the moment first success will happen that will become the result.</p>
 <p>❓ But what if all promises got failed, so the returned result will be aggregated error i.e. [err1, err2, err3].</p>
 <h2 id="code-examples"><a class="header-link" href="#code-examples"></a>Code Examples:</h2>
@@ -2256,17 +2257,17 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P1 Success&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P2 Success&quot;</span>);
   }, <span class="hljs-number">1000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P3 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P3 Success&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
@@ -2274,49 +2275,48 @@ alt="async-await in Javascript Youtube Link"/></a></p>
   <span class="hljs-built_in">console</span>.log(results); <span class="hljs-comment">// [&#x27;P1 Success&#x27;, &#x27;P2 Success&#x27;, &#x27;P3 Success&#x27;] -&gt; took 3 secs</span>
 });</code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Second Scenario</span>
 
-
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P1 Success&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P2 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P2 Fail&quot;</span>);
   }, <span class="hljs-number">1000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P3 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P3 Success&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
 <span class="hljs-built_in">Promise</span>.all([p1, p2, p3])
-  .then(<span class="hljs-function"><span class="hljs-params">results</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err)); <span class="hljs-comment">// throws error after 1 sec i.e. &#x27;P2 Fails&#x27;</span></code></pre><h3 id="promiseallsettled-1"><a class="header-link" href="#promiseallsettled-1"></a>Promise.allSettled()</h3>
+  .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err)); <span class="hljs-comment">// throws error after 1 sec i.e. &#x27;P2 Fails&#x27;</span></code></pre><h3 id="promiseallsettled-1"><a class="header-link" href="#promiseallsettled-1"></a>Promise.allSettled()</h3>
 <p>💡This is safest among all Promises API.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P1 Success&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P2 Success&quot;</span>);
   }, <span class="hljs-number">1000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P3 Fail&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
 <span class="hljs-built_in">Promise</span>.allSettled([p1, p2, p3])
   .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
 
 <span class="hljs-comment">// Over here, it will wait for all promises to be either settled or rejected and then return,</span>
-  <span class="hljs-comment">/*
+<span class="hljs-comment">/*
     [
       {status: &#x27;fulfilled&#x27;, value: &#x27;P1 Success&#x27;},
       {status: &#x27;fulfilled&#x27;, value: &#x27;P2 Success&#x27;},
@@ -2327,48 +2327,48 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P1 Success&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P2 Success&quot;</span>);
   }, <span class="hljs-number">1000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P3 Fail&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
 <span class="hljs-built_in">Promise</span>.race([p1, p2, p3])
   .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
 
- <span class="hljs-comment">// It will return as soon as first promise is resolved or rejected.</span>
- <span class="hljs-comment">// In above example O/P: &quot;P2 Success&quot;</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Second Scenario</span>
+<span class="hljs-comment">// It will return as soon as first promise is resolved or rejected.</span>
+<span class="hljs-comment">// In above example O/P: &quot;P2 Success&quot;</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Second Scenario</span>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P1 Success&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P2 Success&quot;</span>);
   }, <span class="hljs-number">5000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P3 Fail&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
 <span class="hljs-built_in">Promise</span>.race([p1, p2, p3])
   .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
 
- <span class="hljs-comment">//After 2 secs O/P: &quot;P3 Fail&quot;</span></code></pre><p>Notes:  </p>
+<span class="hljs-comment">//After 2 secs O/P: &quot;P3 Fail&quot;</span></code></pre><p>Notes:</p>
 <ul class="list">
 <li>Once promise is settled, it means -&gt; got the result. Moreover, settled is broadly divided into two categories:</li>
 </ul>
@@ -2381,68 +2381,68 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P1 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P1 Success&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P2 Success&quot;</span>);
   }, <span class="hljs-number">5000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P3 Fail&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
 <span class="hljs-built_in">Promise</span>.any([p1, p2, p3])
   .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
 
 <span class="hljs-comment">// It will wait for first settled **success**</span>
 <span class="hljs-comment">// In above, p3 will settled first, but since it is rejected, so it will wait further so at 3rd second it will print &quot;P1 Success&quot;</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Second Scenario</span>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P1 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P1 Fail&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    resolve(<span class="hljs-string">&#x27;P2 Success&#x27;</span>);
+    resolve(<span class="hljs-string">&quot;P2 Success&quot;</span>);
   }, <span class="hljs-number">5000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P3 Fail&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
 <span class="hljs-built_in">Promise</span>.any([p1, p2, p3])
   .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err));
 
 <span class="hljs-comment">// After 5 secs: &#x27;P2 Success&#x27;</span></code></pre><pre class="hljs"><code><span class="hljs-comment">// 📌 Third Scenario</span>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P1 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P1 Fail&quot;</span>);
   }, <span class="hljs-number">3000</span>);
 });
 <span class="hljs-keyword">const</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P2 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P2 Fail&quot;</span>);
   }, <span class="hljs-number">5000</span>);
 });
 <span class="hljs-keyword">const</span> p3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    reject(<span class="hljs-string">&#x27;P3 Fail&#x27;</span>);
+    reject(<span class="hljs-string">&quot;P3 Fail&quot;</span>);
   }, <span class="hljs-number">2000</span>);
 });
 
 <span class="hljs-built_in">Promise</span>.any([p1, p2, p3])
   .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> {
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
     <span class="hljs-built_in">console</span>.error(err);
     <span class="hljs-built_in">console</span>.error(err.errors); <span class="hljs-comment">// [&#x27;P1 Fail&#x27;, &#x27;P2 Fail&#x27;, &#x27;P3 Fail&#x27;]</span>
   });
@@ -2491,10 +2491,10 @@ alt="promise-apis in Javascript Youtube Link"/></a></p>
 <pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// refers to global object i.e. window in case of browser</span>
 <span class="hljs-comment">// 💡 global object differs based on runtime environment,</span></code></pre><h2 id="this-inside-a-function"><a class="header-link" href="#this-inside-a-function"></a><code>this</code> inside a function</h2>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-comment">// the below value depends on strict/non-strict mode</span>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);
-    <span class="hljs-comment">// in strict mode - undefined</span>
-    <span class="hljs-comment">// in non-strict mode - refers to global window object</span>
+  <span class="hljs-comment">// the below value depends on strict/non-strict mode</span>
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);
+  <span class="hljs-comment">// in strict mode - undefined</span>
+  <span class="hljs-comment">// in non-strict mode - refers to global window object</span>
 }
 x();
 <span class="hljs-comment">// 💡 Notes:</span>
@@ -2503,32 +2503,32 @@ x();
 
 <span class="hljs-comment">// The moment you make JS run in strict mode by using: &quot;use strict&quot; at the top, `this` keyword inside function returns `undefined` whereas global space will still refers to global window object</span></code></pre><p><code>this substitution</code> -&gt; According to <code>this</code> substitution, if the value of <code>this</code> keyword is <code>null/undefined</code>, it will be replaced by globalObject only in non-strict mode. This is the reason why <code>this</code> refers to global window object inside function in non-strict mode.</p>
 <p>💡 So to summarize, the value of <code>this</code> keyword inside function is <code>undefined</code>, but because of <code>this substitution</code> in non-strict mode <code>this</code> keyword refers to <code>globalWindowObject</code> and in strict mode it will still be <code>undefined</code></p>
-<p><code>this</code> keyword value depends on how the <code>function</code> is called. For eg:<br>In strict mode:  </p>
-<pre class="hljs"><code>x(); <span class="hljs-comment">// undefined  </span>
+<p><code>this</code> keyword value depends on how the <code>function</code> is called. For eg:<br>In strict mode:</p>
+<pre class="hljs"><code>x(); <span class="hljs-comment">// undefined</span>
 <span class="hljs-built_in">window</span>.x(); <span class="hljs-comment">// global window object</span></code></pre><h2 id="this-inside-a-objects-method"><a class="header-link" href="#this-inside-a-objects-method"></a><code>this</code> inside a object&#39;s method</h2>
 <pre class="hljs"><code><span class="hljs-comment">// `x` key below is a method as per terminology</span>
 <span class="hljs-keyword">const</span> obj = {
-    <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
-    <span class="hljs-attr">x</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// {a: 10, x: f()}</span>
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a); <span class="hljs-comment">// 10</span>
-    }
-}
+  <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">x</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// {a: 10, x: f()}</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a); <span class="hljs-comment">// 10</span>
+  },
+};
 obj.x(); <span class="hljs-comment">// value of `this` is referring to current object i.e. `obj`</span></code></pre><h2 id="call-apply--bind-methods"><a class="header-link" href="#call-apply--bind-methods"></a><code>call</code>, <code>apply</code> &amp; <code>bind</code> methods</h2>
 <blockquote>
 <p>For detail around call, apply and bind method. Refer <a href="https://www.youtube.com/watch?v=75W8UPQ5l7k&ab_channel=AkshaySaini">here</a>.</p>
 </blockquote>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> student = {
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Alok&#x27;</span>,
-    <span class="hljs-attr">printName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);
-    }
-}
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Alok&quot;</span>,
+  <span class="hljs-attr">printName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.name);
+  },
+};
 student.printName(); <span class="hljs-comment">// Alok</span>
 
 <span class="hljs-keyword">const</span> student2 = {
-    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Kajal&#x27;</span>,
-}
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Kajal&quot;</span>,
+};
 student2.printName(); <span class="hljs-comment">// throw error</span>
 
 <span class="hljs-comment">// ❓ how to re-use printName method from `student` object</span>
@@ -2539,24 +2539,24 @@ student.printName.call(student2); <span class="hljs-comment">// Kajal</span>
 <span class="hljs-comment">// So, call, bind and apply is used to set the value of this keyword.</span></code></pre><h2 id="this-inside-arrow-function"><a class="header-link" href="#this-inside-arrow-function"></a><code>this</code> inside arrow function</h2>
 <p>Arrow function doesn&#39;t have their own <code>this</code> value, they take the value from enclosing lexical context.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> obj = {
-    <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
-    <span class="hljs-attr">x</span>: <span class="hljs-function">() =&gt;</span> {
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// window object</span>
-        <span class="hljs-comment">// Above the value of `this` won&#x27;t be obj anymore instead it will be enclosing lexical context i.e. window object in current scenario.</span>
-    }
-}
+  <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">x</span>: <span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// window object</span>
+    <span class="hljs-comment">// Above the value of `this` won&#x27;t be obj anymore instead it will be enclosing lexical context i.e. window object in current scenario.</span>
+  },
+};
 obj.x();
 
 <span class="hljs-keyword">const</span> obj2 = {
-    <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
-    <span class="hljs-attr">x</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">const</span> y = <span class="hljs-function">() =&gt;</span> {
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);
-            <span class="hljs-comment">// Above the value of `this` will be obj2 as function y&#x27;s enclosing lexical context is function `x`.</span>
-        };
-        y();
-    }
-}
+  <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
+  <span class="hljs-attr">x</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> y = <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);
+      <span class="hljs-comment">// Above the value of `this` will be obj2 as function y&#x27;s enclosing lexical context is function `x`.</span>
+    };
+    y();
+  },
+};
 obj2.x();</code></pre><h2 id="this-inside-dom"><a class="header-link" href="#this-inside-dom"></a><code>this</code> inside DOM</h2>
 <blockquote>
 <p>It refers to HTML element.</p>

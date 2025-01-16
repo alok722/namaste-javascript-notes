@@ -637,121 +637,130 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
 
 - Advantages of Closure:
 
-    Certainly! Let's explore examples for each of the advantages you've
-    mentioned:
+      Certainly! Let's explore examples for each of the advantages you've
+      mentioned:
 
   1.  **Module Design Pattern**:
-      -   The module design pattern allows us to encapsulate related
+
+      - The module design pattern allows us to encapsulate related
         functionality into a single module or file. It helps organize
         code, prevent global namespace pollution, and promotes
         reusability.
-      -   Example: Suppose we're building a web application, and we want
+      - Example: Suppose we're building a web application, and we want
         to create a module for handling user authentication. We can
         create a `auth.js` module that exports functions like `login`,
         `logout`, and `getUserInfo`.
 
-          ``` js
-          // auth.js
-          const authModule = (function () {
-            let loggedInUser = null;
+        ```js
+        // auth.js
+        const authModule = (function () {
+          let loggedInUser = null;
 
-            function login(username, password) {
-              // Authenticate user logic...
-              loggedInUser = username;
-            }
+          function login(username, password) {
+            // Authenticate user logic...
+            loggedInUser = username;
+          }
 
-            function logout() {
-              loggedInUser = null;
-            }
+          function logout() {
+            loggedInUser = null;
+          }
 
-            function getUserInfo() {
-              return loggedInUser;
-            }
+          function getUserInfo() {
+            return loggedInUser;
+          }
 
-            return {
-              login,
-              logout,
-              getUserInfo,
-            };
-          })();
+          return {
+            login,
+            logout,
+            getUserInfo,
+          };
+        })();
 
-          // Usage
-          authModule.login('john_doe', 'secret');
-          console.log(authModule.getUserInfo()); // 'john_doe'
-          ```
+        // Usage
+        authModule.login("john_doe", "secret");
+        console.log(authModule.getUserInfo()); // 'john_doe'
+        ```
+
   2.  **Currying**:
-      -   Currying is a technique where a function that takes multiple
+
+      - Currying is a technique where a function that takes multiple
         arguments is transformed into a series of functions that take
         one argument each. It enables partial function application and
         enhances code flexibility.
-      -   Example: Let's create a curried function to calculate the total
+      - Example: Let's create a curried function to calculate the total
         price of items with tax.
 
-          ``` js
-          const calculateTotalPrice = (taxRate) => (price) => price + price * (taxRate / 100);
+        ```js
+        const calculateTotalPrice = (taxRate) => (price) =>
+          price + price * (taxRate / 100);
 
-          const calculateSalesTax = calculateTotalPrice(8); // 8% sales tax
-          const totalPrice = calculateSalesTax(100); // Price with tax
-          console.log(totalPrice); // 108
-          ```
+        const calculateSalesTax = calculateTotalPrice(8); // 8% sales tax
+        const totalPrice = calculateSalesTax(100); // Price with tax
+        console.log(totalPrice); // 108
+        ```
+
   3.  **Memoization**:
-      -   Memoization optimizes expensive function calls by caching their
+
+      - Memoization optimizes expensive function calls by caching their
         results. It's useful for recursive or repetitive computations.
-      -   Example: Implement a memoized Fibonacci function.
+      - Example: Implement a memoized Fibonacci function.
 
-          ``` js
-          function fibonacci(n, memo = {}) {
-            if (n in memo) return memo[n];
-            if (n <= 1) return n;
+        ```js
+        function fibonacci(n, memo = {}) {
+          if (n in memo) return memo[n];
+          if (n <= 1) return n;
 
-            memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
-            return memo[n];
-          }
+          memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo);
+          return memo[n];
+        }
 
-          console.log(fibonacci(10)); // 55
-          ```
+        console.log(fibonacci(10)); // 55
+        ```
+
   4.  **Data Hiding and Encapsulation**:
-      -   Encapsulation hides the internal details of an object and
+
+      - Encapsulation hides the internal details of an object and
         exposes only necessary methods and properties. It improves code
         maintainability and security.
-      -   Example: Create a `Person` class with private properties.
+      - Example: Create a `Person` class with private properties.
 
-          ```js
-          class Person {
-            #name; // Private field
+        ```js
+        class Person {
+          #name; // Private field
 
-            constructor(name) {
-              this.#name = name;
-            }
-
-            getName() {
-              return this.#name;
-            }
+          constructor(name) {
+            this.#name = name;
           }
 
-          const person = new Person('Alice');
-          console.log(person.getName()); // 'Alice'
-          // console.log(person.#name); // Error: Private field '#name' must be declared in an enclosing class
-          ```
+          getName() {
+            return this.#name;
+          }
+        }
+
+        const person = new Person("Alice");
+        console.log(person.getName()); // 'Alice'
+        // console.log(person.#name); // Error: Private field '#name' must be declared in an enclosing class
+        ```
 
   5.  **setTimeouts**:
-      -   `setTimeout` allows scheduling a function to run after a
+
+      - `setTimeout` allows scheduling a function to run after a
         specified delay. It's commonly used for asynchronous tasks,
         animations, and event handling.
-      -   Example: Delayed message display.
+      - Example: Delayed message display.
 
-          ```js
-          function showMessage(message, delay) {
-            setTimeout(() => {
-              console.log(message);
-            }, delay);
-          }
+        ```js
+        function showMessage(message, delay) {
+          setTimeout(() => {
+            console.log(message);
+          }, delay);
+        }
 
-          showMessage('Hello, world!', 2000); // Display after 2 seconds
-          ```
+        showMessage("Hello, world!", 2000); // Display after 2 seconds
+        ```
 
   These examples demonstrate the power and versatility of closures in
-JavaScript! 🚀
+  JavaScript! 🚀
 
 - Disadvantages of Closure:
   - Over consumption of memory
@@ -1447,7 +1456,7 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 
 - Browser can execute javascript code because it has the Javascript Runtime Environment.
 
-- ECMAScript is a governing body of JS. It has set of rules which are followed by all JS engines like Chakra(Edge), Spidermonkey(Firefox)(first javascript engine created by JS creator himself), v8(Chrome)
+- ECMAScript is a governing body of JS. It has set of rules which are followed by all JS engines like Chakra(Internet Explorer), V8 Engine (Edge) Spidermonkey(Firefox)(first javascript engine created by JS creator himself), v8(Chrome)
 
 - Javascript Engine is not a machine. Its software written in low level languages (eg. C++) that takes in hi-level code in JS and spits out low level machine code.
 
@@ -2371,7 +2380,9 @@ alt="promise in Javascript Youtube Link"/></a>
 # Episode 23 : async await
 
 ###
+
 Topics Covered
+
 - What is async?
 - What is await?
 - How async await works behind the scenes?
@@ -2383,7 +2394,8 @@ Topics Covered
 Q: What is async?  
 A: Async is a keyword that is used before a function to create a async function.
 
-Q: What is async function and how it is different from normal function?  
+Q: What is async function and how it is different from normal function?
+
 ```js
 // 💡 async function always returns a promise, even if I return a simple string from below function, async keyword will wrap it under Promise and then return.
 async function getData() {
@@ -2393,13 +2405,15 @@ const dataPromise = getData();
 console.log(dataPromise); // Promise {<fulfilled>: 'Namaste JavaScript'}
 
 //❓How to extract data from above promise? One way is using promise .then
-dataPromise.then(res => console.log(res)); // Namaste JavaScript
+dataPromise.then((res) => console.log(res)); // Namaste JavaScript
 ```
+
 Another example where `async` function is returning a Promise
+
 ```js
 const p = new Promise((resolve, reject) => {
-  resolve('Promise resolved value!!');
-})
+  resolve("Promise resolved value!!");
+});
 
 async function getData() {
   return p;
@@ -2407,7 +2421,7 @@ async function getData() {
 // In above case, since we are already returning a promise async function would simply return that instead of wrapping with a new Promise.
 const dataPromise = getData();
 console.log(dataPromise); // Promise {<fulfilled>: 'Promise resolved value!!'}
-dataPromise.then(res => console.log(res)); // Promise resolved value!!
+dataPromise.then((res) => console.log(res)); // Promise resolved value!!
 ```
 
 Q: How we can use `await` along with async function?  
@@ -2417,11 +2431,11 @@ But Question is how we used to handle promises earlier and why we even need asyn
 
 ```js
 const p = new Promise((resolve, reject) => {
-  resolve('Promise resolved value!!');
-})
+  resolve("Promise resolved value!!");
+});
 
 function getData() {
-  p.then(res => console.log(res));
+  p.then((res) => console.log(res));
 }
 
 getData(); // Promise resolved value!!
@@ -2436,27 +2450,30 @@ async function handlePromise() {
 }
 handlePromise(); // Promise resolved value!!
 ```
+
 📌 `await` is a keyword that can only be used inside a `async` function.
+
 ```js
-await function() {} // Syntax error: await is only valid under async function.
+await function () {}; // Syntax error: await is only valid under async function.
 ```
 
 Q: What makes `async`-`await` special?  
 A: Let's understand with one example where we will compare async-await way of resolving promise with older .then/.catch fashion. For that we will modify our promise `p`.
+
 ```js
 const p = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('Promise resolved value!!');
+    resolve("Promise resolved value!!");
   }, 3000);
-})
+});
 
 // Let's now compare with some modification:
 
 // 📌 Promise.then/.catch way
 function getData() {
   // JS engine will not wait for promise to be resolved
-  p.then(res => console.log(res));
-  console.log('Hello There!');
+  p.then((res) => console.log(res));
+  console.log("Hello There!");
 }
 
 getData(); // First `Hello There!` would be printed and then after 3 secs 'Promise resolved value!!' will be printed.
@@ -2468,7 +2485,7 @@ getData(); // First `Hello There!` would be printed and then after 3 secs 'Promi
 async function handlePromise() {
   // JS Engine will waiting for promise to resolve.
   const val = await p;
-  console.log('Hello There!');
+  console.log("Hello There!");
   console.log(val);
 }
 handlePromise(); // This time `Hello There!` won't be printed immediately instead after 3 secs `Hello There!` will be printed followed by 'Promise resolved value!!'
@@ -2478,84 +2495,84 @@ handlePromise(); // This time `Hello There!` won't be printed immediately instea
 
 //🤓 Let's brainstorm more around async-await
 async function handlePromise() {
-  console.log('Hi');
+  console.log("Hi");
   const val = await p;
-  console.log('Hello There!');
+  console.log("Hello There!");
   console.log(val);
 
   const val2 = await p;
-  console.log('Hello There! 2');
+  console.log("Hello There! 2");
   console.log(val2);
 }
-handlePromise(); 
+handlePromise();
 // In above code example, will our program wait for 2 time or will it execute parallely.
 //📌 `Hi` printed instantly -> now code will wait for 3 secs -> After 3 secs both promises will be resolved so ('Hello There!' 'Promise resolved value!!' 'Hello There! 2' 'Promise resolved value!!') will get printed immediately.
 
 // Let's create one promise and then resolve two different promise.
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('Promise resolved value by p2!!');
+    resolve("Promise resolved value by p2!!");
   }, 2000);
-})
+});
 
 async function handlePromise() {
-  console.log('Hi');
+  console.log("Hi");
   const val = await p;
-  console.log('Hello There!');
+  console.log("Hello There!");
   console.log(val);
 
   const val2 = await p2;
-  console.log('Hello There! 2');
+  console.log("Hello There! 2");
   console.log(val2);
 }
-handlePromise(); 
+handlePromise();
 // 📌 `Hi` printed instantly -> now code will wait for 3 secs -> After 3 secs both promises will be resolved so ('Hello There!' 'Promise resolved value!!' 'Hello There! 2' 'Promise resolved value by p2!!') will get printed immediately. So even though `p2` was resolved after 2 secs it had to wait for `p` to get resolved
-
 
 // Now let's reverse the order execution of promise and observe response.
 async function handlePromise() {
-  console.log('Hi');
+  console.log("Hi");
   const val = await p2;
-  console.log('Hello There!');
+  console.log("Hello There!");
   console.log(val);
 
   const val2 = await p;
-  console.log('Hello There! 2');
+  console.log("Hello There! 2");
   console.log(val2);
 }
-handlePromise(); 
+handlePromise();
 // 📌 `Hi` printed instantly -> now code will wait for 2 secs -> After 2 secs ('Hello There!' 'Promise resolved value by p2!!') will get printed and in the subsequent second i.e. after 3 secs ('Hello There! 2' 'Promise resolved value!!') will get printed
 ```
 
 Q: Question is Is program actually waiting or what is happening behind the scene?  
 A: As we know, Time, Tide and JS wait for none. And it's true. Over here it appears that JS engine is waiting but JS engine is not waiting over here. It has not occupied the call stack if that would have been the case our page may have got frozen. So JS engine is not waiting. So if it is not waiting then what it is doing behind the scene? Let's understand with below code snippet.
+
 ```js
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('Promise resolved value by p1!!');
+    resolve("Promise resolved value by p1!!");
   }, 5000);
-})
+});
 
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('Promise resolved value by p2!!');
+    resolve("Promise resolved value by p2!!");
   }, 10000);
-})
+});
 
 async function handlePromise() {
-  console.log('Hi');
+  console.log("Hi");
   debugger;
-  const val = await p;
-  console.log('Hello There!');
+  const val = await p1;
+  console.log("Hello There!");
   debugger;
   console.log(val);
 
   const val2 = await p2;
-  console.log('Hello There! 2');
+  console.log("Hello There! 2");
   debugger;
   console.log(val2);
 }
-handlePromise(); 
+handlePromise();
 // When this function is executed, it will go line by line as JS is synchronous single threaded language. Lets observe what is happening under call-stack. Above you can see we have set the break-points.
 
 // call stack flow -> handlePromise() is pushed -> It will log `Hi` to console -> Next it sees we have await where promise is suppose to be resolved -> So will it wait for promise to resolve and block call stack? No -> thus handlePromise() execution get suspended and moved out of call stack -> So when JS sees await keyword it suspend the execution of function till promise is resolved -> So `p` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs. -> But this time it will start executing from where it had left. -> Now it will log 'Hello There!' and 'Promise resolved value!!' -> then it will check whether `p2` is resolved or not -> It will find since `p2` will take 10 secs to resolve so the same above process will repeat -> execution will be suspended until promise is resolved.
@@ -2570,11 +2587,11 @@ handlePromise();
 ```js
 async function handlePromise() {
   // fetch() => Response Object which as body as Readable stream => Response.json() is also a promise which when resolved => value
-  const data = await fetch('https://api.github.com/users/alok722');
+  const data = await fetch("https://api.github.com/users/alok722");
   const res = await data.json();
   console.log(res);
-};
-handlePromise()
+}
+handlePromise();
 ```
 
 ### Error Handling
@@ -2584,22 +2601,23 @@ While we were using normal Promise we were using .catch to handle error, now in 
 ```js
 async function handlePromise() {
   try {
-    const data = await fetch('https://api.github.com/users/alok722');
+    const data = await fetch("https://api.github.com/users/alok722");
     const res = await data.json();
     console.log(res);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
-};
-handlePromise()
+}
+handlePromise();
 
 // In above whenever any error will occur the execution will move to catch block. One could try above with bad url which will result in error.
 
 // Other way of handling error:
-handlePromise().catch(err => console.log(err)); // this will work as handlePromise will return error promise in case of failure.
+handlePromise().catch((err) => console.log(err)); // this will work as handlePromise will return error promise in case of failure.
 ```
 
 ### Async await vs Promise.then/.catch
+
 What one should use? `async-await` is just a syntactic sugar around promise. Behind the scene `async-await` is just promise. So both are same, it's just `async-await` is new way of writing code. `async-await` solves few of the short-coming of Promise like `Promise Chaining`. `async-await` also increases the readability. So sort of it is always advisable to use `async-await.`
 
 <hr>
@@ -2618,6 +2636,7 @@ alt="async-await in Javascript Youtube Link"/></a>
 ###
 
 4 Promise APIs which are majorly used:
+
 - Promise.all()
 - Promise.allSettled()
 - Promise.race()
@@ -2626,25 +2645,27 @@ alt="async-await in Javascript Youtube Link"/></a>
 💡 One simply doesn't use async/await without knowing promises!
 
 ### Promise.all()
+
 > A promise is a placeholder for a value that's going to be available sometime later. The promise helps handle asynchronous operations. JavaScript provides a helper function Promise.all(promisesArrayOrIterable) to handle multiple promises at once, in parallel, and get the results in a single aggregate array.
 
 Q: In what situation one could use above api?  
 A: Suppose, you have to make parallel API call and get the result, how one can do? This is where Promise.all can be utilized. It is used to handle multiple promises together.
 
-Promise.all([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**.  
+Promise.all([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**.
 
-In first scenario let's assume all 3 promises are successful. So Promise.all will take **3secs** and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.  
+In first scenario let's assume all 3 promises are successful. So Promise.all will take **3secs** and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.
 
 What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.all will throw same error as p2 immediately as soon as error happened. It will not wait for other promise to either become success or failure. Moreover, p1 and p2 wont get cancelled as they are already triggered so it may result in success or failure depending upon their fate but Promise.all wont care. So its a situation of or/null.
 
 💡 To conclude, the Promise.all() waits for all the input promises to resolve and returns a new promise that resolves to an array containing the results of the input promises. If one of the input promises is rejected, the Promise.all() method immediately returns a promise that is rejected with an error of the first rejected promise.
 
 ### Promise.allSettled()
+
 > Promise.allSettled() method that accepts a list of Promises and returns a new promise that resolves after all the input promises have settled, either resolved or rejected.
 
-Promise.allSettled([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**.  
+Promise.allSettled([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**.
 
-In first scenario let's assume all 3 promises are successful. So Promise.allSettled will take **3secs** and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.  
+In first scenario let's assume all 3 promises are successful. So Promise.allSettled will take **3secs** and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.
 
 What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.allSettled will still wait for all promises to get settled. So After 3 secs, it will be [val1, err, val3]
 
@@ -2652,16 +2673,18 @@ What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But
 💡 Promise.allSettled() -> Will wait and provide accumulative result
 
 ### Promise.race()
+
 > The Promise.race() static method accepts a list of promises as an iterable object and returns a new promise that fulfills or rejects as soon as there is one promise that fulfills or rejects, with the value or reason from that promise. The name of Promise.race() implies that all the promises race against each other with a single winner, either resolved or rejected.
 
-Promise.race([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**.  So as soon as first promise will resolve or reject, it will give the output.  
+Promise.race([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**. So as soon as first promise will resolve or reject, it will give the output.
 
 So in Happy scenario, Promise.race will give (val2) as output after 1sec as p2 got resolved at the earliest. Whereas if it would have been failed Promise.race would have still given output after 1 sec but this time with error.
 
 ### Promise.any()
+
 > The Promise.any() method accepts a list of Promise objects as an iterable object. If one of the promises in the iterable object is fulfilled, the Promise.any() returns a single promise that resolves to a value which is the result of the fulfilled promise.
 
-Promise.any([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**.  So as soon as first promise will be successful, it will give the output.
+Promise.any([p1, p2, p3]) -> Lets assume we are making 3 API call to fetch data. Also assume **p1** takes **3 seconds**, **p2** takes **1 second**, **p3** takes **2 seconds**. So as soon as first promise will be successful, it will give the output.
 
 If in above situation what if p2 got rejected, nothing will happen as Promise.any seek for success, so the moment first success will happen that will become the result.
 
@@ -2676,17 +2699,17 @@ If in above situation what if p2 got rejected, nothing will happen as Promise.an
 
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P1 Success');
+    resolve("P1 Success");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P2 Success');
+    resolve("P2 Success");
   }, 1000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P3 Success');
+    resolve("P3 Success");
   }, 2000);
 });
 
@@ -2698,26 +2721,25 @@ Promise.all([p1, p2, p3]).then((results) => {
 ```js
 // 📌 Second Scenario
 
-
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P1 Success');
+    resolve("P1 Success");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P2 Fail');
+    reject("P2 Fail");
   }, 1000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P3 Success');
+    resolve("P3 Success");
   }, 2000);
 });
 
 Promise.all([p1, p2, p3])
-  .then(results => console.log(results))
-  .catch(err => console.error(err)); // throws error after 1 sec i.e. 'P2 Fails'
+  .then((results) => console.log(results))
+  .catch((err) => console.error(err)); // throws error after 1 sec i.e. 'P2 Fails'
 ```
 
 ### Promise.allSettled()
@@ -2727,26 +2749,26 @@ Promise.all([p1, p2, p3])
 ```js
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P1 Success');
+    resolve("P1 Success");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P2 Success');
+    resolve("P2 Success");
   }, 1000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P3 Fail');
+    reject("P3 Fail");
   }, 2000);
 });
 
 Promise.allSettled([p1, p2, p3])
   .then((results) => console.log(results))
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
 
 // Over here, it will wait for all promises to be either settled or rejected and then return,
-  /*
+/*
     [
       {status: 'fulfilled', value: 'P1 Success'},
       {status: 'fulfilled', value: 'P2 Success'},
@@ -2762,26 +2784,26 @@ Promise.allSettled([p1, p2, p3])
 
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P1 Success');
+    resolve("P1 Success");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P2 Success');
+    resolve("P2 Success");
   }, 1000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P3 Fail');
+    reject("P3 Fail");
   }, 2000);
 });
 
 Promise.race([p1, p2, p3])
   .then((results) => console.log(results))
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
 
- // It will return as soon as first promise is resolved or rejected.
- // In above example O/P: "P2 Success"
+// It will return as soon as first promise is resolved or rejected.
+// In above example O/P: "P2 Success"
 ```
 
 ```js
@@ -2789,29 +2811,31 @@ Promise.race([p1, p2, p3])
 
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P1 Success');
+    resolve("P1 Success");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P2 Success');
+    resolve("P2 Success");
   }, 5000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P3 Fail');
+    reject("P3 Fail");
   }, 2000);
 });
 
 Promise.race([p1, p2, p3])
   .then((results) => console.log(results))
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
 
- //After 2 secs O/P: "P3 Fail"
+//After 2 secs O/P: "P3 Fail"
 ```
 
-Notes:  
-* Once promise is settled, it means -> got the result. Moreover, settled is broadly divided into two categories:
+Notes:
+
+- Once promise is settled, it means -> got the result. Moreover, settled is broadly divided into two categories:
+
 1. resolve, success, fulfilled
 2. reject, failure, rejected
 
@@ -2822,23 +2846,23 @@ Notes:
 
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P1 Success');
+    resolve("P1 Success");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P2 Success');
+    resolve("P2 Success");
   }, 5000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P3 Fail');
+    reject("P3 Fail");
   }, 2000);
 });
 
 Promise.any([p1, p2, p3])
   .then((results) => console.log(results))
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
 
 // It will wait for first settled **success**
 // In above, p3 will settled first, but since it is rejected, so it will wait further so at 3rd second it will print "P1 Success"
@@ -2849,23 +2873,23 @@ Promise.any([p1, p2, p3])
 
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P1 Fail');
+    reject("P1 Fail");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    resolve('P2 Success');
+    resolve("P2 Success");
   }, 5000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P3 Fail');
+    reject("P3 Fail");
   }, 2000);
 });
 
 Promise.any([p1, p2, p3])
   .then((results) => console.log(results))
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));
 
 // After 5 secs: 'P2 Success'
 ```
@@ -2875,23 +2899,23 @@ Promise.any([p1, p2, p3])
 
 const p1 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P1 Fail');
+    reject("P1 Fail");
   }, 3000);
 });
 const p2 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P2 Fail');
+    reject("P2 Fail");
   }, 5000);
 });
 const p3 = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject('P3 Fail');
+    reject("P3 Fail");
   }, 2000);
 });
 
 Promise.any([p1, p2, p3])
   .then((results) => console.log(results))
-  .catch(err => {
+  .catch((err) => {
     console.error(err);
     console.error(err.errors); // ['P1 Fail', 'P2 Fail', 'P3 Fail']
   });
@@ -2902,13 +2926,14 @@ Promise.any([p1, p2, p3])
 ```
 
 ### Summary
+
 There are 6 static methods of Promise class:
 
 > Promise.all(promises) – waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, it becomes the error of Promise.all, and all other results are ignored.
 
 > Promise.allSettled(promises) (recently added method) – waits for all promises to settle and returns their results as an array of objects with:
-status: "fulfilled" or "rejected"
-value (if fulfilled) or reason (if rejected).
+> status: "fulfilled" or "rejected"
+> value (if fulfilled) or reason (if rejected).
 
 > Promise.race(promises) – waits for the first promise to settle, and its result/error becomes the outcome.
 
@@ -2917,8 +2942,7 @@ value (if fulfilled) or reason (if rejected).
 > Promise.resolve(value) – makes a resolved promise with the given value.
 
 > Promise.reject(error) – makes a rejected promise with the given error.
-Of all these, Promise.all is probably the most common in practice.
-
+> Of all these, Promise.all is probably the most common in practice.
 
 <hr>
 
@@ -2938,6 +2962,7 @@ alt="promise-apis in Javascript Youtube Link"/></a>
 > In JavaScript, the this keyword refers to an object, which object depends on how this is being invoked (used or called).
 
 ## `this` in global space
+
 Anything defined globally is said to be in a global space.
 
 ```js
@@ -2949,10 +2974,10 @@ console.log(this); // refers to global object i.e. window in case of browser
 
 ```js
 function x() {
-    // the below value depends on strict/non-strict mode
-    console.log(this);
-    // in strict mode - undefined
-    // in non-strict mode - refers to global window object
+  // the below value depends on strict/non-strict mode
+  console.log(this);
+  // in strict mode - undefined
+  // in non-strict mode - refers to global window object
 }
 x();
 // 💡 Notes:
@@ -2961,14 +2986,16 @@ x();
 
 // The moment you make JS run in strict mode by using: "use strict" at the top, `this` keyword inside function returns `undefined` whereas global space will still refers to global window object
 ```
+
 `this substitution` -> According to `this` substitution, if the value of `this` keyword is `null/undefined`, it will be replaced by globalObject only in non-strict mode. This is the reason why `this` refers to global window object inside function in non-strict mode.
 
 💡 So to summarize, the value of `this` keyword inside function is `undefined`, but because of `this substitution` in non-strict mode `this` keyword refers to `globalWindowObject` and in strict mode it will still be `undefined`
 
 `this` keyword value depends on how the `function` is called. For eg:  
-In strict mode:  
+In strict mode:
+
 ```js
-x(); // undefined  
+x(); // undefined
 window.x(); // global window object
 ```
 
@@ -2977,12 +3004,12 @@ window.x(); // global window object
 ```js
 // `x` key below is a method as per terminology
 const obj = {
-    a: 10,
-    x: function () {
-        console.log(this); // {a: 10, x: f()}
-        console.log(this.a); // 10
-    }
-}
+  a: 10,
+  x: function () {
+    console.log(this); // {a: 10, x: f()}
+    console.log(this.a); // 10
+  },
+};
 obj.x(); // value of `this` is referring to current object i.e. `obj`
 ```
 
@@ -2992,16 +3019,16 @@ obj.x(); // value of `this` is referring to current object i.e. `obj`
 
 ```js
 const student = {
-    name: 'Alok',
-    printName: function () {
-        console.log(this.name);
-    }
-}
+  name: "Alok",
+  printName: function () {
+    console.log(this.name);
+  },
+};
 student.printName(); // Alok
 
 const student2 = {
-    name: 'Kajal',
-}
+  name: "Kajal",
+};
 student2.printName(); // throw error
 
 // ❓ how to re-use printName method from `student` object
@@ -3018,24 +3045,24 @@ Arrow function doesn't have their own `this` value, they take the value from enc
 
 ```js
 const obj = {
-    a: 10,
-    x: () => {
-        console.log(this); // window object
-        // Above the value of `this` won't be obj anymore instead it will be enclosing lexical context i.e. window object in current scenario.
-    }
-}
+  a: 10,
+  x: () => {
+    console.log(this); // window object
+    // Above the value of `this` won't be obj anymore instead it will be enclosing lexical context i.e. window object in current scenario.
+  },
+};
 obj.x();
 
 const obj2 = {
-    a: 10,
-    x: function () {
-        const y = () => {
-            console.log(this);
-            // Above the value of `this` will be obj2 as function y's enclosing lexical context is function `x`.
-        };
-        y();
-    }
-}
+  a: 10,
+  x: function () {
+    const y = () => {
+      console.log(this);
+      // Above the value of `this` will be obj2 as function y's enclosing lexical context is function `x`.
+    };
+    y();
+  },
+};
 obj2.x();
 ```
 
@@ -3054,7 +3081,5 @@ Watch Live On Youtube below:
 
 <a href="https://www.youtube.com/watch?v=9T4z98JcHR0&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/9T4z98JcHR0/0.jpg" width="750"
 alt="this keyword in Javascript Youtube Link"/></a>
-
-
 
 To Be Continued...
