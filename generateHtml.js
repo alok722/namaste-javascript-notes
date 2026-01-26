@@ -129,7 +129,7 @@ async function build() {
         </div>
         <ul id="toc"></ul>
       </div>
-      <div id="wrapper">
+      <div id="content">
         <article class="markdown-body">
           {{~> content}}
         </article>
@@ -141,7 +141,7 @@ async function build() {
         const sidebar = document.querySelector(".toc-sidebar");
         const toggle = document.getElementById("toc-toggle");
         const toc = document.getElementById("toc");
-        const wrapper = document.getElementById("wrapper");
+        const content = document.getElementById("content");
         const body = document.body;
 
         // Toggle Sidebar logic
@@ -157,7 +157,7 @@ async function build() {
         });
 
         // Generate TOC Logic
-        const allHeadings = wrapper.querySelectorAll("h1, h2, h3");
+        const allHeadings = content.querySelectorAll("h1, h2, h3");
         let episodeReached = false;
 
         allHeadings.forEach((heading) => {
