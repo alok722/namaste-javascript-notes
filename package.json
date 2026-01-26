@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "commit": "git add . && git-cz",
-    "build": "node generatePdf && generate-md --layout markedapp-byword --input ./notes/lectures.md --output ./dist"
+    "build": "node generateHtml && node generatePdf"
   },
   "repository": {
     "type": "git",

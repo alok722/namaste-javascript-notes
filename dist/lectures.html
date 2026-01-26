@@ -7,11 +7,51 @@
     <link type="text/css" rel="stylesheet" href="assets/style.css" />
     <link type="text/css" rel="stylesheet" href="assets/pilcrow.css" />
     <link type="text/css" rel="stylesheet" href="assets/hljs-github.min.css"/>
-  </head>
-<body><h2 id="title-namaste-javascript"><a class="header-link" href="#title-namaste-javascript"></a>title: Namaste JavaScript</h2>
+  <!-- Custom TOC sidebar styles -->
+      <style>
+      /* ================= TOC SIDEBAR ================= */
+      .toc-sidebar { position: fixed; top: 0; left: 0; height: 100vh; width: 300px; background: #000; border-right: 1px solid #222; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; overflow-y: auto; overflow-x: hidden; }
+      .toc-sidebar.close { width: 60px; background: transparent; border-right: none; }
+      .toc-header { height: 60px; display: flex; align-items: center; overflow: hidden; background: inherit; }
+      .toc-icon-svg { min-width: 60px; cursor: pointer; display: block; padding: 15px; transition: color 0.3s ease; color: #fff; }
+      .toc-sidebar.close .toc-icon-svg { color: #000; }
+      .toc-title { font-size: 20px; color: #fff; font-weight: 600; white-space: nowrap; transition: opacity 0.3s ease; margin-left: 0; }
+      .toc-sidebar.close .toc-title { opacity: 0; pointer-events: none; }
+      #toc { margin-top: 10px; padding: 0; list-style: none; }
+      #toc li.h1 a { font-weight: 700; color: #fff2f2; opacity: 1; } 
+      #toc li.h2 { padding-left: 20px; }
+      #toc li.h3 { padding-left: 40px; }
+      #toc a { color: #fff; font-size: 14px; text-decoration: none; display: block; padding: 12px 20px; opacity: 0.7; transition: all 0.2s ease; }
+      #toc a:hover { opacity: 1; background: #111; }
+      .toc-sidebar.close #toc { display: none; }
+      @media (max-width: 900px) {
+        .toc-sidebar { width: 280px !important; }
+        .toc-sidebar.close { width: 60px !important; background: transparent !important; border-right: none !important; }
+        .toc-sidebar.close .toc-icon-svg { color: #000 !important; }
+        body.sidebar-open::after { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(3px); z-index: 1000; }
+        body.sidebar-open { overflow: hidden; }
+      }
+      </style>
+      </head>
+<body>
+      <div class="toc-sidebar close">
+        <div class="toc-header"> 
+          <svg id="toc-toggle" class="toc-icon-svg" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0,0,256,256">
+            <g fill="currentColor" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10">
+              <g transform="scale(5.12,5.12)">
+                <path d="M0,9v2h50v-2zM0,24v2h50v-2zM0,39v2h50v-2z"></path>
+              </g>
+            </g>
+          </svg>
+          <span class="toc-title">Topics</span>
+        </div>
+        <ul id="toc"></ul>
+      </div>
+      <div id="wrapper">
+        <article class="markdown-body"><h2 id="title-namaste-javascript">title: Namaste JavaScript</h2>
 <br>
 
-<h1 id="episode-1--execution-context"><a class="header-link" href="#episode-1--execution-context"></a>Episode 1 : Execution Context</h1>
+<h1 id="episode-1--execution-context">Episode 1 : Execution Context</h1>
 <ul class="list">
 <li><p>Everything in JS happens inside the execution context. Imagine a sealed-off container inside which JS runs. It is an abstract concept that hold info about the env. within the current code is being executed.
 <img src="../assets/execution-context.jpg" alt="Execution Context" title="Execution Context"></p>
@@ -40,7 +80,7 @@ alt="Execution Context Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-2--how-js-is-executed--call-stack"><a class="header-link" href="#episode-2--how-js-is-executed--call-stack"></a>Episode 2 : How JS is executed &amp; Call Stack</h1>
+<h1 id="episode-2--how-js-is-executed--call-stack">Episode 2 : How JS is executed &amp; Call Stack</h1>
 <ul class="list">
 <li><p>When a JS program is ran, a <strong>global execution context</strong> is created.</p>
 </li>
@@ -88,7 +128,7 @@ alt="How JS is executed & Call Stack Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-3--hoisting-in-javascript-variables--functions"><a class="header-link" href="#episode-3--hoisting-in-javascript-variables--functions"></a>Episode 3 : Hoisting in JavaScript (variables &amp; functions)</h1>
+<h1 id="episode-3--hoisting-in-javascript-variables--functions">Episode 3 : Hoisting in JavaScript (variables &amp; functions)</h1>
 <ul class="list">
 <li>Let&#39;s observe the below code and it&#39;s explaination:</li>
 </ul>
@@ -129,7 +169,7 @@ alt="Hoisting Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-4--functions-and-variable-environments"><a class="header-link" href="#episode-4--functions-and-variable-environments"></a>Episode 4 : Functions and Variable Environments</h1>
+<h1 id="episode-4--functions-and-variable-environments">Episode 4 : Functions and Variable Environments</h1>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
 a();
 b(); <span class="hljs-comment">// we are calling the functions before defining them. This will work properly, as seen in Hoisting.</span>
@@ -153,7 +193,7 @@ b(); <span class="hljs-comment">// we are calling the functions before defining 
 <blockquote>
 <p>1</p>
 </blockquote>
-<h2 id="code-flow-in-terms-of-execution-context"><a class="header-link" href="#code-flow-in-terms-of-execution-context"></a>Code Flow in terms of Execution Context</h2>
+<h2 id="code-flow-in-terms-of-execution-context">Code Flow in terms of Execution Context</h2>
 <ul class="list">
 <li>The Global Execution Context (GEC) is created (the big box with Memory and Code subparts). Also GEC is pushed into Call Stack</li>
 </ul>
@@ -199,7 +239,7 @@ alt="Functions and Variable Environments Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-5--shortest-js-program-window--this-keyword"><a class="header-link" href="#episode-5--shortest-js-program-window--this-keyword"></a>Episode 5 : Shortest JS Program, window &amp; this keyword</h1>
+<h1 id="episode-5--shortest-js-program-window--this-keyword">Episode 5 : Shortest JS Program, window &amp; this keyword</h1>
 <ul class="list">
 <li><p>The shortest JS program is empty file. Because even then, JS engine does a lot of things. As always, even in this case, it creates the GEC which has memory space and the execution context.</p>
 </li>
@@ -225,7 +265,7 @@ alt="Shortest JS Program, window & this keyword Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-6--undefined-vs-not-defined-in-js"><a class="header-link" href="#episode-6--undefined-vs-not-defined-in-js"></a>Episode 6 : undefined vs not defined in JS</h1>
+<h1 id="episode-6--undefined-vs-not-defined-in-js">Episode 6 : undefined vs not defined in JS</h1>
 <ul class="list">
 <li><p>In first phase (memory allocation) JS assigns each variable a placeholder called <strong>undefined</strong>.</p>
 </li>
@@ -257,7 +297,7 @@ alt="undefined vs not defined in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-7--the-scope-chain-scope--lexical-environment"><a class="header-link" href="#episode-7--the-scope-chain-scope--lexical-environment"></a>Episode 7 : The Scope Chain, Scope &amp; Lexical Environment</h1>
+<h1 id="episode-7--the-scope-chain-scope--lexical-environment">Episode 7 : The Scope Chain, Scope &amp; Lexical Environment</h1>
 <ul class="list">
 <li><p><strong>Scope</strong> in Javascript is directly related to <strong>Lexical Environment</strong>.</p>
 </li>
@@ -355,7 +395,7 @@ alt="The Scope Chain, Scope & Lexical Environment Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-8--let--const-in-js-temporal-dead-zone"><a class="header-link" href="#episode-8--let--const-in-js-temporal-dead-zone"></a>Episode 8 : let &amp; const in JS, Temporal Dead Zone</h1>
+<h1 id="episode-8--let--const-in-js-temporal-dead-zone">Episode 8 : let &amp; const in JS, Temporal Dead Zone</h1>
 <ul class="list">
 <li>let and const declarations are hoisted. But its different from <strong>var</strong></li>
 </ul>
@@ -430,7 +470,7 @@ b = <span class="hljs-number">1000</span>; <span class="hljs-comment">//this giv
 </ul>
 </li>
 </ul>
-<h3 id="some-good-practices"><a class="header-link" href="#some-good-practices"></a>SOME GOOD PRACTICES:</h3>
+<h3 id="some-good-practices">SOME GOOD PRACTICES:</h3>
 <ul class="list">
 <li>Try using const wherever possible.</li>
 <li>If not, use let, Avoid var.</li>
@@ -447,7 +487,7 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-9--block-scope--shadowing-in-js"><a class="header-link" href="#episode-9--block-scope--shadowing-in-js"></a>Episode 9 : Block Scope &amp; Shadowing in JS</h1>
+<h1 id="episode-9--block-scope--shadowing-in-js">Episode 9 : Block Scope &amp; Shadowing in JS</h1>
 <p>What is a <strong>Block</strong>?</p>
 <ul class="list">
 <li>Block aka <em>compound statement</em> is used to group JS statements together into 1 group. We group them within {...}</li>
@@ -528,7 +568,7 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-10--closures-in-js"><a class="header-link" href="#episode-10--closures-in-js"></a>Episode 10 : Closures in JS</h1>
+<h1 id="episode-10--closures-in-js">Episode 10 : Closures in JS</h1>
 <ul class="list">
 <li><p>Function bundled along with it&#39;s lexical scope is <strong>closure</strong>.</p>
 </li>
@@ -726,7 +766,7 @@ alt="Closure in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-11--settimeout--closures-interview-question"><a class="header-link" href="#episode-11--settimeout--closures-interview-question"></a>Episode 11 : setTimeout + Closures Interview Question</h1>
+<h1 id="episode-11--settimeout--closures-interview-question">Episode 11 : setTimeout + Closures Interview Question</h1>
 <blockquote>
 <p><strong>Time, tide and Javascript wait for none.</strong></p>
 </blockquote>
@@ -807,8 +847,8 @@ alt="setTimeout + Closures Interview Question in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-12--famous-interview-questions-ft-closures"><a class="header-link" href="#episode-12--famous-interview-questions-ft-closures"></a>Episode 12 : Famous Interview Questions ft. Closures</h1>
-<h3 id="q1-what-is-closure-in-javascript"><a class="header-link" href="#q1-what-is-closure-in-javascript"></a>Q1: What is Closure in Javascript?</h3>
+<h1 id="episode-12--famous-interview-questions-ft-closures">Episode 12 : Famous Interview Questions ft. Closures</h1>
+<h3 id="q1-what-is-closure-in-javascript">Q1: What is Closure in Javascript?</h3>
 <p><strong>Ans</strong>: A function along with reference to its outer environment together forms a closure. Or in other words, A Closure is a combination of a function and its lexical scope bundled together.
 eg:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>) </span>{
@@ -818,7 +858,7 @@ eg:</p>
   } <span class="hljs-comment">// inner forms a closure with outer</span>
   <span class="hljs-keyword">return</span> inner;
 }
-outer()(); <span class="hljs-comment">// 10 // over here first `()` will return inner function and then using second `()` to call inner function</span></code></pre><h3 id="q2-will-the-below-code-still-forms-a-closure"><a class="header-link" href="#q2-will-the-below-code-still-forms-a-closure"></a>Q2: Will the below code still forms a closure?</h3>
+outer()(); <span class="hljs-comment">// 10 // over here first `()` will return inner function and then using second `()` to call inner function</span></code></pre><h3 id="q2-will-the-below-code-still-forms-a-closure">Q2: Will the below code still forms a closure?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(a);
@@ -827,7 +867,7 @@ outer()(); <span class="hljs-comment">// 10 // over here first `()` will return 
   <span class="hljs-keyword">return</span> inner;
 }
 outer()(); <span class="hljs-comment">// 10</span></code></pre><p><strong>Ans</strong>: Yes, because inner function forms a closure with its outer environment so sequence doesn&#39;t matter.</p>
-<h3 id="q3-changing-var-to-let-will-it-make-any-difference"><a class="header-link" href="#q3-changing-var-to-let-will-it-make-any-difference"></a>Q3: Changing var to let, will it make any difference?</h3>
+<h3 id="q3-changing-var-to-let-will-it-make-any-difference">Q3: Changing var to let, will it make any difference?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
@@ -836,7 +876,7 @@ outer()(); <span class="hljs-comment">// 10</span></code></pre><p><strong>Ans</s
   <span class="hljs-keyword">return</span> inner;
 }
 outer()(); <span class="hljs-comment">// 10</span></code></pre><p><strong>Ans</strong>: It will still behave the same way.</p>
-<h3 id="q4-will-inner-function-have-the-access-to-outer-function-argument"><a class="header-link" href="#q4-will-inner-function-have-the-access-to-outer-function-argument"></a>Q4: Will inner function have the access to outer function argument?</h3>
+<h3 id="q4-will-inner-function-have-the-access-to-outer-function-argument">Q4: Will inner function have the access to outer function argument?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
   <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inner</span>(<span class="hljs-params"></span>) </span>{
@@ -845,7 +885,7 @@ outer()(); <span class="hljs-comment">// 10</span></code></pre><p><strong>Ans</s
   <span class="hljs-keyword">return</span> inner;
 }
 outer(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Inner function will now form closure and will have access to both a and str.</p>
-<h3 id="q5-in-below-code-will-inner-form-closure-with-outest"><a class="header-link" href="#q5-in-below-code-will-inner-form-closure-with-outest"></a>Q5: In below code, will inner form closure with <strong>outest</strong>?</h3>
+<h3 id="q5-in-below-code-will-inner-form-closure-with-outest">Q5: In below code, will inner form closure with <strong>outest</strong>?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outest</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> c = <span class="hljs-number">20</span>;
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
@@ -858,7 +898,7 @@ outer(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="
   <span class="hljs-keyword">return</span> outer;
 }
 outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 20 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Yes, inner will have access to all its outer environment.</p>
-<h3 id="q6-output-of-below-code-and-explaination"><a class="header-link" href="#q6-output-of-below-code-and-explaination"></a>Q6: Output of below code and explaination?</h3>
+<h3 id="q6-output-of-below-code-and-explaination">Q6: Output of below code and explaination?</h3>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outest</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> c = <span class="hljs-number">20</span>;
   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outer</span>(<span class="hljs-params">str</span>) </span>{
@@ -872,7 +912,7 @@ outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span clas
 }
 <span class="hljs-keyword">let</span> a = <span class="hljs-number">100</span>;
 outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span class="hljs-comment">// 10 20 &quot;Hello There&quot;</span></code></pre><p><strong>Ans</strong>: Still the same output, the inner function will have reference to inner a, so conflicting name won&#39;t matter here. If it wouldn&#39;t have find a inside outer function then it would have went more outer to find a and thus have printed 100. So, it try to resolve variable in scope chain and if a wouldn&#39;t have been found it would have given reference error.</p>
-<h3 id="q7-advantage-of-closure"><a class="header-link" href="#q7-advantage-of-closure"></a>Q7: Advantage of Closure?</h3>
+<h3 id="q7-advantage-of-closure">Q7: Advantage of Closure?</h3>
 <ul class="list">
 <li>Module Design Pattern</li>
 <li>Currying</li>
@@ -880,7 +920,7 @@ outest()(<span class="hljs-string">&quot;Hello There&quot;</span>)(); <span clas
 <li>Data hiding and encapsulation</li>
 <li>setTimeouts etc.</li>
 </ul>
-<h3 id="q8-discuss-more-on-data-hiding-and-encapsulation"><a class="header-link" href="#q8-discuss-more-on-data-hiding-and-encapsulation"></a>Q8: Discuss more on Data hiding and encapsulation?</h3>
+<h3 id="q8-discuss-more-on-data-hiding-and-encapsulation">Q8: Discuss more on Data hiding and encapsulation?</h3>
 <pre class="hljs"><code><span class="hljs-comment">// without closures</span>
 <span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>;
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">increment</span>(<span class="hljs-params"></span>)</span>{
@@ -938,7 +978,7 @@ counter2(); <span class="hljs-comment">// here counter2 is whole new copy of cou
 counter1.incrementCounter();
 counter1.incrementCounter();
 counter1.decrementCounter();
-<span class="hljs-comment">// returns 1 2 1</span></code></pre><h3 id="q9-disadvantage-of-closure"><a class="header-link" href="#q9-disadvantage-of-closure"></a>Q9: Disadvantage of closure?</h3>
+<span class="hljs-comment">// returns 1 2 1</span></code></pre><h3 id="q9-disadvantage-of-closure">Q9: Disadvantage of closure?</h3>
 <p><strong>Ans</strong>: Overconsumption of memory when using closure as everytime as those closed over variables are not garbage collected till program expires.
 So when creating many closures, more memory is accumulated and this can create memory leaks if not handled.</p>
 <p><strong>Garbage collector</strong> : Program in JS engine or browser that frees up unused memory. In highlevel languages like C++ or JAVA, garbage collection is left to the programmer, but in JS engine its done implicitly.</p>
@@ -963,21 +1003,21 @@ alt="Closures Interview Question in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-13--first-class-functions-ft-anonymous-functions"><a class="header-link" href="#episode-13--first-class-functions-ft-anonymous-functions"></a>Episode 13 : First Class Functions ft. Anonymous Functions</h1>
+<h1 id="episode-13--first-class-functions-ft-anonymous-functions">Episode 13 : First Class Functions ft. Anonymous Functions</h1>
 <blockquote>
 <p>Functions are heart ♥ of Javascript.</p>
 </blockquote>
-<h3 id="q-what-is-function-statement"><a class="header-link" href="#q-what-is-function-statement"></a>Q: What is Function statement?</h3>
+<h3 id="q-what-is-function-statement">Q: What is Function statement?</h3>
 <p>Below way of creating function are function statement.</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello&quot;</span>);
 }
-a(); <span class="hljs-comment">// Hello</span></code></pre><h3 id="q-what-is-function-expression"><a class="header-link" href="#q-what-is-function-expression"></a>Q: What is Function Expression?</h3>
+a(); <span class="hljs-comment">// Hello</span></code></pre><h3 id="q-what-is-function-expression">Q: What is Function Expression?</h3>
 <p>Assigning a function to a variable. Function acts like a value.</p>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello&quot;</span>);
 };
-b();</code></pre><h3 id="q-difference-between-function-statement-and-expression"><a class="header-link" href="#q-difference-between-function-statement-and-expression"></a>Q: Difference between function statement and expression</h3>
+b();</code></pre><h3 id="q-difference-between-function-statement-and-expression">Q: Difference between function statement and expression</h3>
 <p>The major difference between these two lies in <strong>Hoisting</strong>.</p>
 <pre class="hljs"><code>a(); <span class="hljs-comment">// &quot;Hello A&quot;</span>
 b(); <span class="hljs-comment">// TypeError</span>
@@ -987,9 +1027,9 @@ b(); <span class="hljs-comment">// TypeError</span>
 <span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hello B&quot;</span>);
 };
-<span class="hljs-comment">// Why? During mem creation phase a is created in memory and function assigned to a. But b is created like a variable (b:undefined) and until code reaches the function()  part, it is still undefined. So it cannot be called.</span></code></pre><h3 id="q-what-is-function-declaration"><a class="header-link" href="#q-what-is-function-declaration"></a>Q: What is Function Declaration?</h3>
+<span class="hljs-comment">// Why? During mem creation phase a is created in memory and function assigned to a. But b is created like a variable (b:undefined) and until code reaches the function()  part, it is still undefined. So it cannot be called.</span></code></pre><h3 id="q-what-is-function-declaration">Q: What is Function Declaration?</h3>
 <p>Other name for <strong>function statement</strong>.</p>
-<h3 id="q-what-is-anonymous-function"><a class="header-link" href="#q-what-is-anonymous-function"></a>Q: What is Anonymous Function?</h3>
+<h3 id="q-what-is-anonymous-function">Q: What is Anonymous Function?</h3>
 <p>A function without a name.</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 
@@ -997,19 +1037,19 @@ b(); <span class="hljs-comment">// TypeError</span>
 <li>They don&#39;t have their own identity. So an anonymous function without code inside it results in an error.</li>
 <li>Anonymous functions are used when functions are used as values eg. the code sample for <strong>function expression</strong> above.</li>
 </ul>
-<h3 id="q-what-is-named-function-expression"><a class="header-link" href="#q-what-is-named-function-expression"></a>Q: What is Named Function Expression?</h3>
+<h3 id="q-what-is-named-function-expression">Q: What is Named Function Expression?</h3>
 <p>Same as Function Expression but function has a name instead of being anonymous.</p>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">xyz</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;b called&quot;</span>);
 };
 b(); <span class="hljs-comment">// &quot;b called&quot;</span>
 xyz(); <span class="hljs-comment">// Throws ReferenceError:xyz is not defined.</span>
-<span class="hljs-comment">// xyz function is not created in global scope. So it can&#x27;t be called.</span></code></pre><h3 id="q-parameters-vs-arguments"><a class="header-link" href="#q-parameters-vs-arguments"></a>Q: Parameters vs Arguments?</h3>
+<span class="hljs-comment">// xyz function is not created in global scope. So it can&#x27;t be called.</span></code></pre><h3 id="q-parameters-vs-arguments">Q: Parameters vs Arguments?</h3>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">param1, param2</span>) </span>{
   <span class="hljs-comment">// labels/identifiers are parameters</span>
   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;b called&quot;</span>);
 };
-b(arg1, arg2); <span class="hljs-comment">// arguments - values passed inside function call</span></code></pre><h3 id="q-what-is-first-class-function-aka-first-class-citizens"><a class="header-link" href="#q-what-is-first-class-function-aka-first-class-citizens"></a>Q: What is First Class Function aka First Class Citizens?</h3>
+b(arg1, arg2); <span class="hljs-comment">// arguments - values passed inside function call</span></code></pre><h3 id="q-what-is-first-class-function-aka-first-class-citizens">Q: What is First Class Function aka First Class Citizens?</h3>
 <p>We can pass functions inside a function as arguments and
 /or return a function(HOF). These ability are altogether known as First class function. It is programming concept available in some other languages too.</p>
 <pre class="hljs"><code><span class="hljs-keyword">var</span> b = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">param1</span>) </span>{
@@ -1039,8 +1079,8 @@ alt="First Class Functions ft. Anonymous Functions in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-14--callback-functions-in-js-ft-event-listeners"><a class="header-link" href="#episode-14--callback-functions-in-js-ft-event-listeners"></a>Episode 14 : Callback Functions in JS ft. Event Listeners</h1>
-<h3 id="callback-functions"><a class="header-link" href="#callback-functions"></a>Callback Functions</h3>
+<h1 id="episode-14--callback-functions-in-js-ft-event-listeners">Episode 14 : Callback Functions in JS ft. Event Listeners</h1>
+<h3 id="callback-functions">Callback Functions</h3>
 <ul class="list">
 <li>Functions are first class citizens ie. take a function A and pass it to another function B. Here, A is a callback function. So basically I am giving access to function B to call function A. This callback function gives us the access to whole <strong>Asynchronous</strong> world in <strong>Synchronous</strong> world.</li>
 </ul>
@@ -1079,7 +1119,7 @@ x(<span class="hljs-function"><span class="hljs-keyword">function</span> <span c
     });
   });
 }
-printAll(); <span class="hljs-comment">// A B C // in order</span></code></pre><h3 id="event-listener"><a class="header-link" href="#event-listener"></a>Event Listener</h3>
+printAll(); <span class="hljs-comment">// A B C // in order</span></code></pre><h3 id="event-listener">Event Listener</h3>
 <ul class="list">
 <li>We will create a button in html and attach event to it.</li>
 </ul>
@@ -1115,7 +1155,7 @@ attachEventList();
 </ul>
 </li>
 </ul>
-<h3 id="garbage-collection-and-removeeventlisteners"><a class="header-link" href="#garbage-collection-and-removeeventlisteners"></a>Garbage Collection and removeEventListeners</h3>
+<h3 id="garbage-collection-and-removeeventlisteners">Garbage Collection and removeEventListeners</h3>
 <ul class="list">
 <li>Event listeners are heavy as they form closures. So even when call stack is empty, EventListener won&#39;t free up memory allocated to count as it doesn&#39;t know when it may need count again. So we remove event listeners when we don&#39;t need them (garbage collected) onClick, onHover, onScroll all in a page can slow it down heavily.</li>
 </ul>
@@ -1130,7 +1170,7 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-15--asynchronous-javascript--event-loop-from-scratch"><a class="header-link" href="#episode-15--asynchronous-javascript--event-loop-from-scratch"></a>Episode 15 : Asynchronous JavaScript &amp; EVENT LOOP from scratch</h1>
+<h1 id="episode-15--asynchronous-javascript--event-loop-from-scratch">Episode 15 : Asynchronous JavaScript &amp; EVENT LOOP from scratch</h1>
 <blockquote>
 <p>Note: Call stack will execeute any execeution context which enters it. Time, tide and JS waits for none. TLDR; Call stack has no timer.</p>
 </blockquote>
@@ -1142,7 +1182,7 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a></p>
 </ul>
 </li>
 </ul>
-<h3 id="webapis"><a class="header-link" href="#webapis"></a>WebAPIs</h3>
+<h3 id="webapis">WebAPIs</h3>
 <p>None of the below are part of Javascript! These are extra superpowers that browser has. Browser gives access to JS callstack to use these powers.
 <img src="../assets/eventloop2.jpg" alt="Event Loop 2 Demo"></p>
 <ul class="list">
@@ -1179,7 +1219,7 @@ console.log(&quot;end&quot;);
 </ul>
 </li>
 </ul>
-<h3 id="event-loops-and-callback-queue"><a class="header-link" href="#event-loops-and-callback-queue"></a>Event Loops and Callback Queue</h3>
+<h3 id="event-loops-and-callback-queue">Event Loops and Callback Queue</h3>
 <p>Q: How after 5 secs timer is console?</p>
 <ul class="list">
 <li>cb() cannot simply directly go to callstack to be execeuted. It goes through the callback queue when timer expires.</li>
@@ -1208,7 +1248,7 @@ console.log(&quot;End&quot;); // calls console api and logs in console window. A
 <p><strong>Ans</strong>: Suppose user clciks button x6 times. So 6 cb() are put inside callback queue. Event loop sees if call stack is empty/has space and whether callback queue is not empty(6 elements here). Elements of callback queue popped off, put in callstack, executed and then popped off from call stack.</p>
 <br>
 
-<h3 id="behaviour-of-fetch-microtask-queue"><a class="header-link" href="#behaviour-of-fetch-microtask-queue"></a>Behaviour of fetch (<strong>Microtask Queue?</strong>)</h3>
+<h3 id="behaviour-of-fetch-microtask-queue">Behaviour of fetch (<strong>Microtask Queue?</strong>)</h3>
 <p>Let&#39;s observe the code below and try to understand</p>
 <pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Start&quot;</span>); <span class="hljs-comment">// this calls the console web api (through window) which in turn actually modifies values in console.</span>
 <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cbT</span>(<span class="hljs-params"></span>) </span>{
@@ -1232,7 +1272,7 @@ Code Explaination:
 * See below Image <span class="hljs-keyword">for</span> more understanding</code></pre><p><img src="../assets/eventloop6.jpg" alt="Event Loop 6 Demo">
 Microtask Priority Visualization
 <img src="../assets/microtask.gif" alt="Event Loop 7 Demo"></p>
-<h4 id="what-enters-the-microtask-queue-"><a class="header-link" href="#what-enters-the-microtask-queue-"></a>What enters the Microtask Queue ?</h4>
+<h4 id="what-enters-the-microtask-queue-">What enters the Microtask Queue ?</h4>
 <ul class="list">
 <li>All the callback functions that come through promises go in microtask Queue.</li>
 <li><strong>Mutation Observer</strong> : Keeps on checking whether there is mutation in DOM tree or not, and if there, then it execeutes some callback function.</li>
@@ -1240,7 +1280,7 @@ Microtask Priority Visualization
 <li>All the rest goes inside <strong>Callback Queue aka. Task Queue</strong>.</li>
 <li>If the task in microtask Queue keeps creating new tasks in the queue, element in callback queue never gets chance to be run. This is called <strong>starvation</strong></li>
 </ul>
-<h3 id="some-important-questions"><a class="header-link" href="#some-important-questions"></a>Some Important Questions</h3>
+<h3 id="some-important-questions">Some Important Questions</h3>
 <ol class="list">
 <li><p><strong>When does the event loop actually start ? -</strong> Event loop, as the name suggests, is a single-thread, loop that is <em>almost infinite</em>. It&#39;s always running and doing its job.</p>
 </li>
@@ -1253,7 +1293,7 @@ Microtask Priority Visualization
 </ol>
 <br>
 
-<h3 id="observation-of-eventloop-callback-queue--microtask-queue-gif"><a class="header-link" href="#observation-of-eventloop-callback-queue--microtask-queue-gif"></a>Observation of Eventloop, Callback Queue &amp; Microtask Queue [<strong>GiF</strong>]</h3>
+<h3 id="observation-of-eventloop-callback-queue--microtask-queue-gif">Observation of Eventloop, Callback Queue &amp; Microtask Queue [<strong>GiF</strong>]</h3>
 <p><img src="../assets/microtask1.gif" alt="microtask 1 Demo">
 <img src="../assets/microtask2.gif" alt="microtask 2 Demo">
 <img src="../assets/microtask3.gif" alt="microtask 3 Demo">
@@ -1271,7 +1311,7 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 
 <br>
 
-<h1 id="episode-16--js-engine-exposed-googles-v8-architecture"><a class="header-link" href="#episode-16--js-engine-exposed-googles-v8-architecture"></a>Episode 16 : JS Engine Exposed, Google&#39;s V8 Architecture</h1>
+<h1 id="episode-16--js-engine-exposed-googles-v8-architecture">Episode 16 : JS Engine Exposed, Google&#39;s V8 Architecture</h1>
 <ul class="list">
 <li><p>JS runs literally everywhere from smart watch to robots to browsers because of Javascript Runtime Environment (JRE).</p>
 </li>
@@ -1314,7 +1354,7 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-17--trust-issues-with-settimeout"><a class="header-link" href="#episode-17--trust-issues-with-settimeout"></a>Episode 17 : Trust issues with setTimeout()</h1>
+<h1 id="episode-17--trust-issues-with-settimeout">Episode 17 : Trust issues with setTimeout()</h1>
 <ul class="list">
 <li><p>setTimeout with timer of 5 secs sometimes does not exactly guarantees that the callback function will execute exactly after 5s.</p>
 </li>
@@ -1372,8 +1412,8 @@ alt="Trust issues with setTimeout() in JS Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-18--higher-order-functions-ft-functional-programming"><a class="header-link" href="#episode-18--higher-order-functions-ft-functional-programming"></a>Episode 18 : Higher-Order Functions ft. Functional Programming</h1>
-<h3 id="q-what-is-higher-order-function"><a class="header-link" href="#q-what-is-higher-order-function"></a>Q: What is Higher Order Function?</h3>
+<h1 id="episode-18--higher-order-functions-ft-functional-programming">Episode 18 : Higher-Order Functions ft. Functional Programming</h1>
+<h3 id="q-what-is-higher-order-function">Q: What is Higher Order Function?</h3>
 <p><strong>Ans</strong>: A Higher-order functions are regular functions that take other functions as arguments or return functions as their results. Eg:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;Hi)&quot;</span>;
@@ -1453,11 +1493,11 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 
 <br>
 
-<h1 id="episode-19--map-filter--reduce"><a class="header-link" href="#episode-19--map-filter--reduce"></a>Episode 19 : map, filter &amp; reduce</h1>
+<h1 id="episode-19--map-filter--reduce">Episode 19 : map, filter &amp; reduce</h1>
 <blockquote>
 <p>map, filter &amp; reducer are Higher Order Functions.</p>
 </blockquote>
-<h2 id="map-function"><a class="header-link" href="#map-function"></a>Map function</h2>
+<h2 id="map-function">Map function</h2>
 <p>It is basically used to transform a array. The map() method creates a new array with the results of calling a function for every array element.</p>
 <p>const output = arr.map(<em>function</em>) // this <em>function</em> tells map that what transformation I want on each element of array</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
@@ -1488,7 +1528,7 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 
 <span class="hljs-comment">// OR -&gt; Arrow function</span>
 <span class="hljs-keyword">const</span> binaryArr = arr.map(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x.toString(<span class="hljs-number">2</span>));</code></pre><p>So basically map function is mapping each and every value and transforming it based on given condition.</p>
-<h2 id="filter-function"><a class="header-link" href="#filter-function"></a>Filter function</h2>
+<h2 id="filter-function">Filter function</h2>
 <p>Filter function is basically used to filter the value inside an array. The arr.filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument method.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
 <span class="hljs-comment">// filter odd values</span>
@@ -1499,7 +1539,7 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
 
 <span class="hljs-comment">// Other way of writing the above:</span>
 <span class="hljs-keyword">const</span> oddArr = arr.filter(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> x % <span class="hljs-number">2</span>);</code></pre><p>Filter function creates an array and store only those values which evaluates to true.</p>
-<h2 id="reduce-function"><a class="header-link" href="#reduce-function"></a>Reduce function</h2>
+<h2 id="reduce-function">Reduce function</h2>
 <p>It is a function which take all the values of array and gives a single output of it. It reduces the array to give a single output.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> array = [<span class="hljs-number">5</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>];
 <span class="hljs-comment">// Calculate sum of elements of array - Non functional programming way</span>
@@ -1550,7 +1590,7 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
     }
     <span class="hljs-keyword">return</span> max;
 }, <span class="hljs-number">0</span>);
-<span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// 6</span></code></pre><h2 id="tricky-map"><a class="header-link" href="#tricky-map"></a>Tricky MAP</h2>
+<span class="hljs-built_in">console</span>.log(output); <span class="hljs-comment">// 6</span></code></pre><h2 id="tricky-map">Tricky MAP</h2>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> users = [
     { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Alok&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Raj&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">23</span> },
     { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Ashish&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Kumar&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">29</span> },
@@ -1574,7 +1614,7 @@ alt="Higher-Order Functions ft. Functional Programming in JS Youtube Link"/></a>
     }
     <span class="hljs-keyword">return</span> acc;  <span class="hljs-comment">//to every time return update object</span>
 }, {})
-<span class="hljs-built_in">console</span>.log(report) <span class="hljs-comment">// {29 : 2, 75 : 1, 50 : 1}</span></code></pre><h2 id="function-chaining"><a class="header-link" href="#function-chaining"></a>Function Chaining</h2>
+<span class="hljs-built_in">console</span>.log(report) <span class="hljs-comment">// {29 : 2, 75 : 1, 50 : 1}</span></code></pre><h2 id="function-chaining">Function Chaining</h2>
 <pre class="hljs"><code><span class="hljs-comment">// First name of all people whose age is less than 30</span>
 <span class="hljs-keyword">const</span> users = [
   { <span class="hljs-attr">firstName</span>: <span class="hljs-string">&quot;Alok&quot;</span>, <span class="hljs-attr">lastName</span>: <span class="hljs-string">&quot;Raj&quot;</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">23</span> },
@@ -1607,7 +1647,7 @@ alt="map, filter & reduce Youtube Link"/></a></p>
 
 <br>
 
-<h1 id="episode-20--callback"><a class="header-link" href="#episode-20--callback"></a>Episode 20 : Callback</h1>
+<h1 id="episode-20--callback">Episode 20 : Callback</h1>
 <ul class="list">
 <li><p>There are 2 Parts of Callback:</p>
 <ol class="list">
@@ -1642,7 +1682,7 @@ alt="map, filter & reduce Youtube Link"/></a></p>
 <span class="hljs-comment">// Season 2</span>
 <span class="hljs-comment">// JavaScript</span>
 
-<span class="hljs-comment">// 💡 Here we are delaying the execution using callback approach of setTimeout.</span></code></pre><h3 id="🛒-e-commerce-web-app-situation"><a class="header-link" href="#🛒-e-commerce-web-app-situation"></a>🛒 e-Commerce web app situation</h3>
+<span class="hljs-comment">// 💡 Here we are delaying the execution using callback approach of setTimeout.</span></code></pre><h3 id="🛒-e-commerce-web-app-situation">🛒 e-Commerce web app situation</h3>
 <p>Assume a scenario of e-Commerce web, where one user is placing order, he has added items like, shoes, pants and kurta in cart and now he is placing order. So in backend the situation could look something like this.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
 <span class="hljs-comment">// Two steps to place a order</span>
@@ -1699,7 +1739,7 @@ alt="map, filter & reduce Youtube Link"/></a></p>
 
 <hr>
 
-<h1 id="episode-21--promises"><a class="header-link" href="#episode-21--promises"></a>Episode 21 : Promises</h1>
+<h1 id="episode-21--promises">Episode 21 : Promises</h1>
 <blockquote>
 <p>Promises are used to handle async operations in JavaScript.</p>
 </blockquote>
@@ -1782,7 +1822,7 @@ user.then(<span class="hljs-function"><span class="hljs-keyword">function</span>
     fulfilled: meaning that the operation was completed successfully.
     rejected: meaning that the operation failed.
  */</span></code></pre><p>💡Promise Object are immutable.<br>-&gt; Once promise is fulfilled and we have data we can pass here and there and we don&#39;t have to worry that someone can mutate that data. So over above we can&#39;t directly mutate <code>user</code> promise object, we will have to use <code>.then</code></p>
-<h3 id="interview-guide"><a class="header-link" href="#interview-guide"></a>Interview Guide</h3>
+<h3 id="interview-guide">Interview Guide</h3>
 <p>💡What is Promise?<br>-&gt; Promise object is a placeholder for certain period of time until we receive value from asynchronous operation.</p>
 <p>-&gt; A container for a future value.</p>
 <p>-&gt; <strong>A Promise is an object representing the eventual completion or failure of an asynchronous operation.</strong></p>
@@ -1836,8 +1876,8 @@ alt="promise in Javascript Youtube Link"/></a></p>
 
 <hr>
 
-<h1 id="episode-22--creating-a-promise-chaining--error-handling"><a class="header-link" href="#episode-22--creating-a-promise-chaining--error-handling"></a>Episode 22 : Creating a Promise, Chaining &amp; Error Handling</h1>
-<h3 id=""><a class="header-link" href="#"></a></h3>
+<h1 id="episode-22--creating-a-promise-chaining--error-handling">Episode 22 : Creating a Promise, Chaining &amp; Error Handling</h1>
+<h3 id=""></h3>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> cart = [<span class="hljs-string">&quot;shoes&quot;</span>, <span class="hljs-string">&quot;pants&quot;</span>, <span class="hljs-string">&quot;kurta&quot;</span>];
 
 <span class="hljs-comment">// Consumer part of promise</span>
@@ -2010,8 +2050,8 @@ alt="promise in Javascript Youtube Link"/></a></p>
 
 <hr>
 
-<h1 id="episode-23--async-await"><a class="header-link" href="#episode-23--async-await"></a>Episode 23 : async await</h1>
-<h3 id="-1"><a class="header-link" href="#-1"></a></h3>
+<h1 id="episode-23--async-await">Episode 23 : async await</h1>
+<h3 id="-1"></h3>
 <p>Topics Covered</p>
 <ul class="list">
 <li>What is async?</li>
@@ -2177,14 +2217,14 @@ handlePromise();
 
 <span class="hljs-comment">// 📌 Thus JS is not waiting, call stack is not getting blocked.</span>
 
-<span class="hljs-comment">// Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -&gt; even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.</span></code></pre><h3 id="real-world-example-of-asyncawait"><a class="header-link" href="#real-world-example-of-asyncawait"></a>Real World example of async/await</h3>
+<span class="hljs-comment">// Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -&gt; even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.</span></code></pre><h3 id="real-world-example-of-asyncawait">Real World example of async/await</h3>
 <pre class="hljs"><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// fetch() =&gt; Response Object which as body as Readable stream =&gt; Response.json() is also a promise which when resolved =&gt; value</span>
   <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">&quot;https://api.github.com/users/alok722&quot;</span>);
   <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> data.json();
   <span class="hljs-built_in">console</span>.log(res);
 }
-handlePromise();</code></pre><h3 id="error-handling"><a class="header-link" href="#error-handling"></a>Error Handling</h3>
+handlePromise();</code></pre><h3 id="error-handling">Error Handling</h3>
 <p>While we were using normal Promise we were using .catch to handle error, now in <code>async-await</code> we would be using <code>try-catch</code> block to handle error.</p>
 <pre class="hljs"><code><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handlePromise</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">try</span> {
@@ -2200,7 +2240,7 @@ handlePromise();
 <span class="hljs-comment">// In above whenever any error will occur the execution will move to catch block. One could try above with bad url which will result in error.</span>
 
 <span class="hljs-comment">// Other way of handling error:</span>
-handlePromise().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(err)); <span class="hljs-comment">// this will work as handlePromise will return error promise in case of failure.</span></code></pre><h3 id="async-await-vs-promisethencatch"><a class="header-link" href="#async-await-vs-promisethencatch"></a>Async await vs Promise.then/.catch</h3>
+handlePromise().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(err)); <span class="hljs-comment">// this will work as handlePromise will return error promise in case of failure.</span></code></pre><h3 id="async-await-vs-promisethencatch">Async await vs Promise.then/.catch</h3>
 <p>What one should use? <code>async-await</code> is just a syntactic sugar around promise. Behind the scene <code>async-await</code> is just promise. So both are same, it&#39;s just <code>async-await</code> is new way of writing code. <code>async-await</code> solves few of the short-coming of Promise like <code>Promise Chaining</code>. <code>async-await</code> also increases the readability. So sort of it is always advisable to use <code>async-await.</code></p>
 <hr>
 
@@ -2211,8 +2251,8 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 
 <hr>
 
-<h1 id="episode-24--promise-apis-all-allsettled-race-any--interview-questions-🔥"><a class="header-link" href="#episode-24--promise-apis-all-allsettled-race-any--interview-questions-🔥"></a>Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥</h1>
-<h3 id="-2"><a class="header-link" href="#-2"></a></h3>
+<h1 id="episode-24--promise-apis-all-allsettled-race-any--interview-questions-🔥">Episode 24 : Promise APIs (all, allSettled, race, any) + Interview Questions 🔥</h1>
+<h3 id="-2"></h3>
 <p>4 Promise APIs which are majorly used:</p>
 <ul class="list">
 <li>Promise.all()</li>
@@ -2221,7 +2261,7 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 <li>Promise.any()</li>
 </ul>
 <p>💡 One simply doesn&#39;t use async/await without knowing promises!</p>
-<h3 id="promiseall"><a class="header-link" href="#promiseall"></a>Promise.all()</h3>
+<h3 id="promiseall">Promise.all()</h3>
 <blockquote>
 <p>A promise is a placeholder for a value that&#39;s going to be available sometime later. The promise helps handle asynchronous operations. JavaScript provides a helper function Promise.all(promisesArrayOrIterable) to handle multiple promises at once, in parallel, and get the results in a single aggregate array.</p>
 </blockquote>
@@ -2230,7 +2270,7 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 <p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.all will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.</p>
 <p>What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.all will throw same error as p2 immediately as soon as error happened. It will not wait for other promise to either become success or failure. Moreover, p1 and p2 wont get cancelled as they are already triggered so it may result in success or failure depending upon their fate but Promise.all wont care. So its a situation of or/null.</p>
 <p>💡 To conclude, the Promise.all() waits for all the input promises to resolve and returns a new promise that resolves to an array containing the results of the input promises. If one of the input promises is rejected, the Promise.all() method immediately returns a promise that is rejected with an error of the first rejected promise.</p>
-<h3 id="promiseallsettled"><a class="header-link" href="#promiseallsettled"></a>Promise.allSettled()</h3>
+<h3 id="promiseallsettled">Promise.allSettled()</h3>
 <blockquote>
 <p>Promise.allSettled() method that accepts a list of Promises and returns a new promise that resolves after all the input promises have settled, either resolved or rejected.</p>
 </blockquote>
@@ -2238,21 +2278,21 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 <p>In first scenario let&#39;s assume all 3 promises are successful. So Promise.allSettled will take <strong>3secs</strong> and will give promise value of result like [val1, val2, val3]. It will wait for all of them to finish then it will collect the results and give array as output.</p>
 <p>What if any of the promise gets rejected, for eg: Promise.all([p1, p2, p3]). But this time, p2 get rejected after 1 sec. Thus Promise.allSettled will still wait for all promises to get settled. So After 3 secs, it will be [val1, err, val3]</p>
 <p>💡 Promise.all() -&gt; Fail Fast<br>💡 Promise.allSettled() -&gt; Will wait and provide accumulative result</p>
-<h3 id="promiserace"><a class="header-link" href="#promiserace"></a>Promise.race()</h3>
+<h3 id="promiserace">Promise.race()</h3>
 <blockquote>
 <p>The Promise.race() static method accepts a list of promises as an iterable object and returns a new promise that fulfills or rejects as soon as there is one promise that fulfills or rejects, with the value or reason from that promise. The name of Promise.race() implies that all the promises race against each other with a single winner, either resolved or rejected.</p>
 </blockquote>
 <p>Promise.race([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>. So as soon as first promise will resolve or reject, it will give the output.</p>
 <p>So in Happy scenario, Promise.race will give (val2) as output after 1sec as p2 got resolved at the earliest. Whereas if it would have been failed Promise.race would have still given output after 1 sec but this time with error.</p>
-<h3 id="promiseany"><a class="header-link" href="#promiseany"></a>Promise.any()</h3>
+<h3 id="promiseany">Promise.any()</h3>
 <blockquote>
 <p>The Promise.any() method accepts a list of Promise objects as an iterable object. If one of the promises in the iterable object is fulfilled, the Promise.any() returns a single promise that resolves to a value which is the result of the fulfilled promise.</p>
 </blockquote>
 <p>Promise.any([p1, p2, p3]) -&gt; Lets assume we are making 3 API call to fetch data. Also assume <strong>p1</strong> takes <strong>3 seconds</strong>, <strong>p2</strong> takes <strong>1 second</strong>, <strong>p3</strong> takes <strong>2 seconds</strong>. So as soon as first promise will be successful, it will give the output.</p>
 <p>If in above situation what if p2 got rejected, nothing will happen as Promise.any seek for success, so the moment first success will happen that will become the result.</p>
 <p>❓ But what if all promises got failed, so the returned result will be aggregated error i.e. [err1, err2, err3].</p>
-<h2 id="code-examples"><a class="header-link" href="#code-examples"></a>Code Examples:</h2>
-<h3 id="promiseall-1"><a class="header-link" href="#promiseall-1"></a>Promise.all()</h3>
+<h2 id="code-examples">Code Examples:</h2>
+<h3 id="promiseall-1">Promise.all()</h3>
 <pre class="hljs"><code><span class="hljs-comment">// 📌 First Scenario</span>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
@@ -2293,7 +2333,7 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 
 <span class="hljs-built_in">Promise</span>.all([p1, p2, p3])
   .then(<span class="hljs-function">(<span class="hljs-params">results</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(results))
-  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err)); <span class="hljs-comment">// throws error after 1 sec i.e. &#x27;P2 Fails&#x27;</span></code></pre><h3 id="promiseallsettled-1"><a class="header-link" href="#promiseallsettled-1"></a>Promise.allSettled()</h3>
+  .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> <span class="hljs-built_in">console</span>.error(err)); <span class="hljs-comment">// throws error after 1 sec i.e. &#x27;P2 Fails&#x27;</span></code></pre><h3 id="promiseallsettled-1">Promise.allSettled()</h3>
 <p>💡This is safest among all Promises API.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
   <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
@@ -2322,7 +2362,7 @@ alt="async-await in Javascript Youtube Link"/></a></p>
       {status: &#x27;fulfilled&#x27;, value: &#x27;P2 Success&#x27;},
       {status: &#x27;rejected&#x27;, reason: &#x27;P3 Fail&#x27;}
     ]
-  */</span></code></pre><h3 id="promiserace-1"><a class="header-link" href="#promiserace-1"></a>Promise.race()</h3>
+  */</span></code></pre><h3 id="promiserace-1">Promise.race()</h3>
 <pre class="hljs"><code><span class="hljs-comment">// 📌 First Scenario</span>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
@@ -2376,7 +2416,7 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 <li>resolve, success, fulfilled</li>
 <li>reject, failure, rejected</li>
 </ol>
-<h3 id="promiseany-1"><a class="header-link" href="#promiseany-1"></a>Promise.any()</h3>
+<h3 id="promiseany-1">Promise.any()</h3>
 <pre class="hljs"><code><span class="hljs-comment">// 📌 First Scenario</span>
 
 <span class="hljs-keyword">const</span> p1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
@@ -2449,7 +2489,7 @@ alt="async-await in Javascript Youtube Link"/></a></p>
 
 <span class="hljs-comment">// Since all are rejected, so it will give &quot;aggregate error&quot; as output</span>
 <span class="hljs-comment">// AggregateError: All promises were rejected</span>
-<span class="hljs-comment">// To get AggregateError array you need to write &quot;err.errors&quot;</span></code></pre><h3 id="summary"><a class="header-link" href="#summary"></a>Summary</h3>
+<span class="hljs-comment">// To get AggregateError array you need to write &quot;err.errors&quot;</span></code></pre><h3 id="summary">Summary</h3>
 <p>There are 6 static methods of Promise class:</p>
 <blockquote>
 <p>Promise.all(promises) – waits for all promises to resolve and returns an array of their results. If any of the given promises rejects, it becomes the error of Promise.all, and all other results are ignored.</p>
@@ -2481,15 +2521,15 @@ alt="promise-apis in Javascript Youtube Link"/></a></p>
 
 <hr>
 
-<h1 id="episode-25--this-keyword-in-javascript"><a class="header-link" href="#episode-25--this-keyword-in-javascript"></a>Episode 25 : <code>this</code> keyword in JavaScript</h1>
-<h3 id="-3"><a class="header-link" href="#-3"></a></h3>
+<h1 id="episode-25--this-keyword-in-javascript">Episode 25 : <code>this</code> keyword in JavaScript</h1>
+<h3 id="-3"></h3>
 <blockquote>
 <p>In JavaScript, the this keyword refers to an object, which object depends on how this is being invoked (used or called).</p>
 </blockquote>
-<h2 id="this-in-global-space"><a class="header-link" href="#this-in-global-space"></a><code>this</code> in global space</h2>
+<h2 id="this-in-global-space"><code>this</code> in global space</h2>
 <p>Anything defined globally is said to be in a global space.</p>
 <pre class="hljs"><code><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// refers to global object i.e. window in case of browser</span>
-<span class="hljs-comment">// 💡 global object differs based on runtime environment,</span></code></pre><h2 id="this-inside-a-function"><a class="header-link" href="#this-inside-a-function"></a><code>this</code> inside a function</h2>
+<span class="hljs-comment">// 💡 global object differs based on runtime environment,</span></code></pre><h2 id="this-inside-a-function"><code>this</code> inside a function</h2>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">x</span>(<span class="hljs-params"></span>) </span>{
   <span class="hljs-comment">// the below value depends on strict/non-strict mode</span>
   <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>);
@@ -2505,7 +2545,7 @@ x();
 <p>💡 So to summarize, the value of <code>this</code> keyword inside function is <code>undefined</code>, but because of <code>this substitution</code> in non-strict mode <code>this</code> keyword refers to <code>globalWindowObject</code> and in strict mode it will still be <code>undefined</code></p>
 <p><code>this</code> keyword value depends on how the <code>function</code> is called. For eg:<br>In strict mode:</p>
 <pre class="hljs"><code>x(); <span class="hljs-comment">// undefined</span>
-<span class="hljs-built_in">window</span>.x(); <span class="hljs-comment">// global window object</span></code></pre><h2 id="this-inside-a-objects-method"><a class="header-link" href="#this-inside-a-objects-method"></a><code>this</code> inside a object&#39;s method</h2>
+<span class="hljs-built_in">window</span>.x(); <span class="hljs-comment">// global window object</span></code></pre><h2 id="this-inside-a-objects-method"><code>this</code> inside a object&#39;s method</h2>
 <pre class="hljs"><code><span class="hljs-comment">// `x` key below is a method as per terminology</span>
 <span class="hljs-keyword">const</span> obj = {
   <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
@@ -2514,7 +2554,7 @@ x();
     <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">this</span>.a); <span class="hljs-comment">// 10</span>
   },
 };
-obj.x(); <span class="hljs-comment">// value of `this` is referring to current object i.e. `obj`</span></code></pre><h2 id="call-apply--bind-methods"><a class="header-link" href="#call-apply--bind-methods"></a><code>call</code>, <code>apply</code> &amp; <code>bind</code> methods</h2>
+obj.x(); <span class="hljs-comment">// value of `this` is referring to current object i.e. `obj`</span></code></pre><h2 id="call-apply--bind-methods"><code>call</code>, <code>apply</code> &amp; <code>bind</code> methods</h2>
 <blockquote>
 <p>For detail around call, apply and bind method. Refer <a href="https://www.youtube.com/watch?v=75W8UPQ5l7k&ab_channel=AkshaySaini">here</a>.</p>
 </blockquote>
@@ -2536,7 +2576,7 @@ student.printName.call(student2); <span class="hljs-comment">// Kajal</span>
 <span class="hljs-comment">// Above `call` method is taking the value of `this` keyword</span>
 <span class="hljs-comment">// So, Inside `printName` method value of `this` is now `student2` object</span>
 
-<span class="hljs-comment">// So, call, bind and apply is used to set the value of this keyword.</span></code></pre><h2 id="this-inside-arrow-function"><a class="header-link" href="#this-inside-arrow-function"></a><code>this</code> inside arrow function</h2>
+<span class="hljs-comment">// So, call, bind and apply is used to set the value of this keyword.</span></code></pre><h2 id="this-inside-arrow-function"><code>this</code> inside arrow function</h2>
 <p>Arrow function doesn&#39;t have their own <code>this</code> value, they take the value from enclosing lexical context.</p>
 <pre class="hljs"><code><span class="hljs-keyword">const</span> obj = {
   <span class="hljs-attr">a</span>: <span class="hljs-number">10</span>,
@@ -2557,7 +2597,7 @@ obj.x();
     y();
   },
 };
-obj2.x();</code></pre><h2 id="this-inside-dom"><a class="header-link" href="#this-inside-dom"></a><code>this</code> inside DOM</h2>
+obj2.x();</code></pre><h2 id="this-inside-dom"><code>this</code> inside DOM</h2>
 <blockquote>
 <p>It refers to HTML element.</p>
 </blockquote>
@@ -2568,5 +2608,72 @@ obj2.x();</code></pre><h2 id="this-inside-dom"><a class="header-link" href="#thi
 <p><a href="https://www.youtube.com/watch?v=9T4z98JcHR0&list=PLlasXeu85E9eWOpw9jxHOQyGMRiBZ60aX&index=4&ab_channel=AkshaySaini" target="_blank"><img src="https://img.youtube.com/vi/9T4z98JcHR0/0.jpg" width="750"
 alt="this keyword in Javascript Youtube Link"/></a></p>
 <p>To Be Continued...</p>
-</body>
+        </article>
+      </div>
+
+      <!-- Inline TOC Script -->
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.querySelector(".toc-sidebar");
+        const toggle = document.getElementById("toc-toggle");
+        const toc = document.getElementById("toc");
+        const wrapper = document.getElementById("wrapper");
+        const body = document.body;
+
+        // Toggle Sidebar logic
+        toggle.addEventListener("click", () => {
+          sidebar.classList.toggle("close");
+          
+          // Dim background for mobile
+          if (!sidebar.classList.contains("close") && window.innerWidth < 900) {
+            body.classList.add("sidebar-open");
+          } else {
+            body.classList.remove("sidebar-open");
+          }
+        });
+
+        // Generate TOC Logic
+        const allHeadings = wrapper.querySelectorAll("h1, h2, h3");
+        let episodeReached = false;
+
+        allHeadings.forEach((heading) => {
+          const clone = heading.cloneNode(true);
+          const anchor = clone.querySelector(".header-link");
+          if (anchor) anchor.remove();
+
+          const text = clone.textContent.trim();
+          if (!text) return;
+
+          const isEpisode = heading.tagName === "H1" && text.toLowerCase().includes("episode");
+          if (isEpisode) episodeReached = true;
+
+          if (episodeReached) {
+            const li = document.createElement("li");
+            li.className = heading.tagName.toLowerCase();
+            const a = document.createElement("a");
+            a.href = '#' + heading.id;
+            a.textContent = text;
+            li.appendChild(a);
+            toc.appendChild(li);
+          }
+        });
+
+        // Auto-close on link click (Mobile)
+        toc.addEventListener("click", (e) => {
+          if (e.target.tagName === "A" && window.innerWidth < 900) {
+            sidebar.classList.add("close");
+            body.classList.remove("sidebar-open");
+          }
+        });
+
+        // Close when clicking dimmed background
+        document.addEventListener("click", (e) => {
+          if (body.classList.contains("sidebar-open") && !sidebar.contains(e.target)) {
+            sidebar.classList.add("close");
+            body.classList.remove("sidebar-open");
+          }
+        });
+      });
+      </script>
+      </body>
 </html>
