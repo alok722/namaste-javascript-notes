@@ -50,7 +50,7 @@ Steps:
    - Injects custom CSS for the TOC sidebar directly into the <head>.
    - Replaces the <body> content to include:
      a) A fixed TOC sidebar with toggle button and topic links
-     b) A wrapper containing the rendered Markdown content
+     b) A content containing the rendered Markdown content
      c) Inline JavaScript for:
         - TOC generation from h1, h2, h3 headings
         - Sidebar toggle functionality
@@ -108,11 +108,17 @@ async function build() {
         body.sidebar-open::after { content: ""; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(3px); z-index: 1000; }
         body.sidebar-open { overflow: hidden; }
       }
+      #content img {
+        border: none;
+        display: block;
+        margin: 1em auto;
+        max-width: 100%;
+      }
       </style>
       </head>`,
     );
 
-    // 2b. Replace body with TOC + wrapper + inline JS
+    // 2b. Replace body with TOC + content + inline JS
     html = html.replace(
       /<body>[\s\S]*<\/body>/,
       `<body>
