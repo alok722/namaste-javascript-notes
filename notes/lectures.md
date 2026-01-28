@@ -35,7 +35,6 @@ alt="Execution Context Youtube Link"/></a>
 - When a JS program is ran, a **global execution context** is created.
 
 - The execution context is created in two phases.
-
   - Memory creation phase - JS will allocate memory to variables and functions.
   - Code execution phase
 
@@ -409,7 +408,6 @@ It looks like let isn't hoisted, **but it is**, let's understand
 <br>
 
 - **Temporal Dead Zone** : Time since when the let variable was hoisted until it is initialized some value.
-
   - So any line till before "let a = 10" is the TDZ for a
   - Since a is not accessible on global, its not accessible in _window/this_ also. window.b or this.b -> 15; But window.a or this.a ->undefined, just like window.x->undefined (x isn't declared anywhere)
 
@@ -441,21 +439,16 @@ b = 1000; //this gives us TypeError: Assignment to constant variable.
 ```
 
 - Types of **Error**: Syntax, Reference, and Type.
-
   - Uncaught ReferenceError: x is not defined at ...
-
     - This Error signifies that x has never been in the scope of the program. This literally means that x was never defined/declared and is being tried to be accesed.
 
   - Uncaught ReferenceError: cannot access 'a' before initialization
-
     - This Error signifies that 'a' cannot be accessed because it is declared as 'let' and since it is not assigned a value, it is its Temporal Dead Zone. Thus, this error occurs.
 
   - Uncaught SyntaxError: Identifier 'a' has already been declared
-
     - This Error signifies that we are redeclaring a variable that is 'let' declared. No execution will take place.
 
   - Uncaught SyntaxError: Missing initializer in const declaration
-
     - This Error signifies that we haven't initialized or assigned value to a const declaration.
 
   - Uncaught TypeError: Assignment to constant variable
@@ -641,7 +634,6 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
       mentioned:
 
   1.  **Module Design Pattern**:
-
       - The module design pattern allows us to encapsulate related
         functionality into a single module or file. It helps organize
         code, prevent global namespace pollution, and promotes
@@ -682,7 +674,6 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
         ```
 
   2.  **Currying**:
-
       - Currying is a technique where a function that takes multiple
         arguments is transformed into a series of functions that take
         one argument each. It enables partial function application and
@@ -700,7 +691,6 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
         ```
 
   3.  **Memoization**:
-
       - Memoization optimizes expensive function calls by caching their
         results. It's useful for recursive or repetitive computations.
       - Example: Implement a memoized Fibonacci function.
@@ -718,7 +708,6 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
         ```
 
   4.  **Data Hiding and Encapsulation**:
-
       - Encapsulation hides the internal details of an object and
         exposes only necessary methods and properties. It improves code
         maintainability and security.
@@ -743,7 +732,6 @@ alt="Block Scope & Shadowing in JS Youtube Link"/></a>
         ```
 
   5.  **setTimeouts**:
-
       - `setTimeout` allows scheduling a function to run after a
         specified delay. It's commonly used for asynchronous tasks,
         animations, and event handling.
@@ -827,7 +815,6 @@ x();
   ```
 
   - Reason?
-
     - This happens because of closures. When setTimeout stores the function somewhere and attaches timer to it, the function remembers its reference to i, **not value of i**. All 5 copies of function point to same reference of i. JS stores these 5 functions, prints string and then comes back to the functions. By then the timer has run fully. And due to looping, the i value became 6. And when the callback fun runs the variable i = 6. So same 6 is printed in each log
 
     - To avoid this, we can use **let** instead of **var** as let has Block scope. For each iteration, the i is a new variable altogether(new copy of i). Everytime setTimeout is run, the inside function forms closure with new variable i
@@ -1226,10 +1213,13 @@ x(function y() {
 ```js
 // Another Example of callback
 function printStr(str, cb) {
-  setTimeout(() => {
-    console.log(str);
-    cb();
-  }, Math.floor(Math.random() * 100) + 1);
+  setTimeout(
+    () => {
+      console.log(str);
+      cb();
+    },
+    Math.floor(Math.random() * 100) + 1,
+  );
 }
 function printAll() {
   printStr("A", () => {
@@ -1313,13 +1303,11 @@ None of the below are part of Javascript! These are extra superpowers that brows
 ![Event Loop 2 Demo](../assets/eventloop2.jpg)
 
 - setTimeout(), DOM APIs, fetch(), localstorage, console (yes, even console.log is not JS!!), location and so many more.
-
   - setTimeout() : Timer function
   - DOM APIs : eg.Document.xxxx ; Used to access HTML DOM tree. (Document Object Manipulation)
   - fetch() : Used to make connection with external servers eg. Netflix servers etc.
 
 - We get all these inside call stack through global object ie. window
-
   - Use window keyword like : window.setTimeout(), window.localstorage, window.console.log() to log something inside console.
   - As window is global obj, and all the above functions are present in global object, we don't explicity write window but it is implied.
 
@@ -1461,7 +1449,6 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 - Javascript Engine is not a machine. Its software written in low level languages (eg. C++) that takes in hi-level code in JS and spits out low level machine code.
 
 - Code inside Javascript Engine passes through 3 steps : **Parsing**, **Compilation** and **Execution**
-
   1. **Parsing** - Code is broken down into tokens. In "let a = 7" -> let, a, =, 7 are all tokens. Also we have a syntax parser that takes code and converts it into an AST (Abstract Syntax Tree) which is a JSON with all key values like type, start, end, body etc (looks like package.json but for a line of code in JS. Kinda unimportant)(Check out astexplorer.net -> converts line of code into AST).
   2. **Compilation** - JS has something called Just-in-time(JIT) Compilation - uses both interpreter & compiler. Also compilation and execution both go hand in hand. The AST from previous step goes to interpreter which converts hi-level code to byte code and moves to execeution. While interpreting, compiler also works hand in hand to compile and form optimized code during runtime. **Does JavaScript really Compiles?** The answer is a loud **YES**. More info at: [Link 1](https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#whats-in-an-interpretation), [Link 2](https://web.stanford.edu/class/cs98si/slides/overview.html), [Link 3](https://blog.greenroots.info/javascript-interpreted-or-compiled-the-debate-is-over-ckb092cv302mtl6s17t14hq1j). JS used to be only interpreter in old times, but now has both to compile and interpreter code and this make JS a JIT compiled language, its like best of both world.
   3. **Execution** - Needs 2 components ie. Memory heap(place where all memory is stored) and Call Stack(same call stack from prev episodes). There is also a garbage collector. It uses an algo called **Mark and Sweep**.
@@ -1505,7 +1492,6 @@ alt="JS Engine Exposed, Google's V8 Architecture in JS Youtube Link"/></a>
   ```
 
   Reason?
-
   - First GEC is created and pushed in callstack.
   - Start is printed in console
   - When setTimeout is seen, callback function is registered into webapi's env. And timer is attached to it and started. callback waits for its turn to be execeuted once timer expires. But JS waits for none. Goes to next line.
@@ -1857,7 +1843,6 @@ alt="map, filter & reduce Youtube Link"/></a>
 # Episode 20 : Callback
 
 - There are 2 Parts of Callback:
-
   1. Good Part of callback - Callback are super important while writing asynchronous code in JS
   2. Bad Part of Callback - Using callback we can face issue:
      - Callback Hell
