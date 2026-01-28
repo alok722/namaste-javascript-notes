@@ -221,8 +221,14 @@ async function build() {
     });
 
     mds.render(settings, (err) => {
-      if (err) console.error(err);
-      else console.log("✅ Done! Open ./dist/lectures.html");
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("✅ Done! Open ./dist/lectures.html");
+        // Clean up temporary layout folder
+        cleanFolder(LAYOUT_TEMP);
+        console.log("🧹 Cleaned up temporary files");
+      }
     });
   } catch (err) {
     console.error("❌ Error:", err);

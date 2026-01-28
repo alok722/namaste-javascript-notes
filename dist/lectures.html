@@ -1113,10 +1113,13 @@ x(<span class="hljs-function"><span class="hljs-keyword">function</span> <span c
 </ul>
 <pre class="hljs"><code><span class="hljs-comment">// Another Example of callback</span>
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printStr</span>(<span class="hljs-params">str, cb</span>) </span>{
-  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
-    <span class="hljs-built_in">console</span>.log(str);
-    cb();
-  }, <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>);
+  <span class="hljs-built_in">setTimeout</span>(
+    <span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(str);
+      cb();
+    },
+    <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">100</span>) + <span class="hljs-number">1</span>,
+  );
 }
 <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">printAll</span>(<span class="hljs-params"></span>) </span>{
   printStr(<span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-function">() =&gt;</span> {
