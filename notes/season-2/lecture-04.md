@@ -196,11 +196,81 @@ async function handlePromise() {
 handlePromise();
 // When this function is executed, it will go line by line as JS is synchronous single threaded language. Lets observe what is happening under call-stack. Above you can see we have set the break-points.
 
-// call stack flow -> handlePromise() is pushed -> It will log `Hi` to console -> Next it sees we have await where promise is suppose to be resolved -> So will it wait for promise to resolve and block call stack? No -> thus handlePromise() execution get suspended and moved out of call stack -> So when JS sees await keyword it suspend the execution of function till promise is resolved -> So `p` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs. -> But this time it will start executing from where it had left. -> Now it will log 'Hello There!' and 'Promise resolved value!!' -> then it will check whether `p2` is resolved or not -> It will find since `p2` will take 10 secs to resolve so the same above process will repeat -> execution will be suspended until promise is resolved.
+// call stack flow -> handlePromise() is pushed -> It will log `Hi` to console -> Next it sees we have await where promise is suppose to be resolved -> So will it wait for promise to resolve and block call stack? No -> thus handlePromise() execution get suspended and moved out of call stack -> So when JS sees await keyword it suspend the execution of function till promise is resolved -> So `p1` will get resolved after 5 secs so handlePromise() will be pushed to call-stack again after 5 secs. -> But this time it will start executing from where it had left. -> Now it will log 'Hello There!' and 'Promise resolved value by p1!!' -> then it will check whether `p2` is resolved or not -> It will find since `p2` will take 10 secs to resolve so the same above process will repeat -> execution will be suspended until promise is resolved.
 
 // 📌 Thus JS is not waiting, call stack is not getting blocked.
 
 // Moreover in above scenario what if p1 would be taking 10 secs and p2 5 secs -> even though p2 got resolved earlier but JS is synchronous single threaded language so it will first wait for p1 to be resolved and then will immediately execute all.
+```
+
+Q: Explain code output and it's reason
+
+```js
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Promise resolved value by p1!!");
+  }, 10000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Promise resolved value by p2!!");
+  }, 5000);
+});
+
+async function handlePromise() {
+  console.log("Hi");
+  debugger;
+  const val = await p1;
+  console.log("Hello There!");
+  debugger;
+  console.log(val);
+
+  const val2 = await p2;
+  console.log("Hello There! 2");
+  debugger;
+  console.log(val2);
+}
+handlePromise();
+
+// Hi will be printed then because of p1 await, it will for 10seconds and print `Promise resolved value by p1!!` followed by `Hello There!` and then instantly `Promise resolved value by p2!!` followed by `Hello There! 2`
+
+// ❓ Why p2 invoked instanly without waiting another 5 seconds?
+```
+
+A: 👉 Promises start executing immediately when they are created, not when they are awaited.
+p1’s setTimeout(10s) starts right away
+p2’s setTimeout(5s) also starts right away
+Both timers begin ticking as soon as the file is executed, before handlePromise() even hits the first await.
+
+await does NOT start a promise
+It only waits for an already-running promise
+
+Q: How to make p2 wait after p1
+A:
+
+```js
+function createP1() {
+  return new Promise((resolve) =>
+    setTimeout(() => resolve("p1 resolved"), 10000),
+  );
+}
+
+function createP2() {
+  return new Promise((resolve) =>
+    setTimeout(() => resolve("p2 resolved"), 5000),
+  );
+}
+
+async function handlePromise() {
+  console.log("Hi");
+
+  const val1 = await createP1();
+  console.log(val1);
+
+  const val2 = await createP2();
+  console.log(val2);
+}
 ```
 
 ### Real World example of async/await
