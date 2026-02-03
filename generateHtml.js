@@ -224,6 +224,21 @@ async function build() {
       if (err) {
         console.error(err);
       } else {
+        // Copy assets folder to dist
+        const srcAssets = path.resolve("./assets");
+        const destAssets = path.resolve(OUTPUT, "assets");
+        if (fs.existsSync(srcAssets)) {
+          fs.cpSync(srcAssets, destAssets, { recursive: true });
+          console.log("📁 Copied assets folder to dist");
+        }
+
+        // Fix image paths in generated HTML (../assets/ -> ./assets/)
+        const htmlPath = path.join(OUTPUT, "lectures.html");
+        let htmlContent = fs.readFileSync(htmlPath, "utf-8");
+        htmlContent = htmlContent.replace(/\.\.\/assets\//g, "./assets/");
+        fs.writeFileSync(htmlPath, htmlContent);
+        console.log("🔗 Fixed image paths in HTML");
+
         console.log("✅ Done! Open ./dist/lectures.html");
         // Clean up temporary layout folder
         cleanFolder(LAYOUT_TEMP);

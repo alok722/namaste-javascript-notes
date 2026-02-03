@@ -60,7 +60,7 @@
 <h1 id="episode-1--execution-context">Episode 1 : Execution Context</h1>
 <ul class="list">
 <li><p>Everything in JS happens inside the execution context. Imagine a sealed-off container inside which JS runs. It is an abstract concept that hold info about the env. within the current code is being executed.
-<img src="../assets/execution-context.jpg" alt="Execution Context" title="Execution Context"></p>
+<img src="./assets/execution-context.jpg" alt="Execution Context" title="Execution Context"></p>
 </li>
 <li><p>In the container the first component is <strong>memory component</strong> and the 2nd one is <strong>code component</strong></p>
 </li>
@@ -107,14 +107,14 @@ alt="Execution Context Youtube Link"/></a></p>
 <span class="hljs-keyword">var</span> square2 = square(n);
 <span class="hljs-keyword">var</span> square4 = square(<span class="hljs-number">4</span>);</code></pre><p>The very <strong>first</strong> thing which JS does is <strong>memory creation phase</strong>, so it goes to line one of above code snippet, and <strong>allocates a memory space</strong> for variable <strong>&#39;n&#39;</strong> and then goes to line two, and <strong>allocates a memory space</strong> for <strong>function &#39;square&#39;</strong>. When allocating memory <strong>for n it stores &#39;undefined&#39;</strong>, a special value for &#39;n&#39;. <strong>For &#39;square&#39;, it stores the whole code of the function inside its memory space.</strong> Then, as square2 and square4 are variables as well, it allocates memory and stores &#39;undefined&#39; for them, and this is the end of first phase i.e. memory creation phase.</p>
 <p>So O/P will look something like</p>
-<p class="img-container"><img src="../assets/phase1.jpg" alt="Execution Context Phase 1" title="Execution Context"></p>
+<p class="img-container"><img src="./assets/phase1.jpg" alt="Execution Context Phase 1" title="Execution Context"></p>
 <p>Now, in <strong>2nd phase</strong> i.e. code execution phase, it starts going through the whole code line by line. As it encounters var n = 2, it assigns 2 to &#39;n&#39;. Until now, the value of &#39;n&#39; was undefined. For function, there is nothing to execute. As these lines were already dealt with in memory creation phase.</p>
 <p>Coming to line 6 i.e. <strong>var square2 = square(n)</strong>, here <strong>functions are a bit different than any other language. A new execution context is created altogether.</strong> Again in this new execution context, in memory creation phase, we allocate memory to num and ans the two variables. And undefined is placed in them. Now, in code execution phase of this execution context, first 2 is assigned to num. Then var ans = num * num will store 4 in ans. After that, return ans returns the control of program back to where this function was invoked from.</p>
-<p class="img-container"><img src="../assets/phase2.jpg" alt="Execution Context Phase 2" title="Execution Context"></p>
+<p class="img-container"><img src="./assets/phase2.jpg" alt="Execution Context Phase 2" title="Execution Context"></p>
 <p>When <strong>return</strong> keyword is encountered, It returns the control to the called line and also <strong>the function execution context is deleted</strong>.
 Same thing will be repeated for square4 and then after that is finished, the global execution context will be destroyed.
 So the <strong>final diagram</strong> before deletion would look something like:</p>
-<p class="img-container"><img src="../assets/final_execution_context.jpg" alt="Execution Context Phase 2" title="Execution Context"></p>
+<p class="img-container"><img src="./assets/final_execution_context.jpg" alt="Execution Context Phase 2" title="Execution Context"></p>
 <ul class="list">
 <li><p>Javascript manages code execution context creation and deletion with the the help of <strong>Call Stack</strong>.</p>
 </li>
@@ -233,7 +233,7 @@ b(); <span class="hljs-comment">// we are calling the functions before defining 
 <li><p>reference:</p>
 </li>
 </ul>
-<p class="img-container"><img src="../assets/function.jpg" alt="Execution Context Phase 1" title="Execution Context"></p>
+<p class="img-container"><img src="./assets/function.jpg" alt="Execution Context Phase 1" title="Execution Context"></p>
 <hr>
 
 <p>Watch Live On Youtube below:</p>
@@ -354,8 +354,8 @@ c() = [[lexical environment pointer pointing to a()]]
 a() = [b:10, c:{}, [lexical environment pointer pointing to GEC]]
 GEC =  [a:{},[lexical_environment pointer pointing to null]]
 </pre>
-<img src="../assets/lexical.jpg" alt="Lexical Scope Explaination" title="Lexical Scope">
-<img src="../assets/lexical2.jpg" alt="Lexical Scope Explaination" title="Lexical Scope"></li>
+<img src="./assets/lexical.jpg" alt="Lexical Scope Explaination" title="Lexical Scope">
+<img src="./assets/lexical2.jpg" alt="Lexical Scope Explaination" title="Lexical Scope"></li>
 </ul>
 </li>
 </ul>
@@ -540,7 +540,7 @@ alt="let & const in JS, Temporal Dead Zone Youtube Link"/></a></p>
   <span class="hljs-keyword">const</span> c = <span class="hljs-number">30</span>;
   <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 20</span>
 }
-<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 100, Both b&#x27;s are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.</span></code></pre><p class="img-container"><img src="../assets/scope.jpg" alt="Block Scope Explaination" title="Lexical Scope"></p>
+<span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 100, Both b&#x27;s are in separate spaces (one in Block(20) and one in Script(another arbitrary mem space)(100)). Same is also true for *const* declarations.</span></code></pre><p class="img-container"><img src="./assets/scope.jpg" alt="Block Scope Explaination" title="Lexical Scope"></p>
 <ul class="list">
 <li>Same logic is true even for <strong>functions</strong></li>
 </ul>
@@ -618,7 +618,7 @@ z(); // 7 900
 <br>
 
 <ul class="list">
-<li><p class="img-container"><img src="../assets/closure.jpg" alt="Closure Explaination" title="Lexical Scope"></p>
+<li><p class="img-container"><img src="./assets/closure.jpg" alt="Closure Explaination" title="Lexical Scope"></p>
 </li>
 <li><p>Advantages of Closure:</p>
 <pre class="prettyprint">Certainly! Let&#39;s explore examples for each of the advantages you&#39;ve
@@ -1160,7 +1160,7 @@ document
 }
 attachEventList();
 </pre>
-<img src="../assets/event.jpg" alt="Event Listerner Demo"></li>
+<img src="./assets/event.jpg" alt="Event Listerner Demo"></li>
 </ul>
 </li>
 </ul>
@@ -1187,13 +1187,13 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a></p>
 <li>Browser has JS Engine which has Call Stack which has Global execution context, local execution context etc.<ul class="list">
 <li>But browser has many other superpowers - Local storage space, Timer, place to enter URL, Bluetooth access, Geolocation access and so on.</li>
 <li>Now JS needs some way to connect the callstack with all these superpowers. This is done using Web APIs.
-<img src="../assets/eventloop1.jpg" alt="Event Loop 1 Demo"></li>
+<img src="./assets/eventloop1.jpg" alt="Event Loop 1 Demo"></li>
 </ul>
 </li>
 </ul>
 <h3 id="webapis">WebAPIs</h3>
 <p>None of the below are part of Javascript! These are extra superpowers that browser has. Browser gives access to JS callstack to use these powers.
-<img src="../assets/eventloop2.jpg" alt="Event Loop 2 Demo"></p>
+<img src="./assets/eventloop2.jpg" alt="Event Loop 2 Demo"></p>
 <ul class="list">
 <li><p>setTimeout(), DOM APIs, fetch(), localstorage, console (yes, even console.log is not JS!!), location and so many more.</p>
 <ul class="list">
@@ -1209,7 +1209,7 @@ alt="Callback Functions in JS ft. Event Listeners in JS Youtube Link"/></a></p>
 </ul>
 </li>
 <li><p>Let&#39;s undertand the below code image and its explaination:
-<img src="../assets/eventloop3.jpg" alt="Event Loop 3 Demo"></p>
+<img src="./assets/eventloop3.jpg" alt="Event Loop 3 Demo"></p>
 <ul class="list">
 <li><pre class="prettyprint">console.log(&quot;start&quot;);
 setTimeout(function cb() {
@@ -1234,11 +1234,11 @@ console.log(&quot;end&quot;);
 <li>cb() cannot simply directly go to callstack to be execeuted. It goes through the callback queue when timer expires.</li>
 <li>Event loop keep checking the callback queue, and see if it has any element to puts it into call stack. It is like a gate keeper.</li>
 <li>Once cb() is in callback queue, eventloop pushes it to callstack to run. Console API is used and log printed</li>
-<li><img src="../assets/eventloop4.jpg" alt="Event Loop 4 Demo"></li>
+<li><img src="./assets/eventloop4.jpg" alt="Event Loop 4 Demo"></li>
 </ul>
 <p>Q: Another example to understand Eventloop &amp; Callback Queue.</p>
 <p>See the below Image and code and try to understand the reason:
-<img src="../assets/eventloop5.jpg" alt="Event Loop 5 Demo">
+<img src="./assets/eventloop5.jpg" alt="Event Loop 5 Demo">
 Explaination?</p>
 <ul class="list">
 <li><pre class="prettyprint">console.log(&quot;Start&quot;);
@@ -1278,9 +1278,9 @@ Code Explaination:
 * Also after expiration <span class="hljs-keyword">of</span> timer, cbT is ready to execute <span class="hljs-keyword">in</span> Callback Queue.
 * Microtask Queue is exactly same <span class="hljs-keyword">as</span> Callback Queue, but it has higher priority. Functions <span class="hljs-keyword">in</span> Microtask Queue are executed earlier than Callback Queue.
 * In <span class="hljs-built_in">console</span>, first Start and End are printed <span class="hljs-keyword">in</span> <span class="hljs-built_in">console</span>. First cbF goes <span class="hljs-keyword">in</span> callstack and <span class="hljs-string">&quot;CB Netflix&quot;</span> is printed. cbF popped <span class="hljs-keyword">from</span> callstack. Next cbT is removed <span class="hljs-keyword">from</span> callback Queue, put <span class="hljs-keyword">in</span> Call Stack, <span class="hljs-string">&quot;CB Timeout&quot;</span> is printed, and cbT removed <span class="hljs-keyword">from</span> callstack.
-* See below Image <span class="hljs-keyword">for</span> more understanding</code></pre><p><img src="../assets/eventloop6.jpg" alt="Event Loop 6 Demo">
+* See below Image <span class="hljs-keyword">for</span> more understanding</code></pre><p><img src="./assets/eventloop6.jpg" alt="Event Loop 6 Demo">
 Microtask Priority Visualization
-<img src="../assets/microtask.gif" alt="Event Loop 7 Demo"></p>
+<img src="./assets/microtask.gif" alt="Event Loop 7 Demo"></p>
 <h4 id="what-enters-the-microtask-queue-">What enters the Microtask Queue ?</h4>
 <ul class="list">
 <li>All the callback functions that come through promises go in microtask Queue.</li>
@@ -1303,12 +1303,12 @@ Microtask Priority Visualization
 <br>
 
 <h3 id="observation-of-eventloop-callback-queue--microtask-queue-gif">Observation of Eventloop, Callback Queue &amp; Microtask Queue [<strong>GiF</strong>]</h3>
-<p><img src="../assets/microtask1.gif" alt="microtask 1 Demo">
-<img src="../assets/microtask2.gif" alt="microtask 2 Demo">
-<img src="../assets/microtask3.gif" alt="microtask 3 Demo">
-<img src="../assets/microtask4.gif" alt="microtask 4 Demo">
-<img src="../assets/microtask5.gif" alt="microtask 5 Demo">
-<img src="../assets/microtask6.gif" alt="microtask 6 Demo"></p>
+<p><img src="./assets/microtask1.gif" alt="microtask 1 Demo">
+<img src="./assets/microtask2.gif" alt="microtask 2 Demo">
+<img src="./assets/microtask3.gif" alt="microtask 3 Demo">
+<img src="./assets/microtask4.gif" alt="microtask 4 Demo">
+<img src="./assets/microtask5.gif" alt="microtask 5 Demo">
+<img src="./assets/microtask6.gif" alt="microtask 6 Demo"></p>
 <hr>
 
 <p>Watch Live On Youtube below:</p>
@@ -1339,16 +1339,16 @@ alt="Asynchronous JavaScript & EVENT LOOP from scratch in JS Youtube Link"/></a>
 <li><strong>Parsing</strong> - Code is broken down into tokens. In &quot;let a = 7&quot; -&gt; let, a, =, 7 are all tokens. Also we have a syntax parser that takes code and converts it into an AST (Abstract Syntax Tree) which is a JSON with all key values like type, start, end, body etc (looks like package.json but for a line of code in JS. Kinda unimportant)(Check out astexplorer.net -&gt; converts line of code into AST).</li>
 <li><strong>Compilation</strong> - JS has something called Just-in-time(JIT) Compilation - uses both interpreter &amp; compiler. Also compilation and execution both go hand in hand. The AST from previous step goes to interpreter which converts hi-level code to byte code and moves to execeution. While interpreting, compiler also works hand in hand to compile and form optimized code during runtime. <strong>Does JavaScript really Compiles?</strong> The answer is a loud <strong>YES</strong>. More info at: <a href="https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/get-started/ch1.md#whats-in-an-interpretation">Link 1</a>, <a href="https://web.stanford.edu/class/cs98si/slides/overview.html">Link 2</a>, <a href="https://blog.greenroots.info/javascript-interpreted-or-compiled-the-debate-is-over-ckb092cv302mtl6s17t14hq1j">Link 3</a>. JS used to be only interpreter in old times, but now has both to compile and interpreter code and this make JS a JIT compiled language, its like best of both world.</li>
 <li><strong>Execution</strong> - Needs 2 components ie. Memory heap(place where all memory is stored) and Call Stack(same call stack from prev episodes). There is also a garbage collector. It uses an algo called <strong>Mark and Sweep</strong>.
-<img src="../assets/jsengine.jpg" alt="JS Engine Demo">
+<img src="./assets/jsengine.jpg" alt="JS Engine Demo">
 GiF Demo
-<img src="../assets/jsenginegif.gif" alt="JS Engine Demo"></li>
+<img src="./assets/jsenginegif.gif" alt="JS Engine Demo"></li>
 </ol>
 </li>
 <li><p>Companies use different JS engines and each try to make theirs the best.</p>
 <ul class="list">
 <li>v8 of Google has Interpreter called Ignition, a compiler called Turbo Fan and garbage collector called Orinoco</li>
 <li>v8 architecture:
-<img src="../assets/jsengine.png" alt="JS Engine Demo"></li>
+<img src="./assets/jsengine.png" alt="JS Engine Demo"></li>
 </ul>
 </li>
 </ul>
@@ -1392,7 +1392,7 @@ console.log(&quot;End&quot;);
 <li><p>The First rule of JavaScript: Do not <strong>block the main thread</strong> (as JS is a single threaded(only 1 callstack) language).</p>
 </li>
 <li><p>In below example, we are blocking the main thread. Observe Questiona and Output.
-<img src="../assets/settimeout1.jpg" alt="setTimeout Demo"></p>
+<img src="./assets/settimeout1.jpg" alt="setTimeout Demo"></p>
 </li>
 <li><p>setTimeout guarantees that it will take at least the given timer to execute the code.</p>
 </li>
