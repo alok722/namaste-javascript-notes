@@ -8,7 +8,7 @@
 
 <br>
 
-## 🏠 [Namaste Javascript Notes Website](https://alok722.github.io/namaste-javascript-notes/dist/lectures.html)
+## 🏠 [Namaste Javascript Notes Website](https://alok722.github.io/namaste-javascript-notes/lectures.html)
 
 ## 🚀 [PDF Version of Complete Notes](./dist/namaste-javascript-notes.pdf)
 
