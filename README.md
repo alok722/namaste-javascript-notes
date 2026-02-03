@@ -14,7 +14,7 @@
 
 <br>
 
-## 📝 Content List
+## 📝 Content Lists
 
 ### 📌 <ins>Season 1<ins>
 
@@ -88,7 +88,7 @@ From the creator of Namaste Javascript himself, 🙌
 
 ## 🤝 Contribution Guidelines
 
-- Please create an issue with your suggestion, if found valid I would push the fix. 
+- Please create an issue with your suggestion, if found valid I would push the fix.
 - Please, Don't open the PR directly without conversation.
 
 ## ✨ Show your support
