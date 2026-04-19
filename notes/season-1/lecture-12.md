@@ -189,7 +189,7 @@ function a() {
 var y = a(); // y is a copy of b()
 y();
 
-// Once a() is called, its element x should be garbage collected ideally. But fun b has closure over var x. So mem of x cannot be freed. Like this if more closures formed, it becomes an issue. To tacke this, JS engines like v8 and Chrome have smart garbage collection mechanisms. Say we have var x = 0, z = 10 in above code. When console log happens, x is printed as 0 but z is removed automatically.
+// Once a() is called, its element x should be garbage collected ideally. But fun b has closure over var x. So mem of x cannot be freed. Like this, if more closures formed, it becomes an issue. To tackle this, JS engines like v8 and Chrome have smart garbage collection mechanisms. Say we have var x = 0, z = 10 in the above code. When console log happens, x is printed as 0 but z is removed automatically.
 ```
 
 <hr>
